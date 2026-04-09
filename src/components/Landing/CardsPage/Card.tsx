@@ -1,18 +1,26 @@
 import './Card.scss'
 
+import type { roomListTypes } from '../../../lib/dataHandler';
 
-function Card() {
+interface CardProps {
+  topicInfo: roomListTypes;
+}
+
+
+function Card({ topicInfo }: CardProps) {
 
     return (
         <div className="card">
             <div className="content-container card-headline-container">
-                <p>Headline</p>
+                <p>{topicInfo.name}</p>
             </div>
+
             <div className="content-container card-image-container">
-                <img src="" alt="" />
+                <img src={topicInfo.imageSrc} alt={topicInfo.name} />
             </div>
+
             <div className="content-container card-description-container">
-                <p>description of this topic</p>
+                <p>{topicInfo.description}</p>
             </div>
         </div>
     );

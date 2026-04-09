@@ -1,12 +1,19 @@
 import React from 'react';
+import { useNavigate} from 'react-router-dom';
 
 import './Header.scss'
 import logo from '../../assets/logo.svg'
+
+import { type roomListTypes, getRoomList } from '../../lib/dataHandler';
 
 
 function AppHeader() {
 
     const [navVisible, setNavVisibility] = React.useState(false);
+    const navigate = useNavigate();
+
+    let roomList: roomListTypes = JSON.parse(getRoomList());
+    const roomNames: string[] = Object.values(roomList).map(r => r.name);   //TODO: add room name and links in Navigation 
     
     function handleNavigationToggle() {
         setNavVisibility(!navVisible);
@@ -20,11 +27,11 @@ function AppHeader() {
                     <span className='header-menubtn-line'></span>
                     <span className='header-menubtn-line'></span>
                 </div>
-                <div className='header-button header-homebtn-container'>
+                <div className='header-button header-homebtn-container' onClick={() => navigate('/')}>
                     <img src={logo} alt="" className='header-logo'/>
                     <p className='header-homebtn-label'>ILSE</p>
                 </div>
-                <div className='header-button header-loginbtn-container'>
+                <div className='header-button header-loginbtn-container' onClick={() => navigate('/login')}>
                     <p className='header-loginbtn-label highlight-btn-medium'>Login</p>
                 </div>
             </div>

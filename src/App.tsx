@@ -1,50 +1,25 @@
-import {useState} from 'react';
-import pageState from './lib/pageState'
-import {getPageTypes, getPageContent} from './lib/pageContentHandler';
-
-import AppHeader from './components/Header/Header';
-import AppFooter from './components/Footer/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import LandingPage from './components/Landing/LandingPage';
 import LoginPage from './components/Login/LoginPage';
 import RoomViewPage from './components/RoomView/RoomViewPage';
 
+import {getRoomTypes} from './lib/pageContentHandler';
+import {saveToLocalStorage} from './lib/localStorageHandler';
+
 
 function App() {
-  const [page, setPage] = useState(pageState.Landing);
-  let pageTypes: String = JSON.stringify(getPageTypes()); //TODO: pass to LandingPage
-  let pageContent: string;
-
-  const handleLink = (newPage:typeof pageState[keyof typeof pageState], pageType:string) => {
-    //load page content from backend
-    if(newPage === pageState.RoomView){
-      pageContent = getPageContent(pageType);
-    }
-    
-    //create page
-    setPage(newPage);
-  };
-
-  const renderPage = () => {
-    switch(page) {
-      case pageState.Landing:
-        return <LandingPage />;
-      case pageState.Login:
-        return <LoginPage />;
-      case pageState.RoomView:
-        return <RoomViewPage />;
-      default:
-        return <LandingPage />;
-    }
-  }
+  saveToLocalStorage("roomList", JSON.stringify(getRoomTypes()));
 
   return (
     <div className='app-container'>
-      <AppHeader />
-      
-      {renderPage()}
-
-      <AppFooter />
+      <Router>
+        <Routes>
+          <Route path='/'      element={<LandingPage />}  />
+          <Route path='/login' element={<LoginPage />}    />
+          <Route path='/room'  element={<RoomViewPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 

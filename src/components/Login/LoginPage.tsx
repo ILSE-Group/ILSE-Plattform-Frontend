@@ -1,9 +1,12 @@
+import Header from '../Header/Header';
 
 
 function LoginPage() {
     
     return (
         <>
+            <Header />
+            
         </>
     );
 
