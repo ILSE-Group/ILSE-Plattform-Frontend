@@ -1,0 +1,87 @@
+
+//################################################
+//-------------------Variables--------------------
+//################################################
+$MIN_SIZE_HORIZONTAL_MODE: 768px;
+
+//Font Family
+$fontFamilySans: system-ui, 'Segoe UI', Roboto, sans-serif;
+$fontFamilyMono: ui-monospace, Consolas, monospace;
+
+//================DARK-THEME=================
+$darkTheme_bgColorHighContrast: rgb(0, 0, 0);
+$darkTheme_bgColorMediumContrast: rgb(29, 29, 29);
+$darkTheme_bgColorLowContrast: rgb(56, 56, 56);
+
+$darkTheme_fgColorHighContrast: rgb(255, 255, 255);
+$darkTheme_fgColorMediumContrast: rgb(224, 224, 224);
+$darkTheme_fgColorLowContrast: rgb(173, 173, 173);
+
+$darkTheme_highlightColorHighContrast: rgb(100, 100, 218);
+$darkTheme_highlightColorMediumContrast: rgb(60, 60, 185);
+$darkTheme_highlightColorLowContrast: rgb(54, 54, 167);
+
+//================LIGHT-THEME================
+$lightTheme_bgColorHighContrast: $darkTheme_fgColorHighContrast;
+$lightTheme_bgColorMediumContrast: $darkTheme_fgColorMediumContrast;
+$lightTheme_bgColorLowContrast: $darkTheme_fgColorLowContrast;
+
+$lightTheme_fgColorHighContrast: $darkTheme_bgColorHighContrast;
+$lightTheme_fgColorMediumContrast: $darkTheme_bgColorMediumContrast;
+$lightTheme_fgColorLowContrast: $darkTheme_bgColorLowContrast;
+
+$lightTheme_highlightColorHighContrast: $darkTheme_highlightColorLowContrast;
+$lightTheme_highlightColorMediumContrast: $darkTheme_highlightColorMediumContrast;
+$lightTheme_highlightColorLowContrast: $darkTheme_highlightColorHighContrast;
+
+
+
+//################################################
+//---------------------Styling--------------------
+//################################################
+
+* {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.highlight-btn-low {
+    padding: 4px 7px;
+    
+    border: none;
+    border-radius: 5px;
+
+    background-color: var(--highlightColorLowContrast);
+    color: white;
+
+    user-select: none;
+}
+
+.highlight-btn-medium {
+    padding: 4px 10px;
+    
+    border: none;
+    border-radius: 5px;
+
+    background-color: var(--highlightColorMediumContrast);
+    color: white;
+
+    user-select: none;
+}
+
+.highlight-btn-high {
+    padding: 8px 10px;
+    
+    border: none;
+    border-radius: 5px;
+
+    background-color: var(--highlightColorHighContrast);
+    color: white;
+
+    user-select: none;
+}

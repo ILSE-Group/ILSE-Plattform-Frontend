@@ -1,0 +1,183 @@
+@use "../../lib/styles.scss";
+
+$headerHeight: 50px;
+$navigationSize: 30%;
+
+.header {
+    height: $headerHeight;
+    width: 100vw;
+
+    position: absolute;
+    z-index: 20;
+
+    background-color: var(--bgColorMediumContrast);
+    color: var(--fgColorMediumContrast);
+}
+
+//################################################
+//---------------------Header---------------------
+//################################################
+
+.header-container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.header-button {
+    height: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    user-select: none;
+}
+
+//-----navigation-button-----
+.header-menubtn-container {
+    width: 20%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    user-select: none;
+}
+
+.header-menubtn-line {
+    height: 3px;
+    width: 80%;
+    max-width: 40px;
+
+    border-radius: 3px;
+
+    background-color: var(--fgColorMediumContrast);
+    transition: all ease 0.2s;
+}
+
+.header-menubtn-container.clicked {
+    .header-menubtn-line:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 8px);
+    }
+
+    .header-menubtn-line:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -8px);
+    }
+
+    .header-menubtn-line:nth-child(2) {
+        width: 0;
+    }
+}
+
+//-----logo-button-----
+.header-homebtn-container {
+    width: 40%;
+}
+
+.header-logo {
+    position: relative;
+
+    max-height: 70%;
+    width: auto;
+
+    padding-right: 6px;
+}
+
+//.header-homebtn-label {
+//
+//}
+
+//-----login-button-----
+.header-loginbtn-container {
+    width: 20%;
+}
+
+//.header-loginbtn-label {
+//
+//}
+
+//################################################
+//-------------------Navigation-------------------
+//################################################
+.navigation {
+    height: calc(100vh - #{$headerHeight});
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+}
+
+.navigation-container {
+    height: $navigationSize;
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    background-color: var(--bgColorLowContrast);
+}
+
+.navigation-side-container {
+    height: calc(100% - #{$navigationSize});
+    width: 100%;
+
+    background-color: rgba($color: #000000, $alpha: 0.33);
+}
+
+@media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+    .navigation {
+        flex-direction: row;
+    }
+
+    .navigation-container {
+        height: 100%;
+        width: $navigationSize;
+    }
+
+    .navigation-side-container {
+        height: 100%;
+        width: calc(100% - #{$navigationSize});
+    }
+}
+
+//-----navigation-content-----
+.navigation-quickactions-container {
+    height: 10%;
+    width: 90%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navigation-topics-container {
+    height: 80%;
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5%;
+
+    :first-child {
+        align-self: flex-start;
+        padding-top: 10%;
+    }
+}
+

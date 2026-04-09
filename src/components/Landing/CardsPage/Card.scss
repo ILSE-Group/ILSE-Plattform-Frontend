@@ -1,0 +1,48 @@
+
+.card {
+    height: 40vh;
+    width: 25vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    border: none;
+    border-radius: 1rem;
+
+    background-color: var(--bgColorMediumContrast);
+}
+
+.card:hover {
+    background-color: var(--bgColorLowContrast);
+}
+
+.content-container {
+    width: 90%;
+
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+
+    user-select: none;
+}
+
+.card-headline-container {
+    height: 10%;
+
+    color: var(--fgColorHighContrast);
+}
+
+.card-image-container {
+    height: 30%;
+}
+
+.card-description-container {
+    height: 30%;
+
+    color: var(--fgColorMediumContrast);
+}
