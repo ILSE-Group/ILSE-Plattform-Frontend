@@ -8,11 +8,11 @@ function RoomViewPage() {
     //let roomContent: string = getRoomContent(roomName);
 
     return (
-        <>
+        <div>
             <Header />
 
             <Footer />
-        </>
+        </div>
     );
 
 }

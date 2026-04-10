@@ -1,7 +1,7 @@
 @use "../../lib/styles.scss";
 
 $headerHeight: 50px;
-$navigationSize: 30%;
+$navigationSize: 40%;
 
 .header {
     height: $headerHeight;
@@ -83,10 +83,11 @@ $navigationSize: 30%;
 .header-logo {
     position: relative;
 
-    max-height: 70%;
+    max-height: 90%;
     width: auto;
 
-    padding-right: 6px;
+    padding-right: 2px;
+    user-select: none;
 }
 
 //.header-homebtn-label {
@@ -124,7 +125,7 @@ $navigationSize: 30%;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 
     background-color: var(--bgColorLowContrast);
 }
@@ -133,7 +134,7 @@ $navigationSize: 30%;
     height: calc(100% - #{$navigationSize});
     width: 100%;
 
-    background-color: rgba($color: #000000, $alpha: 0.33);
+    background-color: rgba($color: #000000, $alpha: 0.6);
 }
 
 @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
@@ -153,31 +154,36 @@ $navigationSize: 30%;
 }
 
 //-----navigation-content-----
-.navigation-quickactions-container {
-    height: 10%;
+.nav-content-container {
     width: 90%;
 
     display: flex;
-    flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
+}
+
+.navigation-quickactions-container {
+    height: max-content;
+
+    flex-direction: row;
     justify-content: space-around;
 }
 
-.navigation-topics-container {
-    height: 80%;
-    width: 90%;
+.navigation-links-container {
+    height: max-content;
 
-    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.navigation-pagelinks-container {
+    height: 60%;
+
     flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
     justify-content: flex-start;
     gap: 5%;
 
-    :first-child {
-        align-self: flex-start;
-        padding-top: 10%;
-    }
+    overflow: scroll;
+    color: var(--fgColorHighContrast);
 }
 

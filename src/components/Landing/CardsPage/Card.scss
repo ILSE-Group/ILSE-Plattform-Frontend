@@ -1,7 +1,20 @@
+@use "../../../lib/styles.scss";
+
+$cardHeight: 40vh;
+$cardWidth: 27vw;
+
+$cardBgColor: var(--bgColorMediumContrast);
+$cardBgHoverColor: var(--bgColorLowContrast);
 
 .card {
-    height: 40vh;
-    width: 25vw;
+    height: $cardHeight;
+    width: 85vw;
+    min-height: $cardWidth*0.9;
+    min-width: $cardHeight*0.6;
+    @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+        height: $cardHeight;
+        width: $cardWidth;
+    }
 
     display: flex;
     flex-direction: column;
@@ -16,12 +29,14 @@
 
 .card:hover {
     background-color: var(--bgColorLowContrast);
+    .card-image-container {
+        border-color: var(--bgColorLowContrast);
+    }
 }
 
 .content-container {
     width: 90%;
 
-    background-color: aqua;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -31,18 +46,28 @@
     user-select: none;
 }
 
-.card-headline-container {
-    height: 10%;
+.card-image-container {
+    height: 40%;
 
-    color: var(--fgColorHighContrast);
+    border: 0.1px solid var(--bgColorMediumContrast);
+    border-radius: 1em;
 }
 
-.card-image-container {
-    height: 30%;
+.card-headline-container {
+    height: 15%;
+
+    color: var(--fgColorHighContrast);
+    font-weight: bold;
 }
 
 .card-description-container {
-    height: 30%;
+    height: 40%;
 
     color: var(--fgColorMediumContrast);
+
+    overflow: scroll;
+    text-overflow: clip;
+}
+.card-description-text {
+    font-size: 15px;
 }

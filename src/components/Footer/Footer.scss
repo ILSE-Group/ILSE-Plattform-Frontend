@@ -3,9 +3,11 @@
 .footer {
     height: 10vh;
     width: 100%;
+    min-height: 40px;
 
-    position: fixed;
+    position: relative;
     bottom: 0;
+    margin-top: 5vh;
 
     display: flex;
     flex-direction: row;

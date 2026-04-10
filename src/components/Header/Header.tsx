@@ -39,12 +39,16 @@ function AppHeader() {
             {navVisible === true && 
                 <section className='navigation'>
                     <div className='navigation-container' >
-                        <div className='navigation-quickactions-container'>
+                        <div className='nav-content-container navigation-quickactions-container'>
                             <p>GoToProfile</p>
                             <p>ToggleDark/Light</p>
                         </div>
-                        <div className='navigation-topics-container'>
-                            <h3>Themen:</h3>
+                        <div className='nav-content-container navigation-links-container'>
+                            <p onClick={() => navigate('/')}>Home</p>
+                            <p onClick={() => navigate('/login')}>Login</p>
+                            <p onClick={() => navigate('/about')}>Impressum</p>
+                        </div>
+                        <div className='nav-content-container navigation-pagelinks-container'>
                             <p>Thema 1</p>
                             <p>Thema 2</p>
                             <p>Thema 3</p>

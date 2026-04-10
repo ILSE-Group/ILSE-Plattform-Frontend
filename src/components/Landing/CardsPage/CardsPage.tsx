@@ -23,8 +23,8 @@ function CardsPage() {
 
         return (
             <section className='cards-page'>
-                {Object.entries(cardsInfoJson).map(([_, value]) => (
-                    <Card topicInfo={value} />
+                {Object.entries(cardsInfoJson).map(([key, value]) => (
+                    <Card key={key} topicInfo={value} />
                 ))}
             </section>
         );
