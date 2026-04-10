@@ -1,15 +1,13 @@
-import './CardsPage.scss'
+import './CardsPage.scss';
 
-import Card from './Card'
-
-import type { roomListTypes } from '../../../lib/dataHandler';
-import { getRoomList } from '../../../lib/dataHandler';
+import Card from './Card';
+import { getRoomsList, type roomListTypes } from '../../../lib/dataHandler';
 
 
 function CardsPage() {
 
     function renderCards() {
-        let roomInfoString:string = getRoomList();
+        let roomInfoString:string = getRoomsList();
 
         let cardsInfoJson : roomListTypes;
         
@@ -17,7 +15,7 @@ function CardsPage() {
             cardsInfoJson = JSON.parse(roomInfoString);
         } catch (e) {
             return  <section className='cards-page'>
-                        Error: Invalid JSON
+                        Error: Please reload the Page
                     </section>;
         }
 

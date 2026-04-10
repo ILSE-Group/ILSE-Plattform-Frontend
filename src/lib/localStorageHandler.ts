@@ -1,6 +1,6 @@
 
 export function saveToLocalStorage(key:string, data:string): boolean {
-    if(getFromLocalStorage(key) === "") {
+    if(key === null || key.trim.length == 0) {
         return false;
     }
 
@@ -8,10 +8,10 @@ export function saveToLocalStorage(key:string, data:string): boolean {
     return true;
 }
 
-export function getFromLocalStorage(key:string) {
+export function getFromLocalStorage(key:string) : string {
     let item = localStorage.getItem(key);
 
-    if(item === null || item.length === 0) {
+    if(item === null || item.trim.length == 0) {
         return "";
     }
     return item;

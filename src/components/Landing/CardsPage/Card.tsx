@@ -12,7 +12,7 @@ function Card({ topicInfo }: CardProps) {
     return (
         <div className="card">
             <div className="content-container card-image-container">
-                <img src={topicInfo.imageSrc} alt={topicInfo.name} />
+                <img src={topicInfo.imageSrc} alt="" />
             </div>
 
             <div className="content-container card-headline-container">

@@ -1,10 +1,10 @@
+import './Header.scss';
+
 import React from 'react';
 import { useNavigate} from 'react-router-dom';
 
-import './Header.scss'
-import logo from '../../assets/logo.svg'
-
-import { type roomListTypes, getRoomList } from '../../lib/dataHandler';
+import logo from '../../assets/logo.svg';
+import { getRoomNames } from '../../lib/dataHandler';
 
 
 function AppHeader() {
@@ -12,8 +12,7 @@ function AppHeader() {
     const [navVisible, setNavVisibility] = React.useState(false);
     const navigate = useNavigate();
 
-    let roomList: roomListTypes = JSON.parse(getRoomList());
-    const roomNames: string[] = Object.values(roomList).map(r => r.name);   //TODO: add room name and links in Navigation 
+    const roomNames: string[] = getRoomNames();   //TODO: add room name and links in Navigation 
     
     function handleNavigationToggle() {
         setNavVisibility(!navVisible);
@@ -49,9 +48,9 @@ function AppHeader() {
                             <p onClick={() => navigate('/about')}>Impressum</p>
                         </div>
                         <div className='nav-content-container navigation-pagelinks-container'>
-                            <p>Thema 1</p>
-                            <p>Thema 2</p>
-                            <p>Thema 3</p>
+                            <p>Raum 1</p>
+                            <p>Raum 2</p>
+                            <p>Raum 3</p>
                         </div>
                     </div>
                     <div className='navigation-side-container' onClick={handleNavigationToggle}></div>

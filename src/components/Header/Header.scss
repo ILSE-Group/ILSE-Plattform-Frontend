@@ -7,8 +7,9 @@ $navigationSize: 40%;
     height: $headerHeight;
     width: 100vw;
 
-    position: absolute;
+    position: relative;
     z-index: 20;
+    top: 0;
 
     background-color: var(--bgColorMediumContrast);
     color: var(--fgColorMediumContrast);
@@ -160,6 +161,8 @@ $navigationSize: 40%;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+
+    user-select: none;
 }
 
 .navigation-quickactions-container {
