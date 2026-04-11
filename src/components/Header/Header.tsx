@@ -12,7 +12,7 @@ function AppHeader() {
     const [navVisible, setNavVisibility] = React.useState(false);
     const navigate = useNavigate();
 
-    const roomNames: string[] = getRoomNames();   //TODO: add room name and links in Navigation 
+    const roomNames: string[] = getRoomNames();
     
     function handleNavigationToggle() {
         setNavVisibility(!navVisible);
@@ -21,7 +21,7 @@ function AppHeader() {
     return (
         <header className='header'>
             <div className='header-container'>
-                <div className={`header-button header-menubtn-container ${navVisible ? 'clicked' : ''}`} onClick={handleNavigationToggle}>
+                <div className={`header-button header-menubtn-container ${navVisible ? 'navOpened' : 'navClosed'}`} onClick={handleNavigationToggle}>
                     <span className='header-menubtn-line'></span>
                     <span className='header-menubtn-line'></span>
                     <span className='header-menubtn-line'></span>
@@ -48,9 +48,9 @@ function AppHeader() {
                             <p onClick={() => navigate('/about')}>Impressum</p>
                         </div>
                         <div className='nav-content-container navigation-pagelinks-container'>
-                            <p>Raum 1</p>
-                            <p>Raum 2</p>
-                            <p>Raum 3</p>
+                            {roomNames.map((roomName, id) => (
+                                <p key={id}>{roomName}</p>  //TODO add links with navigate()
+                            ))}
                         </div>
                     </div>
                     <div className='navigation-side-container' onClick={handleNavigationToggle}></div>

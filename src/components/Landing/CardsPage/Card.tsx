@@ -1,4 +1,4 @@
-import './Card.scss'
+import './Card.scss';
 
 import type { roomListTypes } from '../../../lib/dataHandler';
 

@@ -1,7 +1,11 @@
 import './Footer.scss'
 
+import { getRoomNames } from '../../lib/dataHandler';
+
 
 function AppFooter() {
+
+    let roomNames: string[] = getRoomNames();
 
     return (
         <footer className='footer'>
@@ -9,9 +13,9 @@ function AppFooter() {
                 <p>Interactive Learning System Entertainments</p>
             </div>
             <div className='footer-wrapper footer-links'>
-                <p>room-1</p>
-                <p>room-2</p>
-                <p>room-3</p>
+                {roomNames.map((roomName, id) => (
+                    <p key={id}>{roomName}</p>  //TODO add links with navigate()
+                ))}
             </div>
         </footer>
     );

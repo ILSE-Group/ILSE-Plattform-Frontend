@@ -52,6 +52,12 @@ $cardBgHoverColor: var(--bgColorLowContrast);
     border: 0.1px solid var(--bgColorMediumContrast);
     border-radius: 1em;
 }
+.card-image-container img {
+    height: 95%;
+    width: auto;
+
+    max-width: 100%;
+}
 
 .card-headline-container {
     height: 15%;

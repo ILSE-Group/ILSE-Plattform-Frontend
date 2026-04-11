@@ -7,9 +7,9 @@ $navigationSize: 40%;
     height: $headerHeight;
     width: 100vw;
 
-    position: relative;
-    z-index: 20;
+    position: sticky;
     top: 0;
+    z-index: 20;
 
     background-color: var(--bgColorMediumContrast);
     color: var(--fgColorMediumContrast);
@@ -47,8 +47,6 @@ $navigationSize: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-
-    user-select: none;
 }
 
 .header-menubtn-line {
@@ -62,7 +60,8 @@ $navigationSize: 40%;
     transition: all ease 0.2s;
 }
 
-.header-menubtn-container.clicked {
+//---open/close-Navigation-Handler---
+.header-menubtn-container.navOpened {
     .header-menubtn-line:nth-child(1) {
         transform: rotate(45deg) translate(7px, 8px);
     }
@@ -110,6 +109,8 @@ $navigationSize: 40%;
 .navigation {
     height: calc(100vh - #{$headerHeight});
     width: 100vw;
+
+    position: fixed;
 
     display: flex;
     flex-direction: column;
