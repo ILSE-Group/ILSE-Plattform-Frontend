@@ -1,52 +1,54 @@
-@use "./lib/styles.scss";
+/*@use "./lib/styles.scss";
 
 
 :root {
-  --bgColorHighContrast: #{styles.$darkTheme_bgColorHighContrast};
-  --bgColorMediumContrast: #{styles.$darkTheme_bgColorMediumContrast};
-  --bgColorLowContrast: #{styles.$darkTheme_bgColorLowContrast};
+  --bgColorHighContrast: #ffffff;
+  --bgColorMediumContrast: #f3f4f6;
+  --bgColorLowContrast: #e5e7eb;
 
-  --fgColorHighContrast: #{styles.$darkTheme_fgColorHighContrast};
-  --fgColorMediumContrast: #{styles.$darkTheme_fgColorMediumContrast};
-  --fgColorLowContrast: #{styles.$darkTheme_fgColorLowContrast};
+  --fgColorHighContrast: #0f172a;
+  --fgColorMediumContrast: #1f2937;
+  --fgColorLowContrast: #374151;
 
-  --highlightColorHighContrast: #{styles.$darkTheme_highlightColorHighContrast};
-  --highlightColorMediumContrast: #{styles.$darkTheme_highlightColorMediumContrast};
-  --highlightColorLowContrast: #{styles.$darkTheme_highlightColorLowContrast};
+  --highlightColorHighContrast: rgb(41, 41, 136);
+  --highlightColorMediumContrast: rgb(60, 60, 185);
+  --highlightColorLowContrast: rgb(100, 100, 218); // musste ich wegen dem toggle korrigieren
 
 
   margin: 0;
 
   text-align: center;
-  font: 18px/145% #{styles.$fontFamilyMono};
+  font: 18px/145% system-ui, 'Segoe UI', Roboto, sans-serif;
   letter-spacing: 0.18px;
-  
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   color-scheme: light dark;
-
-  @media (max-width: 1024px) {
+}
+@media (max-width: 1024px) {
+  :root {
     font-size: 16px;
   }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --bgColorHighContrast: #{styles.$lightTheme_bgColorHighContrast};
-    --bgColorMediumContrast: #{styles.$lightTheme_bgColorMediumContrast};
-    --bgColorLowContrast: #{styles.$lightTheme_bgColorLowContrast};
+//@media (prefers-color-scheme: light) {
 
-    --fgColorHighContrast: #{styles.$lightTheme_fgColorHighContrast};
-    --fgColorMediumContrast: #{styles.$lightTheme_fgColorMediumContrast};
-    --fgColorLowContrast: #{styles.$lightTheme_fgColorLowContrast};
+// dark mode halt wieder ka
+  body.dark {
+  --bgColorHighContrast: #000000;
+  --bgColorMediumContrast: #1d1d1d;
+  --bgColorLowContrast: #383838;
 
-    --highlightColorHighContrast: #{styles.$lightTheme_highlightColorHighContrast};
-    --highlightColorMediumContrast: #{styles.$lightTheme_highlightColorMediumContrast};
-    --highlightColorLowContrast: #{styles.$lightTheme_highlightColorLowContrast};
-  }
+  --fgColorHighContrast: #ffffff;
+  --fgColorMediumContrast: #e0e0e0;
+  --fgColorLowContrast: #adadad;
+
+  --highlightColorHighContrast: rgb(100, 100, 218);
+  --highlightColorMediumContrast: rgb(60, 60, 185);
+  --highlightColorLowContrast: rgb(41, 41, 136);
 
 }
 
@@ -58,4 +60,58 @@
 
 body {
   margin: 0;
+}
+// hat nicht geklappt aber bitte nicht entfernen 
+*/
+* {
+  margin: 0; 
+  padding: 0;
+  font-family: system-ui, 'Segoe UI', Roboto, sans serif; 
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+// light mode
+:root {
+  --bgColorHighContrast: #ffffff;
+  --bgColorMediumContrast: #f3f4f6;
+  --bgColorLowContrast: #e5e7eb;
+
+  --fgColorHighContrast: #0f172a;
+  --fgColorMediumContrast: #1f2937;
+  --fgColorLowContrast: #374151;
+
+  --highlightColorHighContrast: rgb(41, 41, 136);
+  --highlightColorMediumContrast: rgb(60, 60, 185);
+  --highlightColorLowContrast: rgb(100, 100, 218);
+
+  color-scheme: light dark;
+}
+
+// dark mode 
+body.dark {
+  --bgColorHighContrast: #000000;
+  --bgColorMediumContrast: #1d1d1d;
+  --bgColorLowContrast: #383838;
+
+  --fgColorHighContrast: #ffffff;
+  --fgColorMediumContrast: #e0e0e0;
+  --fgColorLowContrast: #adadad;
+
+  --highlightColorHighContrast: rgb(100, 100, 218);
+  --highlightColorMediumContrast: rgb(60, 60, 185);
+  --highlightColorLowContrast: rgb(41, 41, 136);
+}
+
+html, body {
+  height: 100%;
+  background: var(--bgColorHighContrast);
+  color: var(--fgColorHighContrast);
+}
+
+@media (max-width: 1024px) {
+  * {
+    font-size: 14px;
+  }
 }

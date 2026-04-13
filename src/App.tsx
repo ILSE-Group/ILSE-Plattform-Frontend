@@ -5,6 +5,7 @@ import LandingPage from './components/Landing/LandingPage';
 import LoginPage from './components/Login/LoginPage';
 import RoomViewPage from './components/RoomView/RoomViewPage';
 import WhoWeArePage from './components/WhoWeAre/WhoWeArePage';
+import { useEffect, useState } from 'react'; // für den toggle (light/dark mode) 
 
 import { saveRoomsList } from './lib/dataHandler';
 
@@ -12,8 +13,27 @@ import { saveRoomsList } from './lib/dataHandler';
 function App() {
   saveRoomsList();
 
+  // toggle
+  const [theme, setTheme] = useState("light"); 
+
+  useEffect(() => {
+    document.body.classList.remove("light", "dark");
+    document.body.classList.add(theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === "light" ? "dark" : "light");
+  }; 
+  // toggle
+
+
   return (
     <div className='app-container'>
+
+      <button onClick={toggleTheme}>
+        Toggle Theme
+      </button>
+
       <Router>
         <Routes>
           <Route path='/'        element={<LandingPage />}  />

@@ -8,7 +8,38 @@ $MIN_SIZE_HORIZONTAL_MODE: 768px;
 $fontFamilySans: system-ui, 'Segoe UI', Roboto, sans-serif;
 $fontFamilyMono: ui-monospace, Consolas, monospace;
 
-//================DARK-THEME=================
+
+:root {
+    //light mode welches automatisch ist
+
+    --bgColorHighContrast: #ffffff;
+    --bgColorMediumContrast: #f3f4f6;
+    --bgColorLowContrast: #e5e7eb;
+
+    --fgColorHighContrast: #0f172a;
+    --fgColorMediumContrast: #1f2937;
+    --fgColorLowContrast: #374151;
+
+    --highlightColorHighContrast: rgb(41, 41, 136);
+    --highlightColorMediumContrast: rgb(60, 60, 185);
+    --highlightColorLowContrast: rgb(100, 100, 218);
+}
+
+// ab hier dark mode 
+body.dark {
+    --bgColorHighContrast: #000000;
+    --bgColorMediumContrast: #1d1d1d;
+    --bgColorLowContrast: #383838;
+
+    --fgColorHighContrast: #ffffff;
+    --fgColorMediumContrast: #e0e0e0;
+    --fgColorLowContrast: #adadad;
+
+    --highlightColorHighContrast: rgb(100, 100, 218);
+    --highlightColorMediumContrast: rgb(60, 60, 185);
+    --highlightColorLowContrast: rgb(41, 41, 136);
+}
+/*//================DARK-THEME=================
 $darkTheme_bgColorHighContrast: rgb(0, 0, 0);
 $darkTheme_bgColorMediumContrast: rgb(29, 29, 29);
 $darkTheme_bgColorLowContrast: rgb(56, 56, 56);
@@ -33,7 +64,9 @@ $lightTheme_fgColorLowContrast: $darkTheme_bgColorLowContrast;
 $lightTheme_highlightColorHighContrast: $darkTheme_highlightColorLowContrast;
 $lightTheme_highlightColorMediumContrast: $darkTheme_highlightColorMediumContrast;
 $lightTheme_highlightColorLowContrast: $darkTheme_highlightColorHighContrast;
-
+*/ 
+//kp ob wir das brauchen, höchstwahrscheinlich nicht denn ich wollte dass
+//wir tatsächlich nen schalter haben für dark mode
 
 
 //################################################
