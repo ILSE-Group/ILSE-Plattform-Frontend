@@ -1,10 +1,9 @@
 @use "../../lib/styles.scss";
 
-$headerHeight: 50px;
 $navigationSize: 40%;
 
 .header {
-    height: $headerHeight;
+    height: styles.$HEADER_HEIGHT;
     width: 100vw;
 
     position: sticky;
@@ -107,7 +106,7 @@ $navigationSize: 40%;
 //-------------------Navigation-------------------
 //################################################
 .navigation {
-    height: calc(100vh - #{$headerHeight});
+    height: calc(100vh - #{styles.$HEADER_HEIGHT});
     width: 100vw;
 
     position: fixed;
