@@ -8,31 +8,15 @@ import WhoWeArePage from './components/WhoWeAre/WhoWeArePage';
 import { useEffect, useState } from 'react'; // für den toggle (light/dark mode) 
 
 import { saveRoomsList } from './lib/dataHandler';
+import AppHeader from './components/Header/Header'; //für toggle relevant
 
 
 function App() {
   saveRoomsList();
 
-  // toggle
-  const [theme, setTheme] = useState("light"); 
-
-  useEffect(() => {
-    document.body.classList.remove("light", "dark");
-    document.body.classList.add(theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prev => prev === "light" ? "dark" : "light");
-  }; 
-  // toggle
-
 
   return (
     <div className='app-container'>
-
-      <button onClick={toggleTheme}>
-        Toggle Theme
-      </button>
 
       <Router>
         <Routes>
