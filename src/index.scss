@@ -1,117 +1,70 @@
-/*@use "./lib/styles.scss";
+@use "./lib/styles.scss";
 
 
-:root {
-  --bgColorHighContrast: #ffffff;
-  --bgColorMediumContrast: #f3f4f6;
-  --bgColorLowContrast: #e5e7eb;
+/*
+* {
+  margin: 0; 
+  padding: 0;
 
-  --fgColorHighContrast: #0f172a;
-  --fgColorMediumContrast: #1f2937;
-  --fgColorLowContrast: #374151;
+  font-family: system-ui, 'Segoe UI', Roboto, sans serif; 
+  font-size: 16px;
+  
+  text-align: center;
+  text-decoration: none;
+}
+*/
 
-  --highlightColorHighContrast: rgb(41, 41, 136);
-  --highlightColorMediumContrast: rgb(60, 60, 185);
-  --highlightColorLowContrast: rgb(100, 100, 218); // musste ich wegen dem toggle korrigieren
+// light mode
+body {
+  --bgColorHighContrast: #{styles.$lightTheme_bgColorHighContrast};
+  --bgColorMediumContrast: #{styles.$lightTheme_bgColorMediumContrast};
+  --bgColorLowContrast: #{styles.$lightTheme_bgColorLowContrast};
 
+  --fgColorHighContrast: #{styles.$lightTheme_fgColorHighContrast};
+  --fgColorMediumContrast: #{styles.$lightTheme_fgColorMediumContrast};
+  --fgColorLowContrast: #{styles.$lightTheme_fgColorLowContrast};
+
+  --highlightColorHighContrast: #{styles.$lightTheme_highlightColorHighContrast};
+  --highlightColorMediumContrast: #{styles.$lightTheme_highlightColorMediumContrast};
+  --highlightColorLowContrast: #{styles.$lightTheme_highlightColorLowContrast};
+
+  color-scheme: light dark;
 
   margin: 0;
+  padding: 0;
 
   text-align: center;
-  font: 18px/145% system-ui, 'Segoe UI', Roboto, sans-serif;
+  font: 18px/145% #{styles.$fontFamilyMono};
   letter-spacing: 0.18px;
-
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   color-scheme: light dark;
-}
-@media (max-width: 1024px) {
-  :root {
+
+  @media (max-width: 1024px) {
     font-size: 16px;
   }
 }
 
-//@media (prefers-color-scheme: light) {
-
-// dark mode halt wieder ka
-  body.dark {
-  --bgColorHighContrast: #000000;
-  --bgColorMediumContrast: #1d1d1d;
-  --bgColorLowContrast: #383838;
-
-  --fgColorHighContrast: #ffffff;
-  --fgColorMediumContrast: #e0e0e0;
-  --fgColorLowContrast: #adadad;
-
-  --highlightColorHighContrast: rgb(100, 100, 218);
-  --highlightColorMediumContrast: rgb(60, 60, 185);
-  --highlightColorLowContrast: rgb(41, 41, 136);
-
-}
-
-:root {
-  color: var(--fgColorHighContrast);
-  background: var(--bgColorHighContrast);
-}
-
-
-body {
-  margin: 0;
-}
-// hat nicht geklappt aber bitte nicht entfernen 
-*/
-* {
-  margin: 0; 
-  padding: 0;
-  font-family: system-ui, 'Segoe UI', Roboto, sans serif; 
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-}
-
-// light mode
-:root {
-  --bgColorHighContrast: #ffffff;
-  --bgColorMediumContrast: #f3f4f6;
-  --bgColorLowContrast: #e5e7eb;
-
-  --fgColorHighContrast: #0f172a;
-  --fgColorMediumContrast: #1f2937;
-  --fgColorLowContrast: #374151;
-
-  --highlightColorHighContrast: rgb(41, 41, 136);
-  --highlightColorMediumContrast: rgb(60, 60, 185);
-  --highlightColorLowContrast: rgb(100, 100, 218);
-
-  color-scheme: light dark;
-}
-
 // dark mode 
 body.dark {
-  --bgColorHighContrast: #000000;
-  --bgColorMediumContrast: #1d1d1d;
-  --bgColorLowContrast: #383838;
+  --bgColorHighContrast: #{styles.$darkTheme_bgColorHighContrast};
+  --bgColorMediumContrast: #{styles.$darkTheme_bgColorMediumContrast};
+  --bgColorLowContrast: #{styles.$darkTheme_bgColorLowContrast};
 
-  --fgColorHighContrast: #ffffff;
-  --fgColorMediumContrast: #e0e0e0;
-  --fgColorLowContrast: #adadad;
+  --fgColorHighContrast: #{styles.$darkTheme_fgColorHighContrast};
+  --fgColorMediumContrast: #{styles.$darkTheme_fgColorMediumContrast};
+  --fgColorLowContrast: #{styles.$darkTheme_fgColorLowContrast};
 
-  --highlightColorHighContrast: rgb(100, 100, 218);
-  --highlightColorMediumContrast: rgb(60, 60, 185);
-  --highlightColorLowContrast: rgb(41, 41, 136);
+  --highlightColorHighContrast: #{styles.$darkTheme_highlightColorHighContrast};
+  --highlightColorMediumContrast: #{styles.$darkTheme_highlightColorMediumContrast};
+  --highlightColorLowContrast: #{styles.$darkTheme_highlightColorLowContrast};
 }
 
-html, body {
-  height: 100%;
-  background: var(--bgColorHighContrast);
+body {
   color: var(--fgColorHighContrast);
-}
-
-@media (max-width: 1024px) {
-  * {
-    font-size: 14px;
-  }
+  background: var(--bgColorHighContrast);
 }

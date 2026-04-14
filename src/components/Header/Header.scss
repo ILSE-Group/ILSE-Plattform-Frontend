@@ -14,6 +14,7 @@ $navigationSize: 40%;
     color: var(--fgColorMediumContrast);
 }
 
+
 //################################################
 //---------------------Header---------------------
 //################################################
@@ -102,6 +103,7 @@ $navigationSize: 40%;
 //
 //}
 
+
 //################################################
 //-------------------Navigation-------------------
 //################################################
@@ -165,39 +167,14 @@ $navigationSize: 40%;
     user-select: none;
 }
 
+//=========quickactions=========
 .navigation-quickactions-container {
     height: max-content;
 
     flex-direction: row;
     justify-content: space-around;
 }
-
-.navigation-links-container {
-    height: max-content;
-
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.navigation-pagelinks-container {
-    height: 60%;
-
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 5%;
-
-    overflow: scroll;
-    color: var(--fgColorHighContrast);
-}
-
 // switch für light dark mode
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 12pc;
-}
-
 .theme.switch {
     width: 52px;
     height: 28px;
@@ -290,4 +267,24 @@ $navigationSize: 40%;
 /* moon RIGHT SIDE */
 .icon.right {
   right: 6px;
+}
+
+//==========page-links==========
+.navigation-links-container {
+    height: max-content;
+
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+//==========room-links==========
+.navigation-pagelinks-container {
+    height: 60%;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5%;
+
+    overflow: scroll;
+    color: var(--fgColorHighContrast);
 }

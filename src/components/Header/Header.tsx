@@ -6,25 +6,36 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { getRoomNames } from '../../lib/dataHandler';
 
+
 function AppHeader() {
 
-    const [navVisible, setNavVisibility] = React.useState(false);
+    const roomNames: string[] = getRoomNames();
     const navigate = useNavigate();
 
-    const roomNames: string[] = getRoomNames();
+    // -----------
+    // NAVIGATION
+    // -----------
+    const [navVisible, setNavVisibility] = React.useState(false);
+    function handleNavigationToggle() {
+        setNavVisibility(!navVisible);
+    }
 
     // -----------------
     // THEME LOGIC
     // -----------------
-
     const getInitialTheme = (): "light" | "dark" => {
-        const saved = localStorage.getItem("theme");
-        if (saved === "light" || saved === "dark") return saved;
+        const prefersDarkMode:boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if(prefersDarkMode) {
+            return "dark";
+        }
+        else {
+            return "light";
+        }
 
-        return "light"; // ✅ force light as default
     };
-
     const [theme, setTheme] = React.useState<"light" | "dark">(getInitialTheme());
+
 
     React.useEffect(() => {
         document.body.classList.remove("light", "dark");
@@ -37,45 +48,30 @@ function AppHeader() {
         setTheme(prev => (prev === "light" ? "dark" : "light"));
     }
 
-    // -----------
-    // NAVIGATION
-    // -----------
-
-    function handleNavigationToggle() {
-        setNavVisibility(!navVisible);
-    }
 
     return (
         <header className='header'>
             <div className='header-container'>
 
                 {/* MENU BUTTON */}
-                <div 
-                    className={`header-button header-menubtn-container ${navVisible ? 'navOpened' : 'navClosed'}`} 
-                    onClick={handleNavigationToggle}
-                >
+                <div className={`header-button header-menubtn-container ${navVisible ? 'navOpened' : 'navClosed'}`} 
+                onClick={handleNavigationToggle}>
                     <span className='header-menubtn-line'></span>
                     <span className='header-menubtn-line'></span>
                     <span className='header-menubtn-line'></span>
                 </div>
 
                 {/* LOGO */}
-                <div 
-                    className='header-button header-homebtn-container' 
-                    onClick={() => navigate('/')}
-                >
+                <div className='header-button header-homebtn-container' 
+                onClick={() => navigate('/')}>
                     <img src={logo} alt="" className='header-logo'/>
                     <p className='header-homebtn-label'>ILSE</p>
                 </div>
 
-                {/* RIGHT SIDE */}
-                <div className="header-right">
-                    <div 
-                        className='header-button header-loginbtn-container' 
-                        onClick={() => navigate('/login')}
-                    >
-                        <p className='header-loginbtn-label highlight-btn-medium'>Login</p>
-                    </div>
+                {/* LOGIN-BUTTON */}
+                <div className='header-button header-loginbtn-container'
+                onClick={() => navigate('/login')}>
+                    <p className='header-loginbtn-label highlight-btn-medium'>Login</p>
                 </div>
 
             </div>

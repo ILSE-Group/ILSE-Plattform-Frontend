@@ -5,10 +5,8 @@ import LandingPage from './components/Landing/LandingPage';
 import LoginPage from './components/Login/LoginPage';
 import RoomViewPage from './components/RoomView/RoomViewPage';
 import WhoWeArePage from './components/WhoWeAre/WhoWeArePage';
-import { useEffect, useState } from 'react'; // für den toggle (light/dark mode) 
 
 import { saveRoomsList } from './lib/dataHandler';
-import AppHeader from './components/Header/Header'; //für toggle relevant
 
 
 function App() {
@@ -16,8 +14,7 @@ function App() {
 
 
   return (
-    <div className='app-container'>
-
+    <div className='app-container' id='app-container'>
       <Router>
         <Routes>
           <Route path='/'        element={<LandingPage />}  />
