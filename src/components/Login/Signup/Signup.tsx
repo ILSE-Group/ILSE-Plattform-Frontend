@@ -1,3 +1,4 @@
+import './Signup.scss';
 
 
 function Signup() {

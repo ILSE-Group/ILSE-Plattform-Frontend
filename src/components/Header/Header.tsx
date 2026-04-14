@@ -24,6 +24,13 @@ function AppHeader() {
     // THEME LOGIC
     // -----------------
     const getInitialTheme = (): "light" | "dark" => {
+        //get theme from local storage
+        const saved = localStorage.getItem("theme");
+        if (saved === "light" || saved === "dark") {
+            return saved;
+        }
+
+        //get theme from browser
         const prefersDarkMode:boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
         if(prefersDarkMode) {

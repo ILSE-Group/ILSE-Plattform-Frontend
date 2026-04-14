@@ -1,0 +1,16 @@
+@use '../../lib/styles.scss';
+
+.login-page-wrapper {
+    min-height: min-content;
+    height: 80vh;
+    width: 80vw;
+
+
+}
+
+@media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+    //TODO: on desktop mode change wrapper-width
+    .login-page-wrapper {
+        width: 40vw;
+    }
+}
