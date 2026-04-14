@@ -1,0 +1,28 @@
+@use "../../lib/styles.scss";
+
+.room-view-wrapper {
+    min-height: 100vh;
+    height: fit-content;
+}
+
+.room-page-wrapper {
+    min-height: calc(100vh - styles.$HEADER_HEIGHT - styles.$FOOTER_HEIGHT);
+    height: min-content;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.room-page-header {
+    min-height: 2vh;
+    height: fit-content;
+    width: 100%;
+
+    margin: 8vh 0 5vh 0;
+
+    font-size: 1.2em ;
+}

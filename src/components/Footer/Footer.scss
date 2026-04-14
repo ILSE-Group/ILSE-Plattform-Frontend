@@ -1,7 +1,7 @@
 @use "../../lib/styles.scss";
 
 .footer {
-    height: 15vh;
+    height: styles.$FOOTER_HEIGHT;
     width: 100%;
     min-height: 90px;
 
@@ -15,7 +15,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     
     :first-child {
         justify-content: flex-start;
