@@ -42,3 +42,7 @@ export function getRoomNames() : string[] {
 
 
 //------------------Room-Content------------------
+
+export function getRoomContent() {
+    
+}

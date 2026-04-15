@@ -14,7 +14,8 @@ function RoomViewPage() {
     return (
         <section className='room-view-wrapper'>
             <Header />
-
+{// TODO: create topics from API-delivered Json-Object
+}
             <div className='room-page-wrapper'>
                 <h2 className='room-page-header'>RoomName</h2>
 
