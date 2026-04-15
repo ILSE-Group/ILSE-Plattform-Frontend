@@ -54,6 +54,12 @@
     height: min-content;
 
     margin: 3vh 0 3vh 0;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
 }
 .topic-content-wrapper.opened {
     display: block;

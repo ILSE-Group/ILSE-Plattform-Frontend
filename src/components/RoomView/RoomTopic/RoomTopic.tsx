@@ -22,8 +22,8 @@ function RoomTopic() {
             </div>
 
             <div className={`topic-content-wrapper ${topicOpened ? 'opened' : 'closed'}`}>
-                <TopicIntro />
                 <TopicExercise />
+                <TopicIntro />
             </div>
 
         </section>

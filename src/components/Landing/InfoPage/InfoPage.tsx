@@ -15,8 +15,8 @@ function InfoPage() {
                 </div>
             </div>
             <div className='info-wrapper info-message-wrapper'>
-                <p>Wir sind ILSE. Eine Interaktive Lernplatform fuer Gefahren im Internet</p>
-                <p>Waehle eine Karte und hilf ILSE dabei, Level aufzusteigen.</p>
+                <p>Wir sind ILSE. Eine Interaktive Lernplatform für Gefahren im Internet</p>
+                <p>Wähle eine Karte und hilf ILSE dabei, Level aufzusteigen.</p>
             </div>
         </section>
     );
