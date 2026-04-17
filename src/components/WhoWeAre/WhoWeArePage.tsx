@@ -7,7 +7,7 @@ function WhoWeArePage() {
         <div>
             <Header />
             
-            <main style={{ padding: "20px"}} >
+            <main style={{ padding: "20px", textAlign: "left"}} >
                 <h1>Über uns</h1>
 
                 <p>
