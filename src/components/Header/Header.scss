@@ -111,7 +111,7 @@ $navigationSize: 40%;
     height: calc(100vh - #{styles.$HEADER_HEIGHT});
     width: 100vw;
 
-    position: fixed;
+    position: absolute;
 
     display: flex;
     flex-direction: column;

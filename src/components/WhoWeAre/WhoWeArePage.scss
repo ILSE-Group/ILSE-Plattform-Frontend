@@ -1,0 +1,19 @@
+
+
+.about-page-wrapper {
+    width: 100vw;
+    height: min-content + 5vh;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 4vh;
+}
+
+.about-header {
+    margin: 2em;
+    font-size: 1.2em;
+}

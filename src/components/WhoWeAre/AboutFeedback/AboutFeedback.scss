@@ -1,0 +1,42 @@
+
+.about-feedback-wrapper {
+    width: 80vw;
+    height: min-content;
+
+    margin: 3vh;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    gap: 1vh;
+}
+
+.feedback-intro-text {
+    user-select: none;
+
+    text-align: left;
+}
+
+.feedback-textbox {
+    height: 15vh;
+    width: 100%;
+    max-width: 100%;
+
+    overflow: scroll;
+    field-sizing: content;
+
+    font-size: 1em;
+
+    background-color: var(--bgColorMediumContrast);
+    color: var(--fgColorHighContrast);
+}
+
+.feedback-send-btn {
+    margin: 5px;
+
+    width: min-content;
+    user-select: none;
+}

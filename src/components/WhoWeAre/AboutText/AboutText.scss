@@ -1,0 +1,24 @@
+
+.about-text-wrapper {
+    width: 80vw;
+    height: min-content;
+
+    margin: 0 auto 2vh auto;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+
+    gap: 2.4vh;
+}
+
+.content-wrapper {
+    padding-bottom: 1vh;
+}
+
+.content-wrapper p {
+    padding-bottom: 1vh;
+    text-align: left;
+}
