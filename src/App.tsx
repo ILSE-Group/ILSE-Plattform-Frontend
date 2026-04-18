@@ -6,12 +6,8 @@ import LoginPage from './components/Login/LoginPage';
 import RoomViewPage from './components/RoomView/RoomViewPage';
 import WhoWeArePage from './components/WhoWeAre/WhoWeArePage';
 
-import { saveRoomsList } from './lib/dataHandler';
-
 
 function App() {
-  saveRoomsList();
-
 
   return (
     <div className='app-container' id='app-container'>

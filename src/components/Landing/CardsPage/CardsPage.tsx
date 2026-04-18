@@ -1,18 +1,17 @@
 import './CardsPage.scss';
 
 import Card from './Card';
-import { getRoomsList, type roomListTypes } from '../../../lib/dataHandler';
+import { getRoomListItems, type roomListItem } from '../../../lib/dataHandler';
 
 
 function CardsPage() {
 
     function renderCards() {
-        let roomInfoString:string = getRoomsList();
 
-        let cardsInfoJson : roomListTypes;
+        let cardsInfoJson: roomListItem[];
         
         try {
-            cardsInfoJson = JSON.parse(roomInfoString);
+            cardsInfoJson = getRoomListItems();
         } catch (e) {
             return  <section className='cards-page'>
                         Error: Please reload the Page

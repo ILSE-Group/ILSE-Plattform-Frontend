@@ -1,9 +1,9 @@
 import './Card.scss';
 
-import type { roomListTypes } from '../../../lib/dataHandler';
+import type { roomListItem } from '../../../lib/dataHandler';
 
 interface CardProps {
-  topicInfo: roomListTypes;
+  topicInfo: roomListItem;
 }
 
 
