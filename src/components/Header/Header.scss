@@ -1,6 +1,5 @@
 @use "../../lib/styles.scss";
 
-$navigationSize: 40%;
 
 .header {
     height: styles.$HEADER_HEIGHT;
@@ -114,46 +113,42 @@ $navigationSize: 40%;
     position: absolute;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: flex-start; 
+    justify-content: center; 
+
+    overflow: auto;
 }
 
 .navigation-container {
-    height: $navigationSize;
-    width: 100%;
+    height: 100%;
+    width: 60%;
+    @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+        width: 40%;
+    }
 
     display: flex;
 
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 10vh;
+
+    z-index: 80;
+    overflow: auto;
 
     background-color: var(--bgColorLowContrast);
 }
 
+// transparent background -> closing navigation
 .navigation-side-container {
-    height: calc(100% - #{$navigationSize});
+    height: 100%;
     width: 100%;
 
+    z-index: 40;
+
     background-color: rgba($color: #000000, $alpha: 0.6);
-}
-
-@media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
-    .navigation {
-        flex-direction: row;
-    }
-
-    .navigation-container {
-        height: 100%;
-        width: $navigationSize;
-    }
-
-    .navigation-side-container {
-        height: 100%;
-        width: calc(100% - #{$navigationSize});
-    }
 }
 
 //-----navigation-content-----
@@ -167,12 +162,18 @@ $navigationSize: 40%;
     user-select: none;
 }
 
+.nav-content-container:first-of-type {
+    padding-top: 10%;
+}
+
 //=========quickactions=========
 .navigation-quickactions-container {
     height: max-content;
 
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 4vh;
 }
 // switch für light dark mode
 .theme.switch {
@@ -271,20 +272,26 @@ $navigationSize: 40%;
 
 //==========page-links==========
 .navigation-links-container {
-    height: max-content;
+    min-height: 10;
+    height: min-content;
 
-    flex-direction: row;
+    display: flex;
+
+    flex-direction: column;
     justify-content: space-around;
+
+    gap: 2vh;
 }
 
 //==========room-links==========
 .navigation-pagelinks-container {
-    height: 60%;
+    height: fit-content;
 
     flex-direction: column;
     justify-content: flex-start;
-    gap: 5%;
+    gap: 2vh;
 
-    overflow: scroll;
     color: var(--fgColorHighContrast);
 }
+
+

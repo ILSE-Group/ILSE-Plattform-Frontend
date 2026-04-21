@@ -90,8 +90,6 @@ function AppHeader() {
 
                         {/* QUICK ACTIONS */}
                         <div className='nav-content-container navigation-quickactions-container'>
-                            
-                            <p>GoToProfile</p>
 
                             <div className="theme-switch" onClick={toggleTheme}>
                                 <div className={`switch ${theme}`}>
@@ -101,13 +99,15 @@ function AppHeader() {
                                 </div>
                             </div>
 
-                        </div> {}
+                            <p>Profil</p>
 
-                        {/* LINKS */}
-                        <div className='nav-content-container navigation-links-container'>
-                            <p onClick={() => navigate('/')}>Home</p>
-                            <p onClick={() => navigate('/login')}>Login</p>
-                            <p onClick={() => navigate('/about')}>Impressum</p>
+                            {/* LINKS */}
+                            <div className='navigation-links-container'>
+                                <p onClick={() => navigate('/')}>Home</p>
+                                <p onClick={() => navigate('/login')}>Login</p>
+                                <p onClick={() => navigate('/about')}>Impressum</p>
+                            </div>
+
                         </div>
 
                         {/* ROOMS */}

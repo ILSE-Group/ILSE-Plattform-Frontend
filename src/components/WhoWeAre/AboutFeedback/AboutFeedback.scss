@@ -1,7 +1,8 @@
 
 .about-feedback-wrapper {
     width: 80vw;
-    height: min-content;
+    min-height: min-content;
+    height: 50vh;
 
     margin: 3vh;
 
@@ -9,7 +10,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 
     gap: 1vh;
 }
