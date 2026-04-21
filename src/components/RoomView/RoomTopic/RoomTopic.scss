@@ -18,7 +18,6 @@
     border-radius: 1em;
 }
 
-
 .room-topic-header {
     width: 100%;
     height: 50px;
@@ -31,8 +30,12 @@
 
     background-color: var(--bgColorMediumContrast);
     border: 1px, solid, var(--bgColorMediumContrast);
+    border-radius: 1em 1em 0 0;
+}
+.room-topic-header.closed {
     border-radius: 1em;
 }
+
 
 .topic-header-element {
     height: 100%;

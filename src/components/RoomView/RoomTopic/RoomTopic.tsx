@@ -2,8 +2,8 @@ import React from "react";
 
 import './RoomTopic.scss'
 
-import TopicIntro from "./TopicIntro/TopicIntro";
 import TopicExercise from "./TopicExercise/TopicExercise";
+import TopicDescription from "./TopicDescription/TopicDescription";
 
 
 function RoomTopic() {
@@ -13,7 +13,7 @@ function RoomTopic() {
 
     return(
         <section className="room-topic-wrapper">
-            <div className="room-topic-header">
+            <div className={`room-topic-header ${topicOpened ? 'opened' : 'closed'}`}>
                 <p className="topic-header-element" onClick={() => toggleTopicFold(!topicOpened)}>
                     {topicOpened ? "⮝" : "⮟"}
                 </p>
@@ -23,7 +23,7 @@ function RoomTopic() {
 
             <div className={`topic-content-wrapper ${topicOpened ? 'opened' : 'closed'}`}>
                 <TopicExercise />
-                <TopicIntro />
+                <TopicDescription />
             </div>
 
         </section>

@@ -1,6 +1,6 @@
 
 
-function TopicIntro() {
+function TopicDescription() {
 
     return(
         <>
@@ -10,4 +10,4 @@ function TopicIntro() {
 
 }
 
-export default TopicIntro;
+export default TopicDescription;
