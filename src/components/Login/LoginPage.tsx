@@ -18,13 +18,22 @@ function LoginPage() {
                 {isLoggingIn && 
                     <>
                         <Login />
-                        <p onClick={() => setLoginState(!isLoggingIn)}>Registrieren</p>
+                        <div className='login-change-method-wrapper'
+                         onClick={() => setLoginState(!isLoggingIn)}>
+                            <p>Sie haben noch keinen Account?</p>
+                            <p>Registrieren</p>
+                        </div>
+
                     </>
                 }    
                 {!isLoggingIn && 
                    <>
                         <Signup />
-                        <p onClick={() => setLoginState(!isLoggingIn)}>Einloggen</p>
+                        <div className='login-change-method-wrapper'
+                         onClick={() => setLoginState(!isLoggingIn)}>
+                            <p>Sie haben bereits einen Account?</p>
+                            <p>Einloggen</p>
+                        </div>
                     </> 
                 } 
             </div>

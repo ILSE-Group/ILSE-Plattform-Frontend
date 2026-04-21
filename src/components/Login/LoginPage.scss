@@ -1,16 +1,21 @@
 @use '../../lib/styles.scss';
 
 .login-page-wrapper {
-    min-height: min-content;
-    height: 80vh;
-    width: 80vw;
+    min-height: calc(100vh - #{styles.$HEADER_HEIGHT});
+    height: min-content;
+    width: 100vw;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 
+    gap: 5vh;
 }
 
-@media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
-    //TODO: on desktop mode change wrapper-width
-    .login-page-wrapper {
-        width: 40vw;
-    }
+.login-change-method-wrapper {
+    height: min-content;
+    width: auto;
+
+    user-select: none;
 }
