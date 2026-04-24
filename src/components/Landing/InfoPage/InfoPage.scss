@@ -1,4 +1,4 @@
-
+@use "../../../lib/styles.scss";
 
 .info-page {
     width: 90%;
@@ -22,18 +22,19 @@
 
 //welcome message and logo
 .info-header-wrapper {
-    height: 70%;
+    height: 60%;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
 
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .header-content-wrapper {
-    height: 100%;
+    height: fit-content;
+    width: 100%;
 
     display: flex;
     flex-wrap: nowrap;
@@ -43,25 +44,47 @@
 }
 
 .header-text-wrapper {
-    width: 70%;
+    height: 60%;
 
     h1 {
-        font-size: 3vw ;
+        font-size: 5vw ;
     }
 }
 
 .header-logo-wrapper {
-    width: 30%;
+    height: 40%;
 
     img {
         max-width: 90%;
         height: auto;
         max-height: 90%;
     }
+}
 
+@media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+    .info-header-wrapper {
+        flex-direction: row;
+    }
+    .header-content-wrapper {
+        height: 100%;
+        width: auto;
+    }
+    
+    .header-text-wrapper {
+        height: 100%;
+        width: 70%;
+
+        h1 {
+            font-size: 2.5vw;
+        }
+    }
+    .header-logo-wrapper {
+        height: 100%;
+        width: 20%;
+    }
 }
 
 //introductive message
 .info-message-wrapper {
-    height: 30%;
+    height: 40%;
 }

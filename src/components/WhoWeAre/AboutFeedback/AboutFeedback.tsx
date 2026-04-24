@@ -27,7 +27,7 @@ function AboutFeedback() {
 
             <textarea 
                 className='feedback-textbox' id='feedback-textbox'
-                placeholder='Wir sind offen fuer Kommentare, Anregungen und Kritik.'
+                placeholder='Wir sind offen für Kommentare, Anregungen und Kritik.'
             />
             <p onClick={sendFeedback} className='feedback-send-btn highlight-btn-medium'>Senden</p>
         </section>
