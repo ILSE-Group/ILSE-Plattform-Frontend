@@ -1,5 +1,7 @@
 import './AboutFeedback.scss'
 
+import { sanitizeInput } from '../../../lib/inputHandler';
+
 
 function AboutFeedback() {
     const feedbackInputBox : HTMLInputElement = document.getElementById('feedback-textbox') as HTMLInputElement;
@@ -12,9 +14,12 @@ function AboutFeedback() {
             return;
         }
 
-        //TODO: error-checking, remove alert
-        window.alert(feedbackText);
-        cleanupFeedback;
+        //TODO: error-checking, remove alert, sendingLogic
+        let input: string = sanitizeInput(feedbackText);
+
+        window.alert(input);
+        feedbackInputBox.placeholder = "Vielen Dank für Ihr Feedback.";
+        cleanupFeedback();
     }
 
     function cleanupFeedback() {
