@@ -123,6 +123,7 @@
 .navigation-container {
     height: 100%;
     width: 60%;
+    min-width: 150px;
     @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
         width: 40%;
     }

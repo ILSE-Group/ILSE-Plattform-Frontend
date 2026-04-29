@@ -1,29 +1,35 @@
+import { useState } from 'react';
+
 import './AboutFeedback.scss'
 
-import { sanitizeInput } from '../../../lib/inputHandler';
+import { sanitizeString } from '../../../lib/stringHandler';
 
 
 function AboutFeedback() {
+    
     const feedbackInputBox : HTMLInputElement = document.getElementById('feedback-textbox') as HTMLInputElement;
+    const [placeholderText, setPlaceholder] = useState("Wir sind offen fuer Kommentare, Anregungen und Kritik.");
 
-    function sendFeedback() {
-        const feedbackText: string = feedbackInputBox.value;
+    function commitFeedback() {
+        const feedbackText: string = sanitizeString(feedbackInputBox.value);
 
         if(feedbackText === null || feedbackText.trim().length === 0) {
             cleanupFeedback();
             return;
         }
 
-        //TODO: error-checking, remove alert, sendingLogic
-        let input: string = sanitizeInput(feedbackText);
-
-        window.alert(input);
-        feedbackInputBox.placeholder = "Vielen Dank für Ihr Feedback.";
+        setPlaceholder("Vielen Dank fuer Ihr Feedback!");
         cleanupFeedback();
+
+        sendFeedbackToAPI();
     }
 
     function cleanupFeedback() {
         feedbackInputBox.value = "";
+    }
+
+    function sendFeedbackToAPI() {
+        //TODO
     }
 
     return (
@@ -32,9 +38,9 @@ function AboutFeedback() {
 
             <textarea 
                 className='feedback-textbox' id='feedback-textbox'
-                placeholder='Wir sind offen für Kommentare, Anregungen und Kritik.'
+                placeholder={placeholderText}
             />
-            <p onClick={sendFeedback} className='feedback-send-btn highlight-btn-medium'>Senden</p>
+            <p onClick={() => commitFeedback()} className='feedback-send-btn highlight-btn-medium'>Senden</p>
         </section>
     );
 

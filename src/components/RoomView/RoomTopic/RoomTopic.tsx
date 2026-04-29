@@ -14,11 +14,11 @@ function RoomTopic() {
     return(
         <section className="room-topic-wrapper">
             <div className={`room-topic-header ${topicOpened ? 'opened' : 'closed'}`}>
-                <p className="topic-header-element header-button-wrapper" onClick={() => toggleTopicFold(!topicOpened)}>
-                    <p className={`topic-header-button ${topicOpened ? open : closed}`}></p>
+                <p className="topic-header-element" onClick={() => toggleTopicFold(!topicOpened)}>
+                    {topicOpened ? "⮝" : "⮟"}
                 </p>
-                <p className="topic-header-element header-name-wrapper">Topic Name</p>
-                <p className="topic-header-element header-status-wrapper">TopicDoneStatus</p>
+                <p className="topic-header-element">Topic Name</p>
+                <p className="topic-header-element">TopicDoneStatus</p>
             </div>
 
             <div className={`topic-content-wrapper ${topicOpened ? 'opened' : 'closed'}`}>

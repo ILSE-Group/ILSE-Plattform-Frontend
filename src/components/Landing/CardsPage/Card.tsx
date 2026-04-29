@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import './Card.scss';
 
 import type { roomListItem } from '../../../lib/dataHandler';
@@ -9,8 +11,10 @@ interface CardProps {
 
 function Card({ topicInfo }: CardProps) {
 
+    let navigate = useNavigate();
+
     return (
-        <div className="card">
+        <div className="card" onClick={() => navigate('/room/'+topicInfo.name)}>
             <div className="content-container card-image-container">
                 <img src={topicInfo.imageSrc} alt="" />
             </div>

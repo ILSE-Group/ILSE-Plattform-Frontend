@@ -9,11 +9,12 @@ $cardBgHoverColor: var(--bgColorLowContrast);
 .card {
     height: $cardHeight;
     width: 85vw;
-    min-height: $cardWidth*0.9;
+    min-height: 85vw*0.9;
     min-width: $cardHeight*0.6;
     @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
         height: $cardHeight;
         width: $cardWidth;
+        min-height: $cardWidth*0.9;
     }
 
     display: flex;

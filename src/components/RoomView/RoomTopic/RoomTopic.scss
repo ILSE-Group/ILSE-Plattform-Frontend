@@ -34,15 +34,12 @@
 }
 .room-topic-header.closed {
     border-radius: 1em;
-
-    .topic-header-button {
-        transform: rotate(180deg);
-    }
 }
 
 
 .topic-header-element {
     height: 100%;
+    width: 25%;
 
     display: flex;
     align-items: center;
@@ -51,35 +48,9 @@
 
     user-select: none;
 }
-.header-button-wrapper {
-    width: 20%;
-}
-.header-name-wrapper {
-    width: 60%;
-}
-.header-status-wrapper {
-    width: 20%;
-}
-
-
-.topic-header-button {
-    height: 0;
-    width: 0;
-
-    display: inline-block;
-
-    border-left: 0.7rem solid transparent;
-    border-right: 0.7rem solid transparent;
-    border-bottom:1.1rem solid var(--fgColorMediumContrast);
-
-    transform-origin: 50% 50%;
-    transition: transform 200ms ease;
-
+.topic-header-element:first-child {
     font-size: 1.2rem;
 }
-
-.topic-header-button::before {  content: "";  position: absolute;  top: -6px;                /* moves the notch above the triangle */  left: 50%;  transform: translateX(-50%);  width: 10px;  height: 6px;  background: #000;         /* same color as triangle */  border-radius: 1px;}
-
 
 .topic-content-wrapper {
     width: 100%;

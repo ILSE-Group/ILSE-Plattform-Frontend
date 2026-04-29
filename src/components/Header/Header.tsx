@@ -11,6 +11,7 @@ function AppHeader() {
 
     const roomNames: string[] = getRoomNames();
     const navigate = useNavigate();
+    let roomUrl: string = "/room/";
 
     // -----------
     // NAVIGATION
@@ -113,7 +114,7 @@ function AppHeader() {
                         {/* ROOMS */}
                         <div className='nav-content-container navigation-pagelinks-container'>
                             {roomNames.map((roomName, id) => (
-                                <p key={id}>{roomName}</p>
+                                <p key={id} onClick={() => navigate(roomUrl.concat(roomName))}>{roomName}</p>
                             ))}
                         </div>
 

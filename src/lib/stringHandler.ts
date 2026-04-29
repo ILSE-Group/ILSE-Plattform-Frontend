@@ -1,6 +1,6 @@
 
 
-export function sanitizeInput(input: string): string {
+export function sanitizeString(input: string): string {
     
     if(input == null || input == undefined || typeof(input) !== 'string') {
         return "";
@@ -30,12 +30,14 @@ function normalizeInput(input: string): string {
     const illegalChar =  /[^\u0000-\u007F\p{Script=Latin}]/gu;
     processedInput = processedInput.replace(illegalChar, '');
     
+    // TODO: complete function
     
     return processedInput;
 }
 
 // escape special characters
 function escapeInput(input: string): string {
+    // TODO: write function
     return input;
 }
 

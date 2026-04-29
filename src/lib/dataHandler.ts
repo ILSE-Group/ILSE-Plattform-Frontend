@@ -1,6 +1,7 @@
 import { getFromLocalStorage, saveToLocalStorage } from "./localStorageHandler";
-import { recieveRoomsList } from "./apiHandler";
+import { recieveRoomsList, recieveRoomContent } from "./apiHandler";
 
+import { sanitizeString } from "./stringHandler";
 
 // room-list types
 export interface roomList {
@@ -60,7 +61,7 @@ export function getRoomListItems() : roomListItem[] {
 export function getRoomNames() : string[] {
     const roomList: roomList = getRoomsList();
 
-    let roomNames: string[] = Object.values(roomList).map(r => r.name);
+    let roomNames: string[] = Object.values(roomList).map(r => sanitizeString(r.name));
 
     if(roomNames === null || roomNames.length == 0) {
         return [""];
@@ -72,6 +73,6 @@ export function getRoomNames() : string[] {
 
 //------------------Room-Content------------------
 
-export function getRoomContent() {
-    
+export function getRoomContent(roomName: string) : roomContent {
+    return recieveRoomContent(roomName);
 }
