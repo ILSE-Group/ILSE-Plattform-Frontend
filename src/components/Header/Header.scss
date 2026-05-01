@@ -295,4 +295,61 @@
     color: var(--fgColorHighContrast);
 }
 
+.theme-switch {
+    cursor: pointer;
+}
 
+.switch {
+    position: relative;
+
+    width: 64px;
+    height: 32px;
+
+    border-radius: 999px;
+
+    background-color: var(--bgColorLowContrast);
+
+    display: flex; 
+    align-items: center;
+
+    padding: 4px;
+
+    transition: background-color 0.3s ease;
+}
+
+
+// switch animation
+.thumb { 
+    position: absolute;
+
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+
+    background-color: white;
+
+    transition: transform 0.3s ease;
+}
+
+.switch.light .thumb {
+    left: 4px;
+}
+
+.switch.dark .thumb {
+    left: 45px;
+}
+
+.icon {
+    position: absolute;
+    font-size: 14px;
+    user-select: none;
+}
+
+.icon.left {
+    left: 8px;
+}
+
+.icon.right {
+    right: 8px;
+}
