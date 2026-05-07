@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './AboutFeedback.scss'
 
-import { sanitizeString } from '../../../lib/stringHandler';
+import { sanitizeInput } from '../../../lib/inputHandler';
 
 
 function AboutFeedback() {
@@ -11,7 +11,7 @@ function AboutFeedback() {
     const [placeholderText, setPlaceholder] = useState("Wir sind offen fuer Kommentare, Anregungen und Kritik.");
 
     function commitFeedback() {
-        const feedbackText: string = sanitizeString(feedbackInputBox.value);
+        const feedbackText: string = sanitizeInput(feedbackInputBox.value);
 
         if(feedbackText === null || feedbackText.trim().length === 0) {
             cleanupFeedback();

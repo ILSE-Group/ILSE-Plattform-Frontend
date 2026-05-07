@@ -1,9 +1,10 @@
 @use "../../lib/styles.scss";
 
+
 .footer {
-    height: styles.$FOOTER_HEIGHT;
+    min-height: styles.$FOOTER_HEIGHT;
+    height: min-content;
     width: 100%;
-    min-height: 90px;
 
     position: relative;
     bottom: 0;
@@ -15,7 +16,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     
     :first-child {
         justify-content: flex-start;
@@ -48,8 +49,9 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
+    gap: 5vw;
     
     color: var(--fgColorMediumContrast);
-
+    
     user-select: none;
 }

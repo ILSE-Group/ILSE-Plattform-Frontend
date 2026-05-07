@@ -9,7 +9,7 @@ import { getRoomNames } from '../../lib/dataHandler';
 
 function AppHeader() {
 
-    const roomNames: string[] = getRoomNames();
+    let roomNames: string[] = getRoomNames();
     const navigate = useNavigate();
     let roomUrl: string = "/room/";
 
