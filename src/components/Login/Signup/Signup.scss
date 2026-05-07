@@ -1,0 +1,65 @@
+@use "../../../lib/styles.scss";
+
+
+.signup-container {
+    --login-min-width: 250px;
+
+    width: 80vw;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5vh;
+}
+
+.signup-form {
+    min-width: var(--login-min-width);
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+        width: 40%;
+    }
+}
+
+.input-group {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    label {
+        text-align: left;
+    }
+}
+
+input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--bgColorLowContrast);
+    background-color: var(--bgColorMediumContrast);
+    color: var(--fgColorHighContrast);
+}
+
+.signup-btn {
+    width: var(--login-min-width);
+
+    margin-top: 10px;
+    padding: 10px;
+    
+    border: none;
+    border-radius: 6px;
+
+    background-color: var(--highlightColorMediumContrast);
+    color: white;
+
+    cursor: pointer;
+}

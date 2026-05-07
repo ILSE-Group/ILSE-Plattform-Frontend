@@ -8,8 +8,9 @@ $HEADER_HEIGHT: 50px;
 $FOOTER_HEIGHT: 15vh;
 
 //Font Family
-$fontFamilySans: system-ui, 'Segoe UI', Roboto, sans-serif;
-$fontFamilyMono: ui-monospace, Consolas, monospace;
+// $fontFamilySans: system-ui, 'Segoe UI', Roboto, sans-serif;
+$fontFamilySans: 'Nunito', system-ui, 'Segoe UI', Roboto, sans;
+$fontFamilyMono: Consolas, ui-monospace, monospace;
 
 //================DARK-THEME=================
 $darkTheme_bgColorHighContrast: rgb(0, 0, 0);
