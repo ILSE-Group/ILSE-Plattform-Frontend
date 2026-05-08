@@ -1,19 +1,17 @@
-import './RoomViewPage.scss'
+import './RoomViewPage.scss';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 import RoomTopic from './RoomTopic/RoomTopic';
+//import {getRoomContent} from '../../lib/pageContentHandler';
 
 
 interface RoomViewPageProps { 
     roomName: string 
 };
-//import {getRoomContent} from '../../lib/pageContentHandler';
 
 function RoomViewPage( {roomName}: RoomViewPageProps) {
-//function RoomViewPage(roomName:string) {
-    //let roomContent: string = getRoomContent(roomName);
 
     return (
         <section className='room-view-wrapper'>

@@ -2,7 +2,7 @@
 
 
 .signup-container {
-    --login-min-width: 250px;
+    --signup-min-width: 150px;
 
     width: 80vw;
     height: auto;
@@ -16,7 +16,7 @@
 }
 
 .signup-form {
-    min-width: var(--login-min-width);
+    min-width: var(--signup-min-width);
     width: 90%;
 
     display: flex;
@@ -50,7 +50,7 @@ input {
 }
 
 .signup-btn {
-    width: var(--login-min-width);
+    width: var(--signup-min-width);
 
     margin-top: 10px;
     padding: 10px;

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './Card.scss';
 
+import { ROOMS_LINK_URL } from '../../../lib/globalVars';
 import type { roomListItem } from '../../../lib/dataHandler';
 
 interface CardProps {
@@ -12,9 +13,10 @@ interface CardProps {
 function Card({ topicInfo }: CardProps) {
 
     let navigate = useNavigate();
+    let roomsLink: string = ROOMS_LINK_URL.concat("/");
 
     return (
-        <div className="card" onClick={() => navigate('/room/'+topicInfo.name)}>
+        <div className="card" onClick={() => navigate(roomsLink+topicInfo.name)}>
             <div className="content-container card-image-container">
                 <img src={topicInfo.imageSrc} alt="" />
             </div>

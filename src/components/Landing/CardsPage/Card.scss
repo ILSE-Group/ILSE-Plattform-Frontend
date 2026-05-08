@@ -10,7 +10,7 @@ $cardBgHoverColor: var(--bgColorLowContrast);
     height: $cardHeight;
     width: 85vw;
     min-height: 85vw*0.9;
-    min-width: $cardHeight*0.6;
+    min-width: $cardHeight*0.8;
     @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
         height: $cardHeight;
         width: $cardWidth;

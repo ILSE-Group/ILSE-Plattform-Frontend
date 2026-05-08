@@ -9,6 +9,7 @@ import TopicDescription from "./TopicDescription/TopicDescription";
 function RoomTopic() {
 
     const [topicOpened, toggleTopicFold] = React.useState(false);
+    const [descriptionOpened, toggleDescription] = React.useState(false);
 
 
     return(
@@ -23,7 +24,13 @@ function RoomTopic() {
 
             <div className={`topic-content-wrapper ${topicOpened ? 'opened' : 'closed'}`}>
                 <TopicExercise />
-                <TopicDescription />
+                { descriptionOpened ?
+                    <>
+                        <TopicDescription />
+                        <p onClick={() => toggleDescription(false)}>zuklappen</p>
+                    </> : 
+                    <p onClick={() => toggleDescription(true)}>aufklappen</p>
+                }
             </div>
 
         </section>

@@ -18,7 +18,7 @@ function AboutFeedback() {
             return;
         }
 
-        setPlaceholder("Vielen Dank fuer Ihr Feedback!");
+        setPlaceholder("Vielen Dank für Ihr Feedback!");
         cleanupFeedback();
 
         sendFeedbackToAPI();

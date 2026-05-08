@@ -4,14 +4,15 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
+import { ROOMS_LINK_URL } from '../../lib/globalVars';
 import { getRoomNames } from '../../lib/dataHandler';
 
 
 function AppHeader() {
 
     let roomNames: string[] = getRoomNames();
+    let roomLink: string = ROOMS_LINK_URL.concat("/");
     const navigate = useNavigate();
-    let roomUrl: string = "/room/";
 
     // -----------
     // NAVIGATION
@@ -104,9 +105,15 @@ function AppHeader() {
 
                             {/* LINKS */}
                             <div className='navigation-links-container'>
-                                <p onClick={() => navigate('/')}>Home</p>
-                                <p onClick={() => navigate('/login')}>Login</p>
-                                <p onClick={() => navigate('/about')}>Impressum</p>
+                                <p onClick={() => navigate('/')}>
+                                    Home
+                                </p>
+                                <p onClick={() => navigate('/login')}>
+                                    Login
+                                </p>
+                                <p onClick={() => navigate('/about')}>
+                                    Impressum
+                                </p>
                             </div>
 
                         </div>
@@ -114,7 +121,10 @@ function AppHeader() {
                         {/* ROOMS */}
                         <div className='nav-content-container navigation-pagelinks-container'>
                             {roomNames.map((roomName, id) => (
-                                <p key={id} onClick={() => navigate(roomUrl.concat(roomName))}>{roomName}</p>
+                                <p key={id} 
+                                   onClick={() => {navigate(roomLink.concat(roomName)); setNavVisibility(false); }}>
+                                    {roomName}
+                                </p>
                             ))}
                         </div>
 
