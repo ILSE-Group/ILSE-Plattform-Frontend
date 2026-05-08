@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
 
 import LandingPage from './components/Landing/LandingPage';
 import WhoWeArePage from './components/WhoWeAre/WhoWeArePage';
@@ -27,7 +26,7 @@ function App() {
 
           <Route path={ROOMS_LINK_URL}  element={<RoomsPage />}    />
           {
-            roomNames.map((name, _) => {
+            roomNames.map((name) => {
               return <Route 
                         key={name}
                         path={roomsLink.concat(name)}

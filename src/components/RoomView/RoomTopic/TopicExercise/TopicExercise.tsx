@@ -1,12 +1,22 @@
 import './TopicExercise.scss';
 
+import type { roomTopicExercise } from '../../../../lib/dataHandler';
+
 import MultipleChoiceExercise from './ExerciseTypes/MultipleChoiceExercise/MultipleChoiceExercise';
 
-function TopicExercise() {
+
+interface TopicExerciseProps {
+    exercise: roomTopicExercise
+}
+
+
+function TopicExercise({ exercise } : TopicExerciseProps) {
 
     return(
         <div className="exercise-wrapper">
-            <MultipleChoiceExercise />
+            { exercise.exerciseType === "multiple-choice" &&
+                <MultipleChoiceExercise />
+            }
         </div>
     );
 

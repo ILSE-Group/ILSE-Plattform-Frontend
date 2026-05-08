@@ -1,4 +1,4 @@
-import type { roomList, roomContent } from "./dataHandler";
+import type { roomList, roomContent,  } from "./dataHandler";
 
 
 //returns the room types:
@@ -40,26 +40,56 @@ export function recieveRoomsList() : roomList {
 
 
 //returns all room topic contents as JSON string
-export function recieveRoomContent(roomName:string) : roomContent {
+export function recieveRoomContent(roomName : string) : roomContent {
     //TODO: implement with json
     const data : roomContent = {
-        name: roomName,
-        topic1: {
-            exercise: {
-                name: "exercise1",
+        roomName: roomName,
+        roomTopic: [
+            {
+                topicName: 'topic One Name',
+                exercise: {
+                    exerciseType: "multiple-choice",
+                    question: {
+                        questionText: "why...",
+                        answer: [
+                            {
+                                answerText: "answer one",
+                                isCorrect: true,
+                            },
+                            {
+                                answerText: "answer two",
+                                isCorrect: true,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "some explaining text",
             },
-            text: {
-                name: "exercise-text1",
+            {
+                topicName: "topic Two Name",
+                exercise: {
+                    exerciseType: "multiple-choice",
+                    question: {
+                        questionText: "why...",
+                        answer: [
+                            {
+                                answerText: "answer one",
+                                isCorrect: false,
+                            },
+                            {
+                                answerText: "answer two",
+                                isCorrect: true,
+                            },
+                            {
+                                answerText: "answer three",
+                                isCorrect: false,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "some explaining text",
             },
-        },
-        topic2: {
-            exercise: {
-                name: "exercise2",
-            },
-            text: {
-                name: "exercise-text2",
-            },
-        },
+        ]
     };
     return data as roomContent;
 }

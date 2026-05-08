@@ -18,6 +18,7 @@
     border-radius: 1em;
 }
 
+//-------------------header-area-------------------
 .room-topic-header {
     width: 100%;
     height: 50px;
@@ -36,7 +37,6 @@
     border-radius: 1em;
 }
 
-
 .topic-header-element {
     height: 100%;
     width: 25%;
@@ -52,6 +52,7 @@
     font-size: 1.2rem;
 }
 
+//-------------------content-area-------------------
 .topic-content-wrapper {
     width: 100%;
     height: min-content;
@@ -69,4 +70,32 @@
 }
 .topic-content-wrapper.closed {
     display: none;
+}
+
+.description-toggle-btn {
+    margin: 0, 2vh, 0, 2vh;
+    user-select: none;
+}
+
+//-------------------submit-area-------------------
+.topic-submit-wrapper {
+    height: 10vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn {
+    height: auto;
+    width: 100px;
+
+    padding: 7px;
+
+    border: 0px;
+    border-radius: 0.8em;
+
+    background-color: var(--highlightColorHighContrast);
+    user-select: none;
 }

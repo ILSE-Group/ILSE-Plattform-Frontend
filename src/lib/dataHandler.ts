@@ -3,7 +3,8 @@ import { recieveRoomsList, recieveRoomContent } from "./apiHandler";
 
 import { sanitizeString } from "./stringHandler";
 
-// room-list types
+// room-list types 
+//  used in: CardsPage, Header, Footer
 export interface roomList {
   [key: string]: roomListItem;
 }
@@ -14,19 +15,27 @@ export interface roomListItem {
 }
 
 // room-content types
+//  used in: RoomView page
 export interface roomContent {
-    name: string;
-    [key: string] : roomContentTopic | string;
+    roomName: string;
+    roomTopic : roomTopic[];
 }
-export interface roomContentTopic {
-    exercise: roomTopicExercise
-    text: roomTopicText
+export interface roomTopic {
+    topicName: string;
+    exercise: roomTopicExercise;
+    descriptionText: string;
 }
 export interface roomTopicExercise {
-    name: string
+    exerciseType: string;
+    question: exerciseQuestion;
 }
-export interface roomTopicText {
-    name: string
+export interface exerciseQuestion {
+    questionText: string;
+    answer : exerciseAnswer[];
+}
+export interface exerciseAnswer {
+    answerText: string;
+    isCorrect: boolean;
 }
 
 //-----------------Room-List-Info-----------------

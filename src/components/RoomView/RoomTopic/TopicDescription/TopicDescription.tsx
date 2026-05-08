@@ -1,10 +1,15 @@
 
 
-function TopicDescription() {
+interface TopicDescriptionProps {
+    description: string;
+}
+
+
+function TopicDescription({description} : TopicDescriptionProps) {
 
     return(
         <>
-            <p>SomeText</p>
+            <p>{description}</p>
         </>
     );
 
