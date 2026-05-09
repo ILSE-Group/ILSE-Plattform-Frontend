@@ -39,22 +39,23 @@
 
 .topic-header-element {
     height: 100%;
-    width: 25%;
+    width: auto;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 
     user-select: none;
 }
 .topic-header-element:first-child {
     font-size: 1.2rem;
+    width: 10%;
 }
 
 //-------------------content-area-------------------
 .topic-content-wrapper {
-    width: 100%;
+    width: 90%;
     height: min-content;
 
     margin: 3vh 0 3vh 0;
@@ -73,8 +74,17 @@
 }
 
 .description-toggle-btn {
-    margin: 0, 2vh, 0, 2vh;
+    margin: 2vh 0 2vh 0;
     user-select: none;
+
+    p {
+        user-select: none;
+    }
+}
+.description-toggle-btn:hover {
+    p {
+        color: var(--highlightColorHighContrast);
+    }
 }
 
 //-------------------submit-area-------------------
@@ -91,11 +101,13 @@
     height: auto;
     width: 100px;
 
+    margin-top: 4vh;
     padding: 7px;
 
     border: 0px;
     border-radius: 0.8em;
 
     background-color: var(--highlightColorHighContrast);
+    color: white;
     user-select: none;
 }

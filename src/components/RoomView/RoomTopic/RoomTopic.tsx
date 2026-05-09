@@ -17,6 +17,10 @@ function RoomTopic({ topic }: RoomTopicProps) {
     const [topicOpened, toggleTopicFold] = React.useState(false);
     const [descriptionOpened, toggleDescription] = React.useState(false);
 
+    function checkAnswers() {
+
+    }
+
 
     return(
         <section className="room-topic-wrapper">
@@ -29,31 +33,33 @@ function RoomTopic({ topic }: RoomTopicProps) {
                     {topic.topicName}
                 </p>
                 <p className="topic-header-element">
-                    TopicDoneStatus
+                    status
                 </p>
             </div>
 
             <div className={`topic-content-wrapper ${topicOpened ? 'opened' : 'closed'}`}>
-                {Object.entries(topic).map(([_, value]) => (
-                    <TopicExercise  exercise={value.exercise}/>
-                ))}
+                
+                 <TopicExercise exercise={topic.exercise}/>
 
                 { descriptionOpened ?
                     <>
                         <TopicDescription description={topic.descriptionText} />
-                        <p className="description-toggle-btn" 
+                        
+                        <div className="description-toggle-btn" 
                            onClick={() => toggleDescription(false)}>
-                            zuklappen
-                        </p>
+                            <p>zuklappen</p>
+                        </div>
                     </> : 
-                    <p className="description-toggle-btn"
+                    <div className="description-toggle-btn"
                        onClick={() => toggleDescription(true)}>
-                        aufklappen
-                    </p>
+                        <p>aufklappen</p>
+                    </div>
                 }
 
                 <div className="topic-submit-wrapper">
-                    <p className="submit-btn">Abgeben</p>
+                    <p className="submit-btn" onClick={checkAnswers}>
+                        Abgeben
+                    </p>
                 </div>
             </div>
 

@@ -15,7 +15,7 @@ function TopicExercise({ exercise } : TopicExerciseProps) {
     return(
         <div className="exercise-wrapper">
             { exercise.exerciseType === "multiple-choice" &&
-                <MultipleChoiceExercise />
+                <MultipleChoiceExercise question={exercise.question} />
             }
         </div>
     );

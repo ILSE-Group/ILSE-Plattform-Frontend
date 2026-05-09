@@ -17,15 +17,6 @@ function RoomViewPage({roomName} : RoomViewProps) {
 
     let content : roomContent = getRoomContent(roomName);
 
-    function isRoomTopic(element: Object): boolean {
-        if( element == null || typeof element !== "object" || 
-            !("topicName" in element)  || !("exercise" in element) || !("description" in element) ) {
-            return false;
-        }
-        
-        return true;
-    }
-
     return (
         <section className='room-view-wrapper'>
             <Header />
@@ -33,12 +24,10 @@ function RoomViewPage({roomName} : RoomViewProps) {
             <div className='room-page-wrapper'>
                 <h2 className='room-page-header'>{content.roomName}</h2>
 
-                {Object.entries(content)
-                    .filter(([key]) => key === "roomTopic")
-                    .map(([key, value]) => (
-                        <RoomTopic key={key} topic={value} />
-                    ))
-                }
+                {content.roomTopic.map((topic, i) => (
+                    <RoomTopic key={i} topic={topic} />
+                ))}
+
             </div>
 
             <Footer />
