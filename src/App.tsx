@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/Landing/LandingPage';
 import WhoWeArePage from './components/WhoWeAre/WhoWeArePage';
 import LoginPage from './components/Login/LoginPage';
+import ProfilePage from './components/Profile/ProfilePage';
 import RoomsPage from './components/RoomsPage/RoomsPage';
 import RoomViewPage from './components/RoomView/RoomViewPage';
 import InvalidPage from './components/InvalidPage/InvalidPage';
@@ -23,6 +24,7 @@ function App() {
           <Route path='/'               element={<LandingPage />}  />
           <Route path='/about'          element={<WhoWeArePage />} />
           <Route path='/login'          element={<LoginPage />}    />
+          <Route path='/profile'        element={<ProfilePage />}  />
 
           <Route path={ROOMS_LINK_URL}  element={<RoomsPage />}    />
           {

@@ -101,7 +101,9 @@ function AppHeader() {
                                 </div>
                             </div>
 
-                            <p>Profil</p>
+                            <p onClick={() => navigate('/profile')}>
+                                Profil
+                            </p>
 
                             {/* LINKS */}
                             <div className='navigation-links-container'>
