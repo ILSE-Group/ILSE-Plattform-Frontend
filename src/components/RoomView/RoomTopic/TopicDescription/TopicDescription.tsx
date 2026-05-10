@@ -1,3 +1,4 @@
+import './TopicDescription.scss';
 
 
 interface TopicDescriptionProps {
@@ -9,7 +10,9 @@ function TopicDescription({description} : TopicDescriptionProps) {
 
     return(
         <>
-            <p>{description}</p>
+            <p className="description-text">
+                {description}
+            </p>
         </>
     );
 

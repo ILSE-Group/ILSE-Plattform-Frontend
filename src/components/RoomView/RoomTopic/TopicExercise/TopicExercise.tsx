@@ -6,16 +6,25 @@ import MultipleChoiceExercise from './ExerciseTypes/MultipleChoiceExercise/Multi
 
 
 interface TopicExerciseProps {
-    exercise: roomTopicExercise
+    exercise: roomTopicExercise;
+    checkSignal: boolean;
+    checkDoneSignal: () => void;
+    exerciseCorrect: boolean;
 }
 
 
-function TopicExercise({ exercise } : TopicExerciseProps) {
+function TopicExercise({ exercise, checkSignal, checkDoneSignal, exerciseCorrect } : TopicExerciseProps) {
 
     return(
         <div className="exercise-wrapper">
             { exercise.exerciseType === "multiple-choice" &&
-                <MultipleChoiceExercise question={exercise.question} />
+                <MultipleChoiceExercise 
+                    key={exercise.question.questionText}
+                    question={exercise.question} 
+                    checkSignal={checkSignal} 
+                    checkDoneSignal={checkDoneSignal}
+                    exerciseCorrect={exerciseCorrect}
+                />
             }
         </div>
     );

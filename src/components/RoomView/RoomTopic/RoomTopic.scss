@@ -53,6 +53,7 @@
     width: 10%;
 }
 
+
 //-------------------content-area-------------------
 .topic-content-wrapper {
     width: 90%;
@@ -79,13 +80,10 @@
 
     p {
         user-select: none;
-    }
-}
-.description-toggle-btn:hover {
-    p {
         color: var(--highlightColorHighContrast);
     }
 }
+
 
 //-------------------submit-area-------------------
 .topic-submit-wrapper {

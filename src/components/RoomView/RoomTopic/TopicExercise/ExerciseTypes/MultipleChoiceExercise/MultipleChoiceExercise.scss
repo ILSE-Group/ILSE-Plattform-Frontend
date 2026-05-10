@@ -1,4 +1,11 @@
 
+.question-text {
+    min-height: 3vh;
+    height: auto;
+
+    margin: 2vh 0 2vh 0;
+}
+
 .choices-wrapper {
     height: auto;
     width: 100%;
@@ -8,4 +15,10 @@
     align-items: center;
     justify-content: center;
     gap: 1vh;
+}
+
+.info-text {
+    margin: 1vh 0 1vh 0;
+
+    color: var(--fgColorLowContrast);
 }

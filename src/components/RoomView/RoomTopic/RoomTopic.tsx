@@ -14,11 +14,31 @@ interface RoomTopicProps {
 
 function RoomTopic({ topic }: RoomTopicProps) {
 
+    let exerciseCorrect : boolean = false;
+
+    // folds
     const [topicOpened, toggleTopicFold] = React.useState(false);
     const [descriptionOpened, toggleDescription] = React.useState(false);
 
-    function checkAnswers() {
+    // check-answer Signal
+    const [checkAnswer, setAnswerSignal] = React.useState(false);
+    const [checkingDone, setCheckingDoneSignal] = React.useState(false);
 
+    const signalCheckAnswers = () => {
+        setAnswerSignal(true);
+        setCheckingDoneSignal(false);
+    }
+
+    const signalCheckingDone = () => {
+        setAnswerSignal(false);
+        setCheckingDoneSignal(true);
+
+        if( exerciseCorrect ) {
+            // TODO: set state when logged in and get status from this state
+            let statusElement : HTMLElement | null = document.getElementById('status')
+            if( statusElement !== null )
+                statusElement.innerText = "done";
+        }
     }
 
 
@@ -32,32 +52,48 @@ function RoomTopic({ topic }: RoomTopicProps) {
                 <p className="topic-header-element">
                     {topic.topicName}
                 </p>
-                <p className="topic-header-element">
+                <p className="topic-header-element" id='status'>
                     status
                 </p>
             </div>
 
             <div className={`topic-content-wrapper ${topicOpened ? 'opened' : 'closed'}`}>
                 
-                 <TopicExercise exercise={topic.exercise}/>
+                {
+                    //----------Exercise----------
+                }
+                 <TopicExercise 
+                    exercise={topic.exercise} 
+                    checkSignal={checkAnswer}
+                    checkDoneSignal={signalCheckingDone}
+                    exerciseCorrect={exerciseCorrect}
+                />
 
+                {
+                    //----------Description----------
+                }
                 { descriptionOpened ?
                     <>
                         <TopicDescription description={topic.descriptionText} />
                         
                         <div className="description-toggle-btn" 
                            onClick={() => toggleDescription(false)}>
-                            <p>zuklappen</p>
+                            <p>Hilfe schließen</p>
                         </div>
                     </> : 
                     <div className="description-toggle-btn"
                        onClick={() => toggleDescription(true)}>
-                        <p>aufklappen</p>
+                        <p>Hilfe öffnen</p>
                     </div>
                 }
 
+                {
+                    //----------Submit----------
+                }
                 <div className="topic-submit-wrapper">
-                    <p className="submit-btn" onClick={checkAnswers}>
+                    <p className="submit-btn"
+                       id='submit-btn'
+                       onClick={signalCheckAnswers}>
                         Abgeben
                     </p>
                 </div>

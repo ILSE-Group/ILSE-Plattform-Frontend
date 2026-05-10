@@ -6,7 +6,23 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 4vw;
+    justify-content: flex-start;
+    gap: 2vw;
+}
+.choice-wrapper.correct {
+    background-color: greenyellow;
+}
+.choice-wrapper.wrong {
+    background-color: red;
+}
 
+.choice-checkbox {
+    height: 23px;
+    width: 23px;
+
+    margin: 0 1vw 0 1vw;
+}
+
+.choice-text {
+    color: var(--fgColorHighContrast);
 }
