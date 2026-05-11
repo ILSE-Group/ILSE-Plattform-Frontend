@@ -12,17 +12,21 @@ interface MCExProps {
     question: exerciseQuestion;
     checkSignal: boolean;
     checkDoneSignal: () => void;
-    exerciseCorrect: boolean;
+    setExerciseState: (state: boolean) => void;
 }
 
-function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, exerciseCorrect } : MCExProps) {
+function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, setExerciseState } : MCExProps) {
 
     let answerState : number = AnswerState.UNANSWERED
-    let signalNotifyUser : boolean = false;
+    const [notifyUser, setNotifyUser] = React.useState(false);
+
+    let infoTextRef = React.useRef<HTMLParagraphElement | null>(null);
 
     const [answersState, setAnswersState] = React.useState<number[]>(
         () => question.answer.map(() => AnswerState.UNANSWERED)
     );
+
+    const [overallAnswerState, setOverallAnswerState] = React.useState<number>(AnswerState.UNANSWERED);
 
     // get Signal from RoomTopic -> TopicExercise
     // and check the answers
@@ -34,25 +38,30 @@ function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, exerci
 
         async function checkAnswers() {
 
-            const allUnanswered = answersState.every(s => s === AnswerState.UNANSWERED);
-            const allCorrect = answersState.every(s => s === AnswerState.CORRECT);
+            if ( answersState.some(s => s === AnswerState.UNANSWERED) )
+                setOverallAnswerState(AnswerState.UNANSWERED);
+            else if ( answersState.every(s => s === AnswerState.CORRECT) )
+                setOverallAnswerState(AnswerState.CORRECT);
+            else 
+                setOverallAnswerState(AnswerState.WRONG);
             
-            let infoText : HTMLElement | null = document.getElementById('info-text');
-            if( allUnanswered ) {
-                if( infoText != null ) 
-                    infoText.innerText = "Bitte wählen Sie mindestens eine Antwort";
+            if( overallAnswerState == AnswerState.UNANSWERED ) {
+                if( infoTextRef.current ) 
+                    infoTextRef.current.innerText = "Please choose at least one answer";
             }
             else {
-                if( infoText != null )
-                    infoText.innerText = "";
+                if( infoTextRef.current )
+                    infoTextRef.current.innerText = "";
                 
-                signalNotifyUser = true;
+                setNotifyUser(true);
             }
 
-            if( allCorrect )
-                exerciseCorrect = true;
+            if( overallAnswerState == AnswerState.CORRECT )
+                setExerciseState(true);
+            if( overallAnswerState == AnswerState.WRONG )
+                setExerciseState(false)
 
-            console.log({ allUnanswered, allCorrect, answersState });
+            console.log({ overallAnswerState, answersState });
 
 
             checkDoneSignal();
@@ -63,7 +72,7 @@ function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, exerci
         return () => { 
                 active = false; 
         };
-    }, [checkSignal, checkDoneSignal, exerciseCorrect]);
+    }, [checkSignal, checkDoneSignal]);
 
     const reportAnswerState = React.useCallback((index: number, state: number) => {
         setAnswersState(prev => {
@@ -86,7 +95,7 @@ function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, exerci
                     <SingleChoice key={id} 
                         answer={ans} 
                         checkAnswerSignal={checkSignal}
-                        notifyUserSignal={signalNotifyUser}
+                        notifyUserSignal={notifyUser}
                         index={id}
                         reportAnswerState={reportAnswerState}
                         answerState={answerState} />
@@ -94,7 +103,7 @@ function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, exerci
                 
             </div>
 
-            <p className='info-text' id='info-text'>
+            <p className='info-text' ref={infoTextRef}>
 
             </p>
 

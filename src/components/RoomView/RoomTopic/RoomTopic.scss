@@ -36,6 +36,9 @@
 .room-topic-header.closed {
     border-radius: 1em;
 }
+.room-topic-header.correct {
+    background-color: styles.$colorAnswerCorrect;
+}
 
 .topic-header-element {
     height: 100%;

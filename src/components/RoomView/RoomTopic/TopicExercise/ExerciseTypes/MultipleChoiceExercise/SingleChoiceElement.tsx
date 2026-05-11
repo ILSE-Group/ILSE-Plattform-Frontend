@@ -15,10 +15,9 @@ interface SingleChoiceProps {
     answerState: number;
 }
 
-function SingleChoice({answer, checkAnswerSignal, notifyUserSignal, index, reportAnswerState, answerState} : SingleChoiceProps) {
+function SingleChoice({answer, checkAnswerSignal, index, reportAnswerState, answerState} : SingleChoiceProps) {
     
     const [answerChecked, setAnswerChecked] = React.useState(false);
-    const [answerValid, setAnserValidity] = React.useState(answerState);
 
     const handleCheckChange = () => {
         setAnswerChecked(!answerChecked);
@@ -33,28 +32,16 @@ function SingleChoice({answer, checkAnswerSignal, notifyUserSignal, index, repor
         let active : boolean = true;
     
         async function checkAnswer() {
-            console.log(answerValid);
             // answer wrong
             if( answer.isCorrect != answerChecked ) {
                 answerState = AnswerState.WRONG;
-
-                // mark choice as false
-                if( notifyUserSignal ) {
-                    setAnserValidity(answerState);
-                }
             }
             // answer right
             else {
                 answerState = AnswerState.CORRECT;
-
-                // mark the choice as correct
-                if( notifyUserSignal ) {
-                    setAnserValidity(answerState);
-                }
             }
 
             reportAnswerState(index, answerState);
-            console.log(answerValid)
         }
     
         checkAnswer();
@@ -66,10 +53,7 @@ function SingleChoice({answer, checkAnswerSignal, notifyUserSignal, index, repor
 
 
     return(
-        <div className={`choice-wrapper 
-         ${ answerValid === AnswerState.CORRECT ? 'correct'
-          : answerValid === AnswerState.WRONG ? 'wrong': '' }`}
-        >
+        <div className='choice-wrapper'>
             <input className='choice-checkbox'
                 type='checkbox' 
                 checked={answerChecked}

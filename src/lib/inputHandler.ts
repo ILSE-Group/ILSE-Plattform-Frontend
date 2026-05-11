@@ -27,7 +27,7 @@ function normalizeInput(input: string): string {
     processedInput = processedInput.replace(/[ \t\r\n]+/g, ' ');
 
     // remove unicode chars except ascii, latin
-    const illegalChar =  /[^\u0000-\u007F\p{Script=Latin}]/gu;
+    const illegalChar : RegExp =  /[^\u0000-\u007F\p{Script=Latin}]/gu;
     processedInput = processedInput.replace(illegalChar, '');
     
     
@@ -36,6 +36,19 @@ function normalizeInput(input: string): string {
 
 // escape special characters
 function escapeInput(input: string): string {
-    return input;
+    
+    return input
+        // HTML-chars
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        // quotations
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/`/g, '&#96;')
+        // JS-chars 
+        .replace(/\$\{/g, '&#36;{')
+        .replace(/\//g, '&#47;');
+
 }
 

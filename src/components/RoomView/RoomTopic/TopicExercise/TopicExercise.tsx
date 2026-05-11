@@ -9,11 +9,11 @@ interface TopicExerciseProps {
     exercise: roomTopicExercise;
     checkSignal: boolean;
     checkDoneSignal: () => void;
-    exerciseCorrect: boolean;
+    setExerciseState: (state: boolean) => void;
 }
 
 
-function TopicExercise({ exercise, checkSignal, checkDoneSignal, exerciseCorrect } : TopicExerciseProps) {
+function TopicExercise({ exercise, checkSignal, checkDoneSignal, setExerciseState } : TopicExerciseProps) {
 
     return(
         <div className="exercise-wrapper">
@@ -23,7 +23,7 @@ function TopicExercise({ exercise, checkSignal, checkDoneSignal, exerciseCorrect
                     question={exercise.question} 
                     checkSignal={checkSignal} 
                     checkDoneSignal={checkDoneSignal}
-                    exerciseCorrect={exerciseCorrect}
+                    setExerciseState={setExerciseState}
                 />
             }
         </div>

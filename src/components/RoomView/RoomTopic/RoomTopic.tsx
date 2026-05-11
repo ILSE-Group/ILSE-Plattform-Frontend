@@ -14,7 +14,7 @@ interface RoomTopicProps {
 
 function RoomTopic({ topic }: RoomTopicProps) {
 
-    let exerciseCorrect : boolean = false;
+    let statusRef = React.useRef<HTMLParagraphElement | null>(null);
 
     // folds
     const [topicOpened, toggleTopicFold] = React.useState(false);
@@ -23,6 +23,8 @@ function RoomTopic({ topic }: RoomTopicProps) {
     // check-answer Signal
     const [checkAnswer, setAnswerSignal] = React.useState(false);
     const [checkingDone, setCheckingDoneSignal] = React.useState(false);
+
+    const [exerciseCorrect, setExerciseState] = React.useState(false);
 
     const signalCheckAnswers = () => {
         setAnswerSignal(true);
@@ -35,9 +37,8 @@ function RoomTopic({ topic }: RoomTopicProps) {
 
         if( exerciseCorrect ) {
             // TODO: set state when logged in and get status from this state
-            let statusElement : HTMLElement | null = document.getElementById('status')
-            if( statusElement !== null )
-                statusElement.innerText = "done";
+            if( statusRef.current )
+                statusRef.current.innerText = "done";
         }
     }
 
@@ -45,14 +46,14 @@ function RoomTopic({ topic }: RoomTopicProps) {
     return(
         <section className="room-topic-wrapper">
 
-            <div className={`room-topic-header ${topicOpened ? 'opened' : 'closed'}`}>
+            <div className={`room-topic-header ${topicOpened ? 'opened' : 'closed'} ${exerciseCorrect ? 'correct' : ''}`}>
                 <p className="topic-header-element" onClick={() => toggleTopicFold(!topicOpened)}>
                     {topicOpened ? "⮝" : "⮟"}
                 </p>
                 <p className="topic-header-element">
                     {topic.topicName}
                 </p>
-                <p className="topic-header-element" id='status'>
+                <p className="topic-header-element" ref={statusRef} >
                     status
                 </p>
             </div>
@@ -66,7 +67,7 @@ function RoomTopic({ topic }: RoomTopicProps) {
                     exercise={topic.exercise} 
                     checkSignal={checkAnswer}
                     checkDoneSignal={signalCheckingDone}
-                    exerciseCorrect={exerciseCorrect}
+                    setExerciseState={setExerciseState}
                 />
 
                 {

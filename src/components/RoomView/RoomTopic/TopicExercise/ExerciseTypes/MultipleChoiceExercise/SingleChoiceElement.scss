@@ -1,3 +1,5 @@
+@use '../../../../../../lib/styles.scss';
+
 
 .choice-wrapper {
     height: 40px;
@@ -8,12 +10,9 @@
     align-items: center;
     justify-content: flex-start;
     gap: 2vw;
-}
-.choice-wrapper.correct {
-    background-color: greenyellow;
-}
-.choice-wrapper.wrong {
-    background-color: red;
+
+    border: none;
+    border-radius: 1em;
 }
 
 .choice-checkbox {

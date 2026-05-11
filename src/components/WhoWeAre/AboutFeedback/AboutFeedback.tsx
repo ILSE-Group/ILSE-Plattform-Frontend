@@ -13,6 +13,7 @@ function AboutFeedback() {
     function commitFeedback() {
         const feedbackText: string = sanitizeInput(feedbackInputBox.value);
 
+        // sent nothing
         if(feedbackText === null || feedbackText.trim().length === 0) {
             cleanupFeedback();
             return;
