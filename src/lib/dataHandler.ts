@@ -39,7 +39,10 @@ export interface exerciseAnswer {
 }
 
 //-----------------Room-List-Info-----------------
-
+/**
+ * 
+ * @returns roomsList on success, else null
+ */
 function getRoomsList() : roomList {
     let roomInfoString:string = getFromLocalStorage("roomList");
     
@@ -56,7 +59,8 @@ function getRoomsList() : roomList {
     }
     // get roomList from API and save to local storage
     roomInfoList = recieveRoomsList();
-    saveToLocalStorage("roomList", JSON.stringify(roomInfoList));
+    if( roomInfoList !== null)
+        saveToLocalStorage("roomList", JSON.stringify(roomInfoList));
     
     return roomInfoList;
 }

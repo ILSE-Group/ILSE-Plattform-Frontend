@@ -21,19 +21,20 @@ function RoomTopic({ topic }: RoomTopicProps) {
     const [descriptionOpened, toggleDescription] = React.useState(false);
 
     // check-answer Signal
-    const [checkAnswer, setAnswerSignal] = React.useState(false);
-    const [checkingDone, setCheckingDoneSignal] = React.useState(false);
+    const [checkAnswer, setAnswerSignal] = React.useState(0);
+    const [checkingDone, setCheckingDoneSignal] = React.useState(0);
 
     const [exerciseCorrect, setExerciseState] = React.useState(false);
 
+    let submitBtnRef = React.useRef<HTMLParagraphElement | null>(null);
+    let submitBtnText : string = "Abgeben";
+
     const signalCheckAnswers = () => {
-        setAnswerSignal(true);
-        setCheckingDoneSignal(false);
+        setAnswerSignal(checkAnswer > 50 ? 0 : checkAnswer + 1);
     }
 
     const signalCheckingDone = () => {
-        setAnswerSignal(false);
-        setCheckingDoneSignal(true);
+        setCheckingDoneSignal(checkingDone > 50 ? 0 : checkingDone + 1);
 
         if( exerciseCorrect ) {
             // TODO: set state when logged in and get status from this state
@@ -93,9 +94,9 @@ function RoomTopic({ topic }: RoomTopicProps) {
                 }
                 <div className="topic-submit-wrapper">
                     <p className="submit-btn"
-                       id='submit-btn'
+                       ref={submitBtnRef}
                        onClick={signalCheckAnswers}>
-                        Abgeben
+                        {submitBtnText}
                     </p>
                 </div>
             </div>

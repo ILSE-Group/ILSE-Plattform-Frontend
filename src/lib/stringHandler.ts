@@ -1,22 +1,20 @@
 
-
 export function sanitizeString(input: string): string {
     
-    if(input == null || input == undefined || typeof(input) !== 'string') {
+    if(input == null || input == undefined 
+        || typeof(input) !== 'string' || input.trim().length <= 0) {
         return "";
     }
-    let processedInput: string = input;
-    processedInput = normalizeInput(processedInput);
-    processedInput = escapeInput(processedInput);
+    
+    let processedInput: string = input.trim();
+    processedInput = normalizeString(processedInput);
+    processedInput = escapeString(processedInput);
 
-    if(input.length <= 0) {
-        return "";
-    }
     return processedInput;
 }
 
 // remove invisible characters
-function normalizeInput(input: string): string {
+function normalizeString(input: string): string {
 
     let processedInput: string = input.trim();
     if(input.length <= 0) {
@@ -27,17 +25,27 @@ function normalizeInput(input: string): string {
     processedInput = processedInput.replace(/[ \t\r\n]+/g, ' ');
 
     // remove unicode chars except ascii, latin
-    const illegalChar =  /[^\u0000-\u007F\p{Script=Latin}]/gu;
+    const illegalChar : RegExp =  /[^\u0000-\u007F\p{Script=Latin}]/gu;
     processedInput = processedInput.replace(illegalChar, '');
     
-    // TODO: complete function
     
     return processedInput;
 }
 
 // escape special characters
-function escapeInput(input: string): string {
-    // TODO: write function
-    return input;
-}
+function escapeString(input: string): string {
+    
+    return input
+        // HTML-chars
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        // quotations
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/`/g, '&#96;')
+        // JS-chars 
+        .replace(/\$\{/g, '&#36;{')
+        .replace(/\//g, '&#47;');
 
+}

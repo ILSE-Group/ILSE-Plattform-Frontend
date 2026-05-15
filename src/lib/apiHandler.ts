@@ -1,9 +1,9 @@
 import type { roomList, roomContent,  } from "./dataHandler";
 
-
-//returns the room types:
-// name, description and img_src 
-// for the Information Card as JSON string
+/**
+ * Returns all rooms with name, image-source and desription
+ * @returns roomList json, on error: null
+ */
 export function recieveRoomsList() : roomList {
     //TODO: implement with json
     const data : roomList = {
@@ -39,9 +39,23 @@ export function recieveRoomsList() : roomList {
 }
 
 
-//returns all room topic contents as JSON string
+/** 
+ * Returns the room content as json object
+ * @returns roomContent JSON, on error: null
+*/ 
 export function recieveRoomContent(roomName : string) : roomContent {
     //TODO: implement with json
+    /*
+    let targetRoom : string = sanitizeString(roomName);
+    if( targetRoom.length <= 0 )
+        return null;
+
+    return fetch('room/content/url/'.append(targetRoom))
+        .then(res => res.json())
+        .then(res => {return res as roomContent }
+    );
+    */
+
     const data : roomContent = {
         roomName: roomName,
         roomTopic: [
@@ -91,5 +105,6 @@ export function recieveRoomContent(roomName : string) : roomContent {
             },
         ]
     };
+
     return data as roomContent;
 }

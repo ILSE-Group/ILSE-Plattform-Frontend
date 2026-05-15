@@ -10,7 +10,7 @@ import SingleChoice from './SingleChoiceElement';
 
 interface MCExProps {
     question: exerciseQuestion;
-    checkSignal: boolean;
+    checkSignal: number;
     checkDoneSignal: () => void;
     setExerciseState: (state: boolean) => void;
 }
@@ -38,28 +38,31 @@ function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, setExe
 
         async function checkAnswers() {
 
-            if ( answersState.some(s => s === AnswerState.UNANSWERED) )
+            // set answer state
+            if ( answersState.every(s => s === AnswerState.UNANSWERED) )
                 setOverallAnswerState(AnswerState.UNANSWERED);
             else if ( answersState.every(s => s === AnswerState.CORRECT) )
                 setOverallAnswerState(AnswerState.CORRECT);
             else 
                 setOverallAnswerState(AnswerState.WRONG);
-            
-            if( overallAnswerState == AnswerState.UNANSWERED ) {
-                if( infoTextRef.current ) 
-                    infoTextRef.current.innerText = "Please choose at least one answer";
-            }
-            else {
-                if( infoTextRef.current )
-                    infoTextRef.current.innerText = "";
-                
-                setNotifyUser(true);
-            }
 
-            if( overallAnswerState == AnswerState.CORRECT )
-                setExerciseState(true);
-            if( overallAnswerState == AnswerState.WRONG )
-                setExerciseState(false)
+            // set info-text and exerciseState based on answer state
+            switch( overallAnswerState ) {
+                case AnswerState.CORRECT:
+                    if( infoTextRef.current ) 
+                        infoTextRef.current.innerText = "";
+                    setExerciseState(true);
+                    break;
+                case AnswerState.WRONG:
+                    if( infoTextRef.current ) 
+                        infoTextRef.current.innerText = "Noch nicht richtig. Versuche es noch einmal!";
+                    setExerciseState(false);
+                    break;
+                case AnswerState.UNANSWERED:
+                    if( infoTextRef.current ) 
+                        infoTextRef.current.innerText = "Bitte wähle mindestens eine Antwort.";
+                    break;
+            }
 
             console.log({ overallAnswerState, answersState });
 

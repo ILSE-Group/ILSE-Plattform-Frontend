@@ -2,27 +2,27 @@ import { useState } from 'react';
 
 import './AboutFeedback.scss'
 
-import { sanitizeInput } from '../../../lib/inputHandler';
+import { sanitizeString } from '../../../lib/stringHandler';
 
 
 function AboutFeedback() {
     
     const feedbackInputBox : HTMLInputElement = document.getElementById('feedback-textbox') as HTMLInputElement;
-    const [placeholderText, setPlaceholder] = useState("Wir sind offen fuer Kommentare, Anregungen und Kritik.");
+    const [placeholderText, setPlaceholder] = useState("Wir sind offen für Kommentare, Anregungen und Kritik.");
 
     function commitFeedback() {
-        const feedbackText: string = sanitizeInput(feedbackInputBox.value);
+        const feedbackText: string = sanitizeString(feedbackInputBox.value);
 
-        // sent nothing
-        if(feedbackText === null || feedbackText.trim().length === 0) {
-            cleanupFeedback();
-            return;
+        // sent a message
+        if(feedbackText !== null && feedbackText.length !== 0) {
+            setPlaceholder("Vielen Dank für Ihr Feedback!");
+            sendFeedbackToAPI();
+        }
+        else {
+            setPlaceholder("Bitte geben Sie ihr Feedback ein");
         }
 
-        setPlaceholder("Vielen Dank für Ihr Feedback!");
         cleanupFeedback();
-
-        sendFeedbackToAPI();
     }
 
     function cleanupFeedback() {

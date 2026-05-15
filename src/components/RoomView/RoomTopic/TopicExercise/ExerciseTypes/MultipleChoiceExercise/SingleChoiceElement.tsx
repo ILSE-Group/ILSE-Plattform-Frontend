@@ -8,7 +8,7 @@ import { AnswerState } from '../../../../../../lib/AnswerState';
 
 interface SingleChoiceProps {
     answer: exerciseAnswer;
-    checkAnswerSignal: boolean;
+    checkAnswerSignal: number;
     notifyUserSignal: boolean;
     index: number;
     reportAnswerState: (index: number, state: number) => void;

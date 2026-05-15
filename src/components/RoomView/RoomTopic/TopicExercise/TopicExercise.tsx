@@ -7,7 +7,7 @@ import MultipleChoiceExercise from './ExerciseTypes/MultipleChoiceExercise/Multi
 
 interface TopicExerciseProps {
     exercise: roomTopicExercise;
-    checkSignal: boolean;
+    checkSignal: number;
     checkDoneSignal: () => void;
     setExerciseState: (state: boolean) => void;
 }
