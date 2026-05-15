@@ -27,6 +27,7 @@ export interface roomTopic {
 }
 export interface roomTopicExercise {
     exerciseType: string;
+    completed: boolean;
     question: exerciseQuestion;
 }
 export interface exerciseQuestion {

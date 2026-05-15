@@ -9,10 +9,12 @@ import type { roomTopic } from "../../../lib/dataHandler";
 
 
 interface RoomTopicProps {
+    index: number;
     topic: roomTopic;
+    updateRoomProgress: (index : number, isCompleted : boolean) => void;
 }
 
-function RoomTopic({ topic }: RoomTopicProps) {
+function RoomTopic({ index, topic, updateRoomProgress }: RoomTopicProps) {
 
     let statusRef = React.useRef<HTMLParagraphElement | null>(null);
 
@@ -40,7 +42,10 @@ function RoomTopic({ topic }: RoomTopicProps) {
             // TODO: set state when logged in and get status from this state
             if( statusRef.current )
                 statusRef.current.innerText = "done";
+            updateRoomProgress(index, true);
         }
+        else
+            updateRoomProgress(index, false);
     }
 
 

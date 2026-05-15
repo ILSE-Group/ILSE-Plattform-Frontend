@@ -63,6 +63,7 @@ export function recieveRoomContent(roomName : string) : roomContent {
                 topicName: 'topic One Name',
                 exercise: {
                     exerciseType: "multiple-choice",
+                    completed: false,
                     question: {
                         questionText: "why...",
                         answer: [
@@ -83,6 +84,7 @@ export function recieveRoomContent(roomName : string) : roomContent {
                 topicName: "topic Two Name",
                 exercise: {
                     exerciseType: "multiple-choice",
+                    completed: false,
                     question: {
                         questionText: "why...",
                         answer: [
