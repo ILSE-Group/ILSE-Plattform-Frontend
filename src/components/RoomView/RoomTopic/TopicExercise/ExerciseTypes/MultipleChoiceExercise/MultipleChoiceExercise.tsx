@@ -2,7 +2,7 @@ import './MultipleChoiceExercise.scss';
 
 import React from 'react';
 
-import type {  exerciseQuestion } from '../../../../../../lib/dataHandler';
+import type {  exerciseQuestion } from '../../../../../../lib/interfaceHandler';
 import { AnswerState } from '../../../../../../lib/AnswerState';
 
 import SingleChoice from './SingleChoiceElement';

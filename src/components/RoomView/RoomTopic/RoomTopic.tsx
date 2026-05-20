@@ -5,7 +5,7 @@ import React, { type RefObject } from "react";
 import TopicExercise from "./TopicExercise/TopicExercise";
 import TopicDescription from "./TopicDescription/TopicDescription";
 
-import type { roomTopic } from "../../../lib/dataHandler";
+import type { roomTopic } from "../../../lib/interfaceHandler";
 
 
 interface RoomTopicProps {
@@ -33,7 +33,7 @@ function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTop
     // submit button
     let submitBtnRef = React.useRef<HTMLParagraphElement | null>(null);
     let submitBtnText : string = "Abgeben";
-    
+
 
     // signal TopicExercise to start calculate Answer-State
     const signalCheckAnswers = () => {

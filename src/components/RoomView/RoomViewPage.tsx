@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import RoomTopic from './RoomTopic/RoomTopic';
 
-import type { roomContent } from '../../lib/dataHandler';
+import type { roomContent } from '../../lib/interfaceHandler';
 import { getRoomContent } from '../../lib/dataHandler';
 
 
