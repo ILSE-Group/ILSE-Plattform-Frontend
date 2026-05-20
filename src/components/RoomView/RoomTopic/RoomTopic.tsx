@@ -1,6 +1,6 @@
 import './RoomTopic.scss'
 
-import React from "react";
+import React, { type RefObject } from "react";
 
 import TopicExercise from "./TopicExercise/TopicExercise";
 import TopicDescription from "./TopicDescription/TopicDescription";
@@ -12,9 +12,10 @@ interface RoomTopicProps {
     index: number;
     topic: roomTopic;
     updateRoomProgress: (index : number, isCompleted : boolean) => void;
+    updateComplete: number;
 }
 
-function RoomTopic({ index, topic, updateRoomProgress }: RoomTopicProps) {
+function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTopicProps) {
 
     let statusRef = React.useRef<HTMLParagraphElement | null>(null);
 
@@ -27,16 +28,22 @@ function RoomTopic({ index, topic, updateRoomProgress }: RoomTopicProps) {
     const [checkingDone, setCheckingDoneSignal] = React.useState(0);
 
     const [exerciseCorrect, setExerciseState] = React.useState(false);
+    const [lastUpdateComplete, setUpdateCompleteSignal] = React.useState(updateComplete);
 
+    // submit button
     let submitBtnRef = React.useRef<HTMLParagraphElement | null>(null);
     let submitBtnText : string = "Abgeben";
+    
 
+    // signal TopicExercise to start calculate Answer-State
     const signalCheckAnswers = () => {
-        setAnswerSignal(checkAnswer > 50 ? 0 : checkAnswer + 1);
+        setAnswerSignal(checkAnswer > 50 ? 1 : checkAnswer + 1);
     }
 
+    // TopicExercise signaled calculating complete 
+    // -> update room progress, which is passed to RoomViewPage 
     const signalCheckingDone = () => {
-        setCheckingDoneSignal(checkingDone > 50 ? 0 : checkingDone + 1);
+        setCheckingDoneSignal(checkingDone > 50 ? 1 : checkingDone + 1);
 
         if( exerciseCorrect ) {
             // TODO: set state when logged in and get status from this state
@@ -47,6 +54,17 @@ function RoomTopic({ index, topic, updateRoomProgress }: RoomTopicProps) {
         else
             updateRoomProgress(index, false);
     }
+
+    // when RoomViewPage completed calculating 
+    // set AnswerSignal to 0 -> Topic Exercise stops calculating
+    React.useEffect(() => {
+        if( updateComplete == lastUpdateComplete )
+            return;
+        setUpdateCompleteSignal(updateComplete);
+
+        setAnswerSignal(0);
+
+    }, [updateComplete]);
 
 
     return(

@@ -36,7 +36,8 @@
 
 
 .room-header-text {
-    font-size: 1.2em ;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 .room-header-progressbar {
@@ -51,6 +52,7 @@
 
 .room-header-progress {
     height: 100%;
+    width: 0;
 
     border: none;
     border-radius: 2em;

@@ -24,8 +24,11 @@ function RoomViewPage({roomName} : RoomViewProps) {
         () => content.roomTopic.map(() => false)
     )
 
+    let [signalUpdateComplete, setSignalUpdateComplete] = React.useState(0);
+
     let progressRef = React.useRef<HTMLParagraphElement | null>(null);
     
+    // update current room progress
     const updateRoomProgress = (index: number, isCompleted : boolean) => {
         setTopicState(prev => {
             const next = [...prev];
@@ -34,6 +37,8 @@ function RoomViewPage({roomName} : RoomViewProps) {
         });
     }
 
+    // calculate room progress, set progressbar and
+    // notify RoomTopic -> TopicExercise ->  ... to stop calculating 
     React.useEffect(() => {
         const total = topicState.length;
         if (total <= 0) {
@@ -49,20 +54,24 @@ function RoomViewPage({roomName} : RoomViewProps) {
             progressRef.current.style.width = roomProgress.toString().concat("%");
         }
 
+        setSignalUpdateComplete( signalUpdateComplete > 100 ? 0 : signalUpdateComplete+1 );
 
-    }, [topicState]);
+    }, [roomProgress, topicState]);
 
     return (
         <section className='room-view-wrapper'>
             <Header />
 
             <div className='room-page-wrapper'>
+
                 <div className='room-page-header'>
-                    <h2 className='room-header-text'>{content.roomName}</h2>
+                    <h2 className='room-header-text'>
+                        {content.roomName}
+                    </h2>
+
                     <div className='room-header-progressbar'>
                         <div className='room-header-progress'
                             ref={progressRef}>
-        
                         </div>
                     </div>
                 </div>
@@ -73,6 +82,7 @@ function RoomViewPage({roomName} : RoomViewProps) {
                         index={i}
                         topic={topic} 
                         updateRoomProgress={updateRoomProgress}
+                        updateComplete={signalUpdateComplete}
                     />
                 ))}
 

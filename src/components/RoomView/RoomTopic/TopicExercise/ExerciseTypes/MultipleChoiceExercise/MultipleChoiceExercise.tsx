@@ -26,55 +26,44 @@ function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, setExe
         () => question.answer.map(() => AnswerState.UNANSWERED)
     );
 
-    const [overallAnswerState, setOverallAnswerState] = React.useState<number>(AnswerState.UNANSWERED);
+    let newOverallAnswerState : number;
 
     // get Signal from RoomTopic -> TopicExercise
     // and check the answers
     React.useEffect(() => {
-        if (!checkSignal)
+        if (checkSignal <= 0)
             return;
 
-        let active : boolean = true;
-
-        async function checkAnswers() {
-
-            // set answer state
-            if ( answersState.every(s => s === AnswerState.UNANSWERED) )
-                setOverallAnswerState(AnswerState.UNANSWERED);
-            else if ( answersState.every(s => s === AnswerState.CORRECT) )
-                setOverallAnswerState(AnswerState.CORRECT);
-            else 
-                setOverallAnswerState(AnswerState.WRONG);
-
-            // set info-text and exerciseState based on answer state
-            switch( overallAnswerState ) {
-                case AnswerState.CORRECT:
-                    if( infoTextRef.current ) 
-                        infoTextRef.current.innerText = "";
-                    setExerciseState(true);
-                    break;
-                case AnswerState.WRONG:
-                    if( infoTextRef.current ) 
-                        infoTextRef.current.innerText = "Noch nicht richtig. Versuche es noch einmal!";
-                    setExerciseState(false);
-                    break;
-                case AnswerState.UNANSWERED:
-                    if( infoTextRef.current ) 
-                        infoTextRef.current.innerText = "Bitte wähle mindestens eine Antwort.";
-                    break;
-            }
-
-            console.log({ overallAnswerState, answersState });
+        // set answer state
+        newOverallAnswerState = 
+            answersState.every(s => s === AnswerState.UNANSWERED) ? AnswerState.UNANSWERED :
+            answersState.every(s => s === AnswerState.CORRECT) ? AnswerState.CORRECT :
+            AnswerState.WRONG;
 
 
-            checkDoneSignal();
+        // set info-text and exerciseState based on answer state
+        switch( newOverallAnswerState ) {
+            case AnswerState.CORRECT:
+                if( infoTextRef.current ) 
+                    infoTextRef.current.innerText = "";
+                setExerciseState(true);
+                break;
+            case AnswerState.WRONG:
+                if( infoTextRef.current ) 
+                    infoTextRef.current.innerText = "Noch nicht richtig. Versuche es noch einmal!";
+                setExerciseState(false);
+                break;
+            case AnswerState.UNANSWERED:
+                if( infoTextRef.current ) 
+                    infoTextRef.current.innerText = "Bitte wähle mindestens eine Antwort.";
+                break;
         }
 
-        checkAnswers();
+        console.log({ newOverallAnswerState, answersState });
 
-        return () => { 
-                active = false; 
-        };
+
+        checkDoneSignal();
+
     }, [checkSignal, checkDoneSignal]);
 
     const reportAnswerState = React.useCallback((index: number, state: number) => {
