@@ -1,0 +1,14 @@
+
+.element-wrapper {
+    height: fit-content;
+    width: fit-content;
+
+    margin: 1em;
+    padding: 1em;
+
+    border: none;
+    border-radius: 1em;
+    background-color: var(--bgColorMediumContrast);
+
+    user-select: none;
+}

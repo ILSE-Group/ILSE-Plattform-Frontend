@@ -1,4 +1,4 @@
-import type { roomList, roomContent,  } from "./dataHandler";
+import type { roomList, roomContent,  } from "./interfaceHandler";
 
 /**
  * Returns all rooms with name, image-source and desription
@@ -60,7 +60,7 @@ export function recieveRoomContent(roomName : string) : roomContent {
         roomName: roomName,
         roomTopic: [
             {
-                topicName: 'topic One Name',
+                topicName: 'topic Two Name',
                 exercise: {
                     exerciseType: "multiple-choice",
                     completed: false,
@@ -68,12 +68,16 @@ export function recieveRoomContent(roomName : string) : roomContent {
                         questionText: "why...",
                         answer: [
                             {
+                                id: 0,
                                 answerText: "answer one",
                                 isCorrect: true,
+                                fitsTo: 0,
                             },
                             {
+                                id: 1,
                                 answerText: "answer two",
                                 isCorrect: true,
+                                fitsTo: 1,
                             },
                         ]
                     }
@@ -81,7 +85,56 @@ export function recieveRoomContent(roomName : string) : roomContent {
                 descriptionText: "some explaining text",
             },
             {
-                topicName: "topic Two Name",
+                topicName: 'topic One Name',
+                exercise: {
+                    exerciseType: "linking",
+                    completed: false,
+                    question: {
+                        questionText: "Please link them together",
+                        answer: [
+                            {
+                                id: 0,
+                                answerText: "answer one",
+                                isCorrect: true,
+                                fitsTo: 1,
+                            },
+                            {
+                                id: 1,
+                                answerText: "answer two",
+                                isCorrect: true,
+                                fitsTo: 0,
+                            },
+                            {
+                                id: 2,
+                                answerText: "answer three",
+                                isCorrect: true,
+                                fitsTo: 4,
+                            },
+                            {
+                                id: 3,
+                                answerText: "answer four",
+                                isCorrect: true,
+                                fitsTo: 5,
+                            },
+                            {
+                                id: 4,
+                                answerText: "answer five",
+                                isCorrect: true,
+                                fitsTo: 2,
+                            },
+                            {
+                                id: 5,
+                                answerText: "answer six",
+                                isCorrect: true,
+                                fitsTo: 3,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "some explaining text",
+            },
+            {
+                topicName: "topic Three Name",
                 exercise: {
                     exerciseType: "multiple-choice",
                     completed: false,
@@ -89,16 +142,22 @@ export function recieveRoomContent(roomName : string) : roomContent {
                         questionText: "why...",
                         answer: [
                             {
+                                id: 0,
                                 answerText: "answer one",
                                 isCorrect: false,
+                                fitsTo: 0,
                             },
                             {
+                                id: 1,
                                 answerText: "answer two",
                                 isCorrect: true,
+                                fitsTo: 1,
                             },
                             {
+                                id: 2,
                                 answerText: "answer three",
                                 isCorrect: false,
+                                fitsTo: 2,
                             },
                         ]
                     }

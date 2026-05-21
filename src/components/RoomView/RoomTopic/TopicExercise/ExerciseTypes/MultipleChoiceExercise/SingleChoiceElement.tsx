@@ -2,7 +2,7 @@ import './SingleChoiceElement.scss';
 
 import React from "react";
 
-import type { exerciseAnswer } from '../../../../../../lib/dataHandler';
+import type { exerciseAnswer } from '../../../../../../lib/interfaceHandler';
 import { AnswerState } from '../../../../../../lib/AnswerState';
 
 

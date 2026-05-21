@@ -30,6 +30,8 @@ export interface exerciseQuestion {
     answer : exerciseAnswer[];
 }
 export interface exerciseAnswer {
+    id: number;
     answerText: string;
     isCorrect: boolean;
+    fitsTo: number;
 }

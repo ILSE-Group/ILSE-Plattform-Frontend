@@ -5,6 +5,8 @@ import React from 'react';
 import type {  exerciseQuestion } from '../../../../../../lib/interfaceHandler';
 import { AnswerState } from '../../../../../../lib/AnswerState';
 
+import LinkingElement  from './LinkingElement';
+
 interface LinkingExProps {
     question: exerciseQuestion;
     checkSignal: number;
@@ -22,13 +24,17 @@ function LinkingExercise({ question, checkSignal, checkDoneSignal, setExerciseSt
 
     // TODO: remove these two lines 
     // (added to stop producing not-used errors)
-    let answers = question.answer;
     setExerciseState(false);
     // ODOT
 
     return (
-        <div>
-
+        <div className='linking-wrapper'>
+            {question.answer.map((ans, id) => (
+                <LinkingElement
+                    id={ans.id}
+                    answer={ans}
+                />
+            ))}
         </div>
     );
 
