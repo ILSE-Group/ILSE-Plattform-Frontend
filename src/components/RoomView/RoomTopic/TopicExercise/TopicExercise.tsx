@@ -39,6 +39,7 @@ function TopicExercise({ exercise, checkSignal, checkDoneSignal, setExerciseStat
         }
     }
 
+    
     return(
         <div className="exercise-wrapper">
             {

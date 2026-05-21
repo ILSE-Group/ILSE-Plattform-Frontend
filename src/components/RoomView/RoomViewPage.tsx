@@ -17,7 +17,7 @@ interface RoomViewProps {
 
 function RoomViewPage({roomName} : RoomViewProps) {
 
-    let content : roomContent = getRoomContent(roomName);
+    const content : roomContent = getRoomContent(roomName);
 
     let [roomProgress, setRoomProgress] = React.useState(0);
     let [topicState, setTopicState] = React.useState<boolean[]> (

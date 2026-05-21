@@ -66,13 +66,13 @@ function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, setExe
 
     }, [checkSignal, checkDoneSignal]);
 
-    const reportAnswerState = React.useCallback((index: number, state: number) => {
+    const reportAnswerState = (index: number, state: number) => {
         setAnswersState(prev => {
             const next = [...prev];
             next[index] = state;
             return next;
         });
-    }, []);
+    };
 
 
     return (

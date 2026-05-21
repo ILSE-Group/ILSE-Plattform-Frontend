@@ -16,23 +16,55 @@ interface LinkingExProps {
 
 function LinkingExercise({ question, checkSignal, checkDoneSignal, setExerciseState } : LinkingExProps) {
 
-    let answerState : number = AnswerState.UNANSWERED
+    const [answerState, setAnswerState] = React.useState<boolean[]>(
+            () => question.answer.map(() => false)
+    );
 
+    const setAnswerActive = (id : number, isActive : boolean) => {
+        setAnswerState(prev => {
+            const next = [...prev];
+            next[id] = isActive;
+            return next;
+        });
+    }
+
+    // on parent signal, check if answer is correct
     React.useEffect(() => {
-
+        
     }, [checkSignal, checkDoneSignal]);
 
-    // TODO: remove these two lines 
-    // (added to stop producing not-used errors)
-    setExerciseState(false);
-    // ODOT
+    // report state to parent
+    React.useEffect(() => {
+
+    }, [setExerciseState]);
+
+    // check answer when 2 elements are selected
+    React.useEffect(() => {
+        
+        if( answerState.filter(s => s == true).length >= 2 ) {
+            resetAnswerSignal = true;
+        }
+
+        return () => {
+            resetAnswerSignal = false
+        };
+
+    }, [setAnswerActive]);
+
+    // handle answer state
+    let resetAnswerSignal = false;
+    let setAnswerInactiveSignal = false
+
 
     return (
         <div className='linking-wrapper'>
             {question.answer.map((ans, id) => (
-                <LinkingElement
+                <LinkingElement key={id}
                     id={ans.id}
                     answer={ans}
+                    setAnswerState={setAnswerActive}
+                    resetAnswer={resetAnswerSignal}
+                    setInactive={setAnswerInactiveSignal}
                 />
             ))}
         </div>
