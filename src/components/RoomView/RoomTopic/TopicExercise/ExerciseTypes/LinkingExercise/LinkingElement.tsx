@@ -15,7 +15,7 @@ interface LinkingElemProps {
 
 function LinkingElement( { id, answer, setAnswerState, resetAnswer, setInactive  } : LinkingElemProps ) {
 
-    const elementRef = React.useRef<HTMLParagraphElement | null>(null);
+    const elementRef = React.useRef<HTMLDivElement | null>(null);
 
     const [isActive, setIsActive] = React.useState(false);
 
