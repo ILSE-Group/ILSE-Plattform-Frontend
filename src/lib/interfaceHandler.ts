@@ -35,3 +35,10 @@ export interface exerciseAnswer {
     isCorrect: boolean;
     fitsTo: number;
 }
+
+// feedback text
+//  used in: AboutFeedback
+export interface feedbackContent {
+    username: string;
+    feedbackText: string;
+}

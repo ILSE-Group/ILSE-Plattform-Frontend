@@ -3,6 +3,7 @@ import  React from 'react';
 import './AboutFeedback.scss'
 
 import { sanitizeString } from '../../../lib/stringHandler';
+import { sendFeedback } from '../../../lib/apiHandler';
 
 
 function AboutFeedback() {
@@ -22,7 +23,7 @@ function AboutFeedback() {
         // sent a message
         if(feedbackText !== null && feedbackText.length !== 0) {
             setPlaceholder("Vielen Dank für Ihr Feedback!");
-            sendFeedbackToAPI();
+            sendFeedback(feedbackText);
         }
         else {
             setPlaceholder("Bitte geben Sie ihr Feedback ein");
@@ -35,14 +36,13 @@ function AboutFeedback() {
         if( feedbackInBoxRef.current )
             feedbackInBoxRef.current.value = "";
     }
-
-    function sendFeedbackToAPI() {
-        //TODO
-    }
+    
 
     return (
         <section className="about-feedback-wrapper">
-            <p className='feedback-intro-text'>Bitte schreiben Sie uns, falls Sie Feedback haben.</p>
+            <p className='feedback-intro-text'>
+                Bitte schreiben Sie uns, falls Sie Feedback haben.
+            </p>
 
             <textarea 
                 className='feedback-textbox' 
@@ -50,7 +50,12 @@ function AboutFeedback() {
                 placeholder={placeholderText}
                 ref={feedbackInBoxRef}
             />
-            <p onClick={() => commitFeedback()} className='feedback-send-btn highlight-btn-medium'>Senden</p>
+
+            <p className='feedback-send-btn highlight-btn-medium'
+                onClick={() => commitFeedback()}
+            >
+                Senden
+            </p>
         </section>
     );
 

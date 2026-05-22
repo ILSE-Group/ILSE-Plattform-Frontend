@@ -1,4 +1,5 @@
-import type { roomList, roomContent,  } from "./interfaceHandler";
+import type { roomList, roomContent, feedbackContent } from "./interfaceHandler";
+import { sanitizeString } from "./stringHandler";
 
 /**
  * Returns all rooms with name, image-source and desription
@@ -168,4 +169,26 @@ export function recieveRoomContent(roomName : string) : roomContent {
     };
 
     return data as roomContent;
+}
+
+export function sendFeedback(feedbackText : string) : void {
+    // check validity
+    if( feedbackText === null || typeof feedbackText != 'string' || feedbackText.length <= 0  )
+        return;
+
+    let sanitizedFeedback = sanitizeString(feedbackText);
+
+    if( sanitizedFeedback.length <= 0 )
+        return;
+
+    // create roomContent json object
+    let content : feedbackContent =  {} as feedbackContent;
+    content.username = "";      // TODO: load logged in username
+    content.feedbackText = sanitizedFeedback;
+
+    let jsonString : string = JSON.stringify(content);
+
+    // send json to API
+    // TODO
+
 }
