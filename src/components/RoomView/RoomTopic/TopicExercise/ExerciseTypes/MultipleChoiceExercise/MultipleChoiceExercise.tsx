@@ -88,7 +88,7 @@ function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, setExe
                         answer={ans} 
                         checkAnswerSignal={checkSignal}
                         notifyUserSignal={notifyUser}
-                        index={ans.id}
+                        index={ans.answerID}
                         reportAnswerState={reportAnswerState}
                         answerState={answerState} 
                     />

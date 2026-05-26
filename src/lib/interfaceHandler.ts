@@ -12,10 +12,12 @@ export interface roomListItem {
 // room-content types
 //  used in: RoomView page
 export interface roomContent {
+    roomID: number;
     roomName: string;
     roomTopic : roomTopic[];
 }
 export interface roomTopic {
+    topicID: number;
     topicName: string;
     exercise: roomTopicExercise;
     descriptionText: string;
@@ -30,7 +32,7 @@ export interface exerciseQuestion {
     answer : exerciseAnswer[];
 }
 export interface exerciseAnswer {
-    id: number;
+    answerID: number;
     answerText: string;
     isCorrect: boolean;
     fitsTo: number;
@@ -41,4 +43,9 @@ export interface exerciseAnswer {
 export interface feedbackContent {
     username: string;
     feedbackText: string;
+}
+
+// JSON web token
+export interface webToken {
+    username: string
 }

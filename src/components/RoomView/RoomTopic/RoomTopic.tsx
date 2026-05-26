@@ -35,6 +35,17 @@ function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTop
     let submitBtnText : string = "Abgeben";
 
 
+    // update topic state from api:
+    // set topic to completed, when topic.exercise.complete is true
+    React.useEffect(() => {
+        if( !topic.exercise.completed )
+            return;
+
+        setExerciseState(true);
+        updateRoomProgress(index, true);
+
+    }, [topic.exercise.completed]);
+
     // signal TopicExercise to start calculate Answer-State
     const signalCheckAnswers = () => {
         setAnswerSignal(checkAnswer > 50 ? 1 : checkAnswer + 1);
@@ -65,6 +76,7 @@ function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTop
         setAnswerSignal(0);
 
     }, [updateComplete]);
+
 
 
     return(

@@ -1,4 +1,6 @@
+import { Buffer } from 'buffer';
 
+//======================SANITIZATION======================
 export function sanitizeString(input: string): string {
     
     if(input == null || input == undefined 
@@ -48,4 +50,38 @@ function escapeString(input: string): string {
         .replace(/\$\{/g, '&#36;{')
         .replace(/\//g, '&#47;');
 
+}
+
+//=========================ENCODING========================
+export function base64Encode(input: string): string {
+    let processedString : string = Buffer.from(input).toString('base64');
+
+    return processedString.trim();
+}
+
+export function base64Decode(base64String: string): string {
+    let processedString : string = Buffer.from(base64String, 'base64').toString('utf-8');
+
+    return processedString.trim();
+}
+
+//=======================API-Handling======================
+export function processForAPISend(input: string): string {
+    if( input === null || typeof input === 'undefined' || input.trim.length <= 0 )
+        return '';
+
+    let processedString : string = sanitizeString(input);
+    processedString = base64Encode(processedString);
+
+    return processedString;
+}
+
+export function processForAPIRecieve(input: string): string {
+    if( input === null || typeof input === 'undefined' || input.trim.length <= 0 )
+        return '';
+
+    let processedString : string = base64Decode(input);
+    processedString = sanitizeString(processedString);
+
+    return processedString;
 }

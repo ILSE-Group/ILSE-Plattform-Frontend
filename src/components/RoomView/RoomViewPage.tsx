@@ -15,7 +15,7 @@ interface RoomViewProps {
 }
 
 
-function RoomViewPage({roomName} : RoomViewProps) {
+function RoomViewPage( {roomName} : RoomViewProps ) {
 
     const content : roomContent = getRoomContent(roomName);
 

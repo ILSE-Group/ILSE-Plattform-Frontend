@@ -1,6 +1,12 @@
-import type { roomList, roomContent, feedbackContent } from "./interfaceHandler";
-import { sanitizeString } from "./stringHandler";
+import type { roomList, roomContent, feedbackContent, webToken } from "./interfaceHandler";
 
+import { API_URL } from "./globalVars";
+import { sanitizeString, processForAPISend } from "./stringHandler";
+
+
+//===================================================
+//====                  RECIEVE                 =====
+//===================================================
 /**
  * Returns all rooms with name, image-source and desription
  * @returns roomList json, on error: null
@@ -39,7 +45,6 @@ export function recieveRoomsList() : roomList {
     */
 }
 
-
 /** 
  * Returns the room content as json object
  * @returns roomContent JSON, on error: null
@@ -58,10 +63,12 @@ export function recieveRoomContent(roomName : string) : roomContent {
     */
 
     const data : roomContent = {
+        roomID: 0,
         roomName: roomName,
         roomTopic: [
             {
-                topicName: 'topic Two Name',
+                topicID: 0,
+                topicName: 'topic One Name',
                 exercise: {
                     exerciseType: "multiple-choice",
                     completed: false,
@@ -69,13 +76,13 @@ export function recieveRoomContent(roomName : string) : roomContent {
                         questionText: "why...",
                         answer: [
                             {
-                                id: 0,
+                                answerID: 0,
                                 answerText: "answer one",
                                 isCorrect: true,
                                 fitsTo: 0,
                             },
                             {
-                                id: 1,
+                                answerID: 1,
                                 answerText: "answer two",
                                 isCorrect: true,
                                 fitsTo: 1,
@@ -86,7 +93,8 @@ export function recieveRoomContent(roomName : string) : roomContent {
                 descriptionText: "some explaining text",
             },
             {
-                topicName: 'topic One Name',
+                topicID: 1,
+                topicName: 'topic Two Name',
                 exercise: {
                     exerciseType: "linking",
                     completed: false,
@@ -94,37 +102,37 @@ export function recieveRoomContent(roomName : string) : roomContent {
                         questionText: "Please link them together",
                         answer: [
                             {
-                                id: 0,
+                                answerID: 0,
                                 answerText: "answer one",
                                 isCorrect: true,
                                 fitsTo: 1,
                             },
                             {
-                                id: 1,
+                                answerID: 1,
                                 answerText: "answer two",
                                 isCorrect: true,
                                 fitsTo: 0,
                             },
                             {
-                                id: 2,
+                                answerID: 2,
                                 answerText: "answer three",
                                 isCorrect: true,
                                 fitsTo: 4,
                             },
                             {
-                                id: 3,
+                                answerID: 3,
                                 answerText: "answer four",
                                 isCorrect: true,
                                 fitsTo: 5,
                             },
                             {
-                                id: 4,
+                                answerID: 4,
                                 answerText: "answer five",
                                 isCorrect: true,
                                 fitsTo: 2,
                             },
                             {
-                                id: 5,
+                                answerID: 5,
                                 answerText: "answer six",
                                 isCorrect: true,
                                 fitsTo: 3,
@@ -135,6 +143,7 @@ export function recieveRoomContent(roomName : string) : roomContent {
                 descriptionText: "some explaining text",
             },
             {
+                topicID: 2,
                 topicName: "topic Three Name",
                 exercise: {
                     exerciseType: "multiple-choice",
@@ -143,19 +152,19 @@ export function recieveRoomContent(roomName : string) : roomContent {
                         questionText: "why...",
                         answer: [
                             {
-                                id: 0,
+                                answerID: 0,
                                 answerText: "answer one",
                                 isCorrect: false,
                                 fitsTo: 0,
                             },
                             {
-                                id: 1,
+                                answerID: 1,
                                 answerText: "answer two",
                                 isCorrect: true,
                                 fitsTo: 1,
                             },
                             {
-                                id: 2,
+                                answerID: 2,
                                 answerText: "answer three",
                                 isCorrect: false,
                                 fitsTo: 2,
@@ -171,6 +180,9 @@ export function recieveRoomContent(roomName : string) : roomContent {
     return data as roomContent;
 }
 
+//===================================================
+//====                    SEND                   ====
+//===================================================
 export function sendFeedback(feedbackText : string) : void {
     // check validity
     if( feedbackText === null || typeof feedbackText != 'string' || feedbackText.length <= 0  )
@@ -190,5 +202,19 @@ export function sendFeedback(feedbackText : string) : void {
 
     // send json to API
     // TODO
+
+}
+
+// TODO
+/** processes the input values and sends them to the api
+ * @returns webToken, on error: null */
+export function sendLoginData( username : string, password : string ) : webToken|null  {
+    let name: string = processForAPISend(username);
+    let pass: string = processForAPISend(password);
+
+    return null;;
+}
+
+export function sendTopicStatus( roomID: number, topicID: number, complete: boolean ) {
 
 }
