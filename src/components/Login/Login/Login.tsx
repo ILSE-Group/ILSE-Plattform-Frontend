@@ -29,7 +29,7 @@ function Login() {
 
         // check username
         if( nameRef.current ) {
-            if( nameRef.current.value.length > 0) {
+            if( nameRef.current.value.trim().length > 0) {
                 username = nameRef.current.value.trim();
                 inputValid[0] = true;
                 if( nameInfoRef.current )
@@ -50,7 +50,7 @@ function Login() {
         
         // check password
         if( passwordRef.current ) {
-            if( passwordRef.current.value.length > 0) {
+            if( passwordRef.current.value.trim().length > 0) {
                 password = passwordRef.current.value.trim();
                 inputValid[1] = true;
                 if( passwordInfoRef.current )
