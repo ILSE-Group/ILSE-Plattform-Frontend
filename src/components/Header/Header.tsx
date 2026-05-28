@@ -4,8 +4,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
-import { ROOMS_LINK_URL, PROFILE_URL, isLoggedIn, setLoginState } from '../../lib/globalVars';
 import { getRoomNames } from '../../lib/dataHandler';
+import { ROOMS_LINK_URL, PROFILE_URL, isLoggedIn, setLoginState } from '../../lib/globalVars';
 import { getFromSessionStorage, saveToSessionStorage } from '../../lib/sessionStorageHandler';
 
 
@@ -29,7 +29,7 @@ function AppHeader() {
     // -----------
     //    STATE
     // -----------
-    let loggedIn : boolean = isLoggedIn();
+    let loggedIn = isLoggedIn();
 
     // -----------
     // THEME LOGIC
@@ -53,7 +53,6 @@ function AppHeader() {
 
     };
     const [theme, setTheme] = React.useState<"light" | "dark">(getInitialTheme());
-
 
     React.useEffect(() => {
         document.body.classList.remove("light", "dark");
@@ -91,17 +90,18 @@ function AppHeader() {
                 {
                     loggedIn ? (
                         <p className="header-loginbtn-label highlight-btn-medium"
-                            onClick={() => { setLoginState(null); }}
+                            onClick={() => { setLoginState(null); navigate('/'); }}
                         >
                             Abmelden
                         </p>
                     ) : (
-                    <p className="header-loginbtn-label highlight-btn-medium"
-                        onClick={() => navigate('/login')}
-                    >
-                        Login
-                    </p>
-                )}
+                        <p className="header-loginbtn-label highlight-btn-medium"
+                            onClick={() => navigate('/login')}
+                        >
+                            Login
+                        </p>
+                    )
+                }
                 </div>
 
             </div>

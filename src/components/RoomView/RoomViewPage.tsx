@@ -8,6 +8,7 @@ import RoomTopic from './RoomTopic/RoomTopic';
 
 import type { roomContent } from '../../lib/interfaceHandler';
 import { getRoomContent } from '../../lib/dataHandler';
+import { sendTopicStatus } from '../../lib/apiHandler';
 
 
 interface RoomViewProps {
@@ -29,12 +30,15 @@ function RoomViewPage( {roomName} : RoomViewProps ) {
     let progressRef = React.useRef<HTMLParagraphElement | null>(null);
     
     // update current room progress
-    const updateRoomProgress = (index: number, isCompleted : boolean) => {
+    const updateRoomProgress = (index: number, topicID : number, isCompleted : boolean) => {
         setTopicState(prev => {
             const next = [...prev];
             next[index] = isCompleted;
             return next;
         });
+        
+        if( isCompleted )
+            sendTopicStatus(content.roomID, topicID, isCompleted);
     }
 
     // calculate room progress, set progressbar and

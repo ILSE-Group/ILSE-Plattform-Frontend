@@ -2,10 +2,9 @@ import './LinkingExercise.scss';
 
 import React from 'react';
 
-import type {  exerciseQuestion } from '../../../../../../lib/interfaceHandler';
-import { AnswerState } from '../../../../../../lib/AnswerState';
-
+import type { exerciseQuestion, exerciseAnswer } from '../../../../../../lib/interfaceHandler';
 import LinkingElement  from './LinkingElement';
+
 
 interface LinkingExProps {
     question: exerciseQuestion;
@@ -15,6 +14,12 @@ interface LinkingExProps {
 }
 
 function LinkingExercise({ question, checkSignal, checkDoneSignal, setExerciseState } : LinkingExProps) {
+
+    const [wrongAns, setWrongAns] = React.useState<exerciseAnswer[]>(
+        () => question.answer.map((a) => ({ ...a }))
+    );
+    const [correctAns, setCorrectAns] = React.useState<exerciseAnswer[]|null>(null)
+
 
     const [answerState, setAnswerState] = React.useState<boolean[]>(
             () => question.answer.map(() => false)
@@ -58,9 +63,11 @@ function LinkingExercise({ question, checkSignal, checkDoneSignal, setExerciseSt
 
     return (
         <div className='linking-wrapper'>
-            {question.answer.map((ans, id) => (
+            {//correctAns?.map((ans, ))
+            }
+            {wrongAns.map((ans, id) => (
                 <LinkingElement key={id}
-                    id={ans.id}
+                    id={ans.answerID}
                     answer={ans}
                     setAnswerState={setAnswerActive}
                     resetAnswer={resetAnswerSignal}

@@ -6,6 +6,7 @@ import type {  exerciseQuestion } from '../../../../../../lib/interfaceHandler';
 import { AnswerState } from '../../../../../../lib/AnswerState';
 
 import SingleChoice from './SingleChoiceElement';
+import { sendTopicStatus } from '../../../../../../lib/apiHandler';
 
 
 interface MCExProps {

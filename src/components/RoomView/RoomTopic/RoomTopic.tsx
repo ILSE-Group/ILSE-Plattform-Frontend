@@ -11,7 +11,7 @@ import type { roomTopic } from "../../../lib/interfaceHandler";
 interface RoomTopicProps {
     index: number;
     topic: roomTopic;
-    updateRoomProgress: (index : number, isCompleted : boolean) => void;
+    updateRoomProgress: (index : number, topicID : number, isCompleted : boolean) => void;
     updateComplete: number;
 }
 
@@ -42,7 +42,7 @@ function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTop
             return;
 
         setExerciseState(true);
-        updateRoomProgress(index, true);
+        updateRoomProgress(index, topic.topicID, true);
 
     }, [topic.exercise.completed]);
 
@@ -60,10 +60,10 @@ function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTop
             // TODO: set state when logged in and get status from this state
             if( statusRef.current )
                 statusRef.current.innerText = "done";
-            updateRoomProgress(index, true);
+            updateRoomProgress(index, topic.topicID, true);
         }
         else
-            updateRoomProgress(index, false);
+            updateRoomProgress(index, topic.topicID, false);
     }
 
     // when RoomViewPage completed calculating 
