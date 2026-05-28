@@ -1,4 +1,4 @@
-import { getFromLocalStorage, saveToLocalStorage } from "./localStorageHandler";
+import { getFromSessionStorage, saveToSessionStorage } from "./sessionStorageHandler";
 import { recieveRoomsList, recieveRoomContent } from "./apiHandler";
 
 import type { roomList, roomListItem, roomContent } from "./interfaceHandler";
@@ -10,7 +10,7 @@ import { sanitizeString } from "./stringHandler";
  * @returns roomsList on success, else null
  */
 function getRoomsList() : roomList {
-    let roomInfoString:string = getFromLocalStorage("roomList");
+    let roomInfoString:string = getFromSessionStorage("roomList");
     
     let roomInfoList: roomList;
 
@@ -26,7 +26,7 @@ function getRoomsList() : roomList {
     // get roomList from API and save to local storage
     roomInfoList = recieveRoomsList();
     if( roomInfoList !== null)
-        saveToLocalStorage("roomList", JSON.stringify(roomInfoList));
+        saveToSessionStorage("roomList", JSON.stringify(roomInfoList));
     
     return roomInfoList;
 }

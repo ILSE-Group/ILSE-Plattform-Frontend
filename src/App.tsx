@@ -8,7 +8,7 @@ import RoomsPage from './components/RoomsPage/RoomsPage';
 import RoomViewPage from './components/RoomView/RoomViewPage';
 import InvalidPage from './components/InvalidPage/InvalidPage';
 
-import { ROOMS_LINK_URL } from './lib/globalVars';
+import { PROFILE_URL, ROOMS_LINK_URL } from './lib/globalVars';
 import { getRoomNames } from './lib/dataHandler';
 
 
@@ -24,7 +24,7 @@ function App() {
           <Route path='/'               element={<LandingPage />}  />
           <Route path='/about'          element={<WhoWeArePage />} />
           <Route path='/login'          element={<LoginPage />}    />
-          <Route path='/profile'        element={<ProfilePage />}  />
+          <Route path={PROFILE_URL}     element={<ProfilePage />}  />
 
           <Route path={ROOMS_LINK_URL}  element={<RoomsPage />}    />
           {

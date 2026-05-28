@@ -4,30 +4,39 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
-import { ROOMS_LINK_URL } from '../../lib/globalVars';
+import { ROOMS_LINK_URL, PROFILE_URL, isLoggedIn, setLoginState } from '../../lib/globalVars';
 import { getRoomNames } from '../../lib/dataHandler';
+import { getFromSessionStorage, saveToSessionStorage } from '../../lib/sessionStorageHandler';
 
 
 function AppHeader() {
 
+    // -----------
+    // NAVIGATION
+    // -----------
     let roomNames: string[] = getRoomNames();
     let roomLink: string = ROOMS_LINK_URL.concat("/");
     const navigate = useNavigate();
 
     // -----------
-    // NAVIGATION
+    //  NAV-PAGE
     // -----------
     const [navVisible, setNavVisibility] = React.useState(false);
     function handleNavigationToggle() {
         setNavVisibility(!navVisible);
     }
 
-    // -----------------
+    // -----------
+    //    STATE
+    // -----------
+    let loggedIn : boolean = isLoggedIn();
+
+    // -----------
     // THEME LOGIC
-    // -----------------
+    // -----------
     const getInitialTheme = (): "light" | "dark" => {
-        //get theme from local storage
-        const saved = localStorage.getItem("theme");
+        //get theme from session storage
+        const saved = getFromSessionStorage("theme");
         if (saved === "light" || saved === "dark") {
             return saved;
         }
@@ -50,7 +59,7 @@ function AppHeader() {
         document.body.classList.remove("light", "dark");
         document.body.classList.add(theme);
 
-        localStorage.setItem("theme", theme);
+        saveToSessionStorage("theme", theme);
     }, [theme]);
 
     function toggleTheme() {
@@ -78,9 +87,21 @@ function AppHeader() {
                 </div>
 
                 {/* LOGIN-BUTTON */}
-                <div className='header-button header-loginbtn-container'
-                onClick={() => navigate('/login')}>
-                    <p className='header-loginbtn-label highlight-btn-medium'>Login</p>
+                <div className='header-button header-loginbtn-container'>
+                {
+                    loggedIn ? (
+                        <p className="header-loginbtn-label highlight-btn-medium"
+                            onClick={() => { setLoginState(null); }}
+                        >
+                            Abmelden
+                        </p>
+                    ) : (
+                    <p className="header-loginbtn-label highlight-btn-medium"
+                        onClick={() => navigate('/login')}
+                    >
+                        Login
+                    </p>
+                )}
                 </div>
 
             </div>
@@ -101,7 +122,7 @@ function AppHeader() {
                                 </div>
                             </div>
 
-                            <p onClick={() => navigate('/profile')}>
+                            <p onClick={() => navigate(PROFILE_URL)}>
                                 Profil
                             </p>
 

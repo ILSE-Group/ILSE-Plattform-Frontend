@@ -1,9 +1,11 @@
 import './Login.scss';
 
-import React, { useRef } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import type { webToken } from '../../../lib/interfaceHandler';
 import { sendLoginData } from '../../../lib/apiHandler';
+import { PROFILE_URL, isLoggedIn, setLoginState } from '../../../lib/globalVars';
 
 
 function Login() {
@@ -19,8 +21,15 @@ function Login() {
     let password: string;
     let inputValid : boolean[] = [false, false];
 
+    const navigate = useNavigate();
 
-    function checkInput() {
+
+    /**
+     * checks the input values and sets error message
+     * on success it sets the login token
+     * @returns true if valid, false if invalid
+     */
+    function checkInput() : boolean {
         // reset info text and inputValid
         if( generalInfoRef.current )
             generalInfoRef.current.textContent = "";
@@ -70,24 +79,53 @@ function Login() {
         }
 
         if( !inputValid.every(v => v) )
-            return;
+            return false;
 
 
         // if not: send username and password to api
-        let token : webToken|null = null;
+        // and save result in lib/globalVars/loginToken
         if( generalInfoRef.current )
             generalInfoRef.current.textContent = "Überprüfe Ihre Daten...";
 
-        token = sendLoginData(username, password);
+        let loginToken : webToken|null = sendLoginData(username, password);
 
-        if( generalInfoRef.current ) {
-            if( token == null )
-                generalInfoRef.current.textContent = "Ihre Benutzerdaten waren falsch. Bitte prüfen Sie ihre Eingabe und versuchen Sie es erneut";
-            else
-                generalInfoRef.current.textContent = "";
+        // login not successful: 
+        if( loginToken == null ) {
+            if( generalInfoRef.current )
+                 generalInfoRef.current.textContent = "Ihre Benutzerdaten waren falsch. Bitte prüfen Sie ihre Eingabe und versuchen Sie es erneut";
+            return false;
+        }
+        // login successful: 
+        else {
+            setLoginState(loginToken);
+            if( generalInfoRef.current )
+                 generalInfoRef.current.textContent = "";
+            return true;
+        }
+    }
+
+    const redirectToProfile = () => navigate(PROFILE_URL, { replace: true });
+
+    function performLogin() : void {
+        // check Input values
+        if( !checkInput() )
+            return;
+
+        if( !isLoggedIn() ) {
+            if( generalInfoRef.current )
+                generalInfoRef.current.textContent = "Bei der Anmeldung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+            return;
         }
 
+        // redirect to profile-page
+        redirectToProfile();
 
+        if( nameRef.current )
+            nameRef.current.value = "";
+        if( passwordRef.current )
+            passwordRef.current.value = "";
+        if( generalInfoRef.current )
+            generalInfoRef.current.textContent = "Ihre Anmeldung war erfolgreich.";
     }
 
 
@@ -117,7 +155,7 @@ function Login() {
                 </div>
 
                 <button className="login-btn"
-                    onClick={checkInput}
+                    onClick={performLogin}
                 >
                     Login
                 </button>

@@ -206,15 +206,23 @@ export function sendFeedback(feedbackText : string) : void {
 }
 
 // TODO
-/** processes the input values and sends them to the api
+/** processes the login values and sends them to the api
  * @returns webToken, on error: null */
 export function sendLoginData( username : string, password : string ) : webToken|null  {
     let name: string = processForAPISend(username);
     let pass: string = processForAPISend(password);
 
-    return null;;
+    let token : webToken = {
+        username: "a user",
+        date: Date.now(),
+    }
+
+    return token;
 }
 
+// TODO
+/** sends the topic status to the api when topic is completed
+ */
 export function sendTopicStatus( roomID: number, topicID: number, complete: boolean ) {
 
 }
