@@ -107,7 +107,7 @@ function AppHeader() {
             </div>
 
             {/* NAVIGATION */}
-            {navVisible && 
+            {navVisible && (
                 <section className='navigation'>
                     <div className='navigation-container'>
 
@@ -122,9 +122,13 @@ function AppHeader() {
                                 </div>
                             </div>
 
-                            <p onClick={() => navigate(PROFILE_URL)}>
-                                Profil
-                            </p>
+
+                            {loggedIn && (
+                                <p onClick={() => navigate(PROFILE_URL)}>
+                                    Profil
+                                </p>
+                            )}
+
 
                             {/* LINKS */}
                             <div className='navigation-links-container'>
@@ -158,7 +162,7 @@ function AppHeader() {
                         onClick={handleNavigationToggle}
                     />
                 </section>
-            }
+            )}
 
         </header>
     );

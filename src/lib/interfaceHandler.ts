@@ -47,6 +47,6 @@ export interface feedbackContent {
 
 // JSON web token
 export interface webToken {
-    username: string,
-    date: number
+    username: string;
+    date: number;
 }

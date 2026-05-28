@@ -1,4 +1,4 @@
-import React from "react";
+import { sendLogoutSignal } from "./apiHandler";
 import type { webToken } from "./interfaceHandler";
 import { getFromSessionStorage, saveToSessionStorage } from "./sessionStorageHandler";
 
@@ -20,19 +20,28 @@ export const isLoggedIn = () => {
     if( token == null || typeof token == 'undefined' )
         return false;
 
-    // check date and reset token if logged in longer than one day
-    /*if( (Date.now()-token?.date) > 1 ) {
-        setLoginToken(null);
+    // check date and logout, if logged in longer than one day
+    if( (Date.now()-token?.date) > 86400000 ) {
+        setLoginState(null);
         return false;
-    }*/
+    }
 
     return true;
 }
 
+/**
+ * saves the api recieved jwt to session storage 
+ * sends logout singal to api when token is null and clears token
+ * @param token 
+ */
 export const setLoginState = (token : webToken|null) => {
-    // TODO
-    //if( token == null )
-        // set logout signal to backend to remove cookie
+    // if token is null
+    // set logout signal to api to remove cookie
+    if( token == null ) {
+        sendLogoutSignal();
+        sessionStorage.removeItem(loginTokenKey);
+        return;
+    }
         
     saveToSessionStorage( loginTokenKey, JSON.stringify(token) );
 }

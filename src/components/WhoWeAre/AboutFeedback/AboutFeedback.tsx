@@ -4,12 +4,15 @@ import './AboutFeedback.scss'
 
 import { sanitizeString } from '../../../lib/stringHandler';
 import { sendFeedback } from '../../../lib/apiHandler';
+import { isLoggedIn } from '../../../lib/globalVars';
 
 
 function AboutFeedback() {
     
     const feedbackInBoxRef = React.useRef<HTMLTextAreaElement | null>(null);
     const [placeholderText, setPlaceholder] = React.useState("Wir sind offen für Kommentare, Anregungen und Kritik.");
+
+    let loggedIn = isLoggedIn();
 
     function commitFeedback() {
         let feedbackText: string;
@@ -39,24 +42,37 @@ function AboutFeedback() {
     
 
     return (
-        <section className="about-feedback-wrapper">
-            <p className='feedback-intro-text'>
-                Bitte schreiben Sie uns, falls Sie Feedback haben.
-            </p>
+        <>
+        {loggedIn ? (
 
-            <textarea 
-                className='feedback-textbox' 
-                id='feedback-textbox'
-                placeholder={placeholderText}
-                ref={feedbackInBoxRef}
-            />
+            <section className="about-feedback-wrapper">
+                <p className='feedback-intro-text'>
+                    Bitte schreiben Sie uns, falls Sie Feedback haben.
+                </p>
 
-            <p className='feedback-send-btn highlight-btn-medium'
-                onClick={() => commitFeedback()}
-            >
-                Senden
-            </p>
-        </section>
+                <textarea 
+                    className='feedback-textbox' 
+                    id='feedback-textbox'
+                    placeholder={placeholderText}
+                    ref={feedbackInBoxRef}
+                />
+
+                <p className='feedback-send-btn highlight-btn-medium'
+                    onClick={() => commitFeedback()}
+                >
+                    Senden
+                </p>
+            </section>
+
+            ) : (
+
+                <p className='feedback-intro-text'>
+                    Bitte loggen Sie sich ein, um Feedback zu hinterlassen.
+                </p>
+                
+            )
+        }
+        </>
     );
 
 }

@@ -183,6 +183,34 @@ export function recieveRoomContent(roomName : string) : roomContent {
 //===================================================
 //====                    SEND                   ====
 //===================================================
+
+// TODO
+/** processes the login values and sends them to the api
+ * @returns webToken, on error: null */
+export function sendLoginData( username : string, password : string ) : webToken|null  {
+    let name: string = processForAPISend(username);
+    let pass: string = processForAPISend(password);
+
+    let token : webToken = {
+        username: "a user",
+        date: Date.now(),
+    }
+
+    return token;
+}
+
+/** sends a signup call to the api 
+ * @returns empty string, if a account was created, on error: error-message */
+export function sendSignupData( username : string, password : string ) : string {
+    return "";
+}
+
+// TODO
+export function sendLogoutSignal() {
+
+}
+
+
 export function sendFeedback(feedbackText : string) : void {
     // check validity
     if( feedbackText === null || typeof feedbackText != 'string' || feedbackText.length <= 0  )
@@ -203,21 +231,6 @@ export function sendFeedback(feedbackText : string) : void {
     // send json to API
     // TODO
 
-}
-
-// TODO
-/** processes the login values and sends them to the api
- * @returns webToken, on error: null */
-export function sendLoginData( username : string, password : string ) : webToken|null  {
-    let name: string = processForAPISend(username);
-    let pass: string = processForAPISend(password);
-
-    let token : webToken = {
-        username: "a user",
-        date: Date.now(),
-    }
-
-    return token;
 }
 
 // TODO
