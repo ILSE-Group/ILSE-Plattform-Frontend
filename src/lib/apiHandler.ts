@@ -1,4 +1,4 @@
-import type { roomList, roomContent, feedbackContent, webToken } from "./interfaceHandler";
+import type { roomList, roomContent, feedbackContent, webToken, registerSignalContent, loginSignalContent } from "./interfaceHandler";
 
 import { API_URL } from "./globalVars";
 import { sanitizeString, processForAPISend } from "./stringHandler";
@@ -7,6 +7,7 @@ import { sanitizeString, processForAPISend } from "./stringHandler";
 //===================================================
 //====                  RECIEVE                 =====
 //===================================================
+// TODO
 /**
  * Returns all rooms with name, image-source and desription
  * @returns roomList json, on error: null
@@ -45,6 +46,7 @@ export function recieveRoomsList() : roomList {
     */
 }
 
+// TODO
 /** 
  * Returns the room content as json object
  * @returns roomContent JSON, on error: null
@@ -191,27 +193,46 @@ export function sendLoginData( username : string, password : string ) : webToken
     let name: string = processForAPISend(username);
     let pass: string = processForAPISend(password);
 
+    let signalContent : loginSignalContent = {
+        username: name,
+        password: pass,
+    }
+
+    // TODO: remove(testdata)
     let token : webToken = {
-        username: "a user",
+        username: "testuser",
         date: Date.now(),
     }
 
     return token;
 }
 
+// TODO
 /** sends a signup call to the api 
  * @returns empty string, if a account was created, on error: error-message */
 export function sendSignupData( username : string, password : string ) : string {
+    let name: string = processForAPISend(username);
+    let pass: string = processForAPISend(password);
+
+    let signalContent : registerSignalContent = {
+        username: name,
+        password: pass,
+    }
+
+    JSON.stringify(signalContent);
+
     return "";
 }
 
 // TODO
-export function sendLogoutSignal() {
+export function sendLogoutSignal( ) {
+    
+
 
 }
 
 
-export function sendFeedback(feedbackText : string) : void {
+export function sendFeedback( feedbackText : string ) : void {
     // check validity
     if( feedbackText === null || typeof feedbackText != 'string' || feedbackText.length <= 0  )
         return;
@@ -237,5 +258,8 @@ export function sendFeedback(feedbackText : string) : void {
 /** sends the topic status to the api when topic is completed
  */
 export function sendTopicStatus( roomID: number, topicID: number, complete: boolean ) {
+    if( !complete )
+        return;
+
 
 }

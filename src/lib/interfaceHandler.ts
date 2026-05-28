@@ -38,6 +38,7 @@ export interface exerciseAnswer {
     fitsTo: number;
 }
 
+
 // feedback text
 //  used in: AboutFeedback
 export interface feedbackContent {
@@ -45,8 +46,20 @@ export interface feedbackContent {
     feedbackText: string;
 }
 
+
 // JSON web token
 export interface webToken {
     username: string;
     date: number;
+}
+
+
+export interface loginSignalContent {
+    username: string;
+    password: string;
+}
+
+export interface registerSignalContent {
+    username: string;
+    password: string;
 }

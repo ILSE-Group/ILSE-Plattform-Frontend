@@ -9,6 +9,7 @@ import RoomTopic from './RoomTopic/RoomTopic';
 import type { roomContent } from '../../lib/interfaceHandler';
 import { getRoomContent } from '../../lib/dataHandler';
 import { sendTopicStatus } from '../../lib/apiHandler';
+import { isLoggedIn } from '../../lib/globalVars';
 
 
 interface RoomViewProps {
@@ -37,7 +38,7 @@ function RoomViewPage( {roomName} : RoomViewProps ) {
             return next;
         });
         
-        if( isCompleted )
+        if( isCompleted && isLoggedIn() )
             sendTopicStatus(content.roomID, topicID, isCompleted);
     }
 
