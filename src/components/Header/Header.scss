@@ -134,7 +134,7 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
-    gap: 10vh;
+    gap: 3.5rem;
 
     z-index: 80;
     overflow: auto;
@@ -171,15 +171,17 @@
 .navigation-quickactions-container {
     height: max-content;
 
+    margin-bottom: 3rem;
+
     flex-direction: column;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 4vh;
+    gap: 2.4rem;
 }
 // switch für light dark mode
 .theme.switch {
-    width: 52px;
-    height: 28px;
+    width: 52%;
+    height: 28%;
     border-radius: 99px;
 
     background: var(--bgColorMediumContrast);
@@ -213,19 +215,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     cursor: pointer;
 }
 
 .switch {
-    width: 50px;
-    height: 26px;
-
-    border-radius: 2em;
     position: relative;
-    transition: background 0.3s ease;
 
-    display: flex;
+    width: 64px;
+    height: 30px;
+
+    padding: 4px;
+
+    border-radius: 999px;
+    background-color: var(--bgColorLowContrast);
+
+    display: flex; 
     align-items: center;
+
+    transition: background 0.3s ease;
 }
 
 // light mode
@@ -238,31 +246,36 @@
     background: var(--highlightColorHighContrast);
 }
 
-// thumb
-.thumb {
-    width: 20px;
-    height: 20px; 
+// switch animation
+.thumb { 
+    position: absolute;
 
-    position: absolute; 
-    left: 3px;
+    width: 20px;
+    height: 20px;
 
     border-radius: 50%;
-    transition: all 0.3s ease;
+    background-color: white;
 
-    background: white;
+    transition: transform 0.3s ease;
 }
 
-// move thumb when dark
+.switch.light .thumb {
+    left: 4px;
+}
+
 .switch.dark .thumb {
-    left: 27px;
+    left: 45px;
 }
 
 .icon {
   position: absolute;
   top: 50%;
+
   transform: translateY(-50%);
   font-size: 12px;
+  
   pointer-events: none;
+  user-select: none;
 }
 
 /* sun LEFT SIDE */
@@ -285,75 +298,19 @@
     flex-direction: column;
     justify-content: space-around;
 
-    gap: 2vh;
+    gap: 1.1rem;
 }
 
 //==========room-links==========
 .navigation-pagelinks-container {
     height: fit-content;
 
+    margin-bottom: 3vh;
+
     flex-direction: column;
     justify-content: flex-start;
-    gap: 2vh;
+    gap: 1.1rem;
 
     color: var(--fgColorHighContrast);
 }
 
-.theme-switch {
-    cursor: pointer;
-}
-
-.switch {
-    position: relative;
-
-    width: 64px;
-    height: 32px;
-
-    border-radius: 999px;
-
-    background-color: var(--bgColorLowContrast);
-
-    display: flex; 
-    align-items: center;
-
-    padding: 4px;
-
-    transition: background-color 0.3s ease;
-}
-
-
-// switch animation
-.thumb { 
-    position: absolute;
-
-    width: 24px;
-    height: 24px;
-
-    border-radius: 50%;
-
-    background-color: white;
-
-    transition: transform 0.3s ease;
-}
-
-.switch.light .thumb {
-    left: 4px;
-}
-
-.switch.dark .thumb {
-    left: 45px;
-}
-
-.icon {
-    position: absolute;
-    font-size: 14px;
-    user-select: none;
-}
-
-.icon.left {
-    left: 8px;
-}
-
-.icon.right {
-    right: 8px;
-}
