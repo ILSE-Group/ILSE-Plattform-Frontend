@@ -39,7 +39,6 @@ export interface exerciseAnswer {
     fitsTo: number;
 }
 
-
 // profile data
 // used in Profile page
 export interface profileContent {
@@ -48,8 +47,8 @@ export interface profileContent {
     level: number;
     levelDesc: string;
     levelProgress: number;
-    topicsProgress: profileTopicsProgress[];
     studentsInfo: profileStudentsInfo[] | null;
+    topicsProgress: profileTopicsProgress[];
 }
 export interface profileStudentsInfo {
     studentName: string;

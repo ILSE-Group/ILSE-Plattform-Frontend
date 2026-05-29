@@ -1,4 +1,4 @@
-import type { roomList, roomContent, feedbackContent, webToken, registerSignalContent, loginSignalContent } from "./interfaceHandler";
+import type { roomList, roomContent, feedbackContent, webToken, registerSignalContent, loginSignalContent, profileContent } from "./interfaceHandler";
 
 import { API_URL, getLoginToken } from "./globalVars";
 import { sanitizeString, processForAPISend } from "./stringHandler";
@@ -233,7 +233,7 @@ export function recieveProfileData() : profileContent {
                     },
                 ]
             },
-        ]
+        ],
         topicsProgress: [
             {
                 topicName: "topic One Name",
