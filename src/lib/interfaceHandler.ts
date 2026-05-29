@@ -1,3 +1,4 @@
+
 // room-list types 
 //  used in: CardsPage, Header, Footer
 export interface roomList {
@@ -39,7 +40,8 @@ export interface exerciseAnswer {
 }
 
 
-
+// profile data
+// used in Profile page
 export interface profileContent {
     username: string;
     userType: string;

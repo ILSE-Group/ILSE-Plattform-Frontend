@@ -183,7 +183,7 @@ export function recieveRoomContent(roomName : string) : roomContent {
 }
 
 // --------------------Profile-Data----------------------
-export function getProfileData() : profileContent {
+export function recieveProfileData() : profileContent {
     const profileData : profileContent = {
         username: "standard-user",
         userType: "teacher",
