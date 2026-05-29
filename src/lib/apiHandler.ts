@@ -182,6 +182,81 @@ export function recieveRoomContent(roomName : string) : roomContent {
     return data as roomContent;
 }
 
+// --------------------Profile-Data----------------------
+export function getProfileData() : profileContent {
+    const profileData : profileContent = {
+        username: "standard-user",
+        userType: "teacher",
+        level: 1,
+        levelDesc: "Anfänger",
+        levelProgress: 30,
+        studentsInfo: [
+            {
+                studentName: 'epicLion',
+                studentProgress: [
+                    {
+                        topicName: "topic One Name",
+                        topicProgress: 2,
+                    },
+                    {
+                        topicName: "topic Two Name",
+                        topicProgress: 80,
+                    },
+                    {
+                        topicName: "topic Three Name",
+                        topicProgress: 24,
+                    },
+                    {
+                        topicName: "topic Four Name",
+                        topicProgress: 50,
+                    },
+                ]
+            },
+            {
+                studentName: 'shyCobra',
+                studentProgress: [
+                    {
+                        topicName: "topic One Name",
+                        topicProgress: 90,
+                    },
+                    {
+                        topicName: "topic Two Name",
+                        topicProgress: 10,
+                    },
+                    {
+                        topicName: "topic Three Name",
+                        topicProgress: 1,
+                    },
+                    {
+                        topicName: "topic Four Name",
+                        topicProgress: 72,
+                    },
+                ]
+            },
+        ]
+        topicsProgress: [
+            {
+                topicName: "topic One Name",
+                topicProgress: 100,
+            },
+            {
+                topicName: "topic Two Name",
+                topicProgress: 99,
+            },
+            {
+                topicName: "topic Three Name",
+                topicProgress: 98,
+            },
+            {
+                topicName: "topic Four Name",
+                topicProgress: 100,
+            },
+        ]
+    }
+
+    return profileData as profileContent;
+}
+
 //===================================================
 //====                    SEND                   ====
 //===================================================

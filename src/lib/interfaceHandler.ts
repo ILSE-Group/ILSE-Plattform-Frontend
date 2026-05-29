@@ -39,6 +39,25 @@ export interface exerciseAnswer {
 }
 
 
+
+export interface profileContent {
+    username: string;
+    userType: string;
+    level: number;
+    levelDesc: string;
+    levelProgress: number;
+    topicsProgress: profileTopicsProgress[];
+    studentsInfo: profileStudentsInfo[] | null;
+}
+export interface profileStudentsInfo {
+    studentName: string;
+    studentProgress: profileTopicsProgress[];
+}
+export interface profileTopicsProgress {
+    topicName: string;
+    topicProgress: number;
+}
+
 // feedback text
 //  used in: AboutFeedback
 export interface feedbackContent {
