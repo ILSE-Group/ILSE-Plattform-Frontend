@@ -8,7 +8,11 @@ import { sendLoginData } from '../../../lib/apiHandler';
 import { PROFILE_URL, isLoggedIn, setLoginState } from '../../../lib/globalVars';
 
 
-function Login() {
+interface loginProps {
+    registrSuccess: boolean;
+}
+
+function Login( {registrSuccess} : loginProps ) {
     let nameRef = React.useRef<HTMLInputElement|null>(null);
     let nameInfoRef = React.useRef<HTMLParagraphElement|null>(null);
 
@@ -131,6 +135,10 @@ function Login() {
 
     return (
         <div className="login-container">
+            { registrSuccess && 
+                <p className='registSuccessMessage'>Ihre Registrierung war erfolgreich.<br />Bitte loggen Sie sich ein.</p>
+            }
+
             <h2>Einloggen</h2>
 
             <div className="login-form">

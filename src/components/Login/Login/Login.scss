@@ -15,6 +15,11 @@
     gap: 5vh;
 }
 
+.registSuccessMessage {
+    font-size: 15px;
+    color: var(--fgColorLowContrast);
+}
+
 .login-form {
     min-width: var(--login-min-width);
     width: 90%;

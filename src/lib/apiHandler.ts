@@ -1,6 +1,6 @@
 import type { roomList, roomContent, feedbackContent, webToken, registerSignalContent, loginSignalContent } from "./interfaceHandler";
 
-import { API_URL } from "./globalVars";
+import { API_URL, getLoginToken } from "./globalVars";
 import { sanitizeString, processForAPISend } from "./stringHandler";
 
 
@@ -186,6 +186,7 @@ export function recieveRoomContent(roomName : string) : roomContent {
 //====                    SEND                   ====
 //===================================================
 
+// ---------------------Account-Mgmt---------------------
 // TODO
 /** processes the login values and sends them to the api
  * @returns webToken, on error: null */
@@ -228,24 +229,33 @@ export function sendSignupData( username : string, password : string ) : string 
 export function sendLogoutSignal( ) {
     
 
-
 }
 
-
+// --------------------Feedback-Mgmt---------------------
 export function sendFeedback( feedbackText : string ) : void {
     // check validity
     if( feedbackText === null || typeof feedbackText != 'string' || feedbackText.length <= 0  )
         return;
 
+    // get and sanitize feedback
     let sanitizedFeedback = sanitizeString(feedbackText);
 
     if( sanitizedFeedback.length <= 0 )
         return;
 
+    // get username as string
+    let user : string = "";
+    let token : webToken|null = getLoginToken();
+    if( token != null ) {
+        if( typeof token.username === 'string' )
+            user = token.username;
+    }
+   
     // create roomContent json object
-    let content : feedbackContent =  {} as feedbackContent;
-    content.username = "";      // TODO: load logged in username
-    content.feedbackText = sanitizedFeedback;
+    let content : feedbackContent =  { 
+        username: user,
+        feedbackText: sanitizedFeedback,
+    } as feedbackContent;
 
     let jsonString : string = JSON.stringify(content);
 
@@ -254,6 +264,7 @@ export function sendFeedback( feedbackText : string ) : void {
 
 }
 
+// --------------------Content-Mgmt----------------------
 // TODO
 /** sends the topic status to the api when topic is completed
  */

@@ -30,8 +30,20 @@ export const isLoggedIn = () => {
 }
 
 /**
+ * gets the login token from session storage
+ * @returns webToken if logged in, otherwise null
+ */
+export const getLoginToken = () : webToken|null => {
+    let tokenString = getFromSessionStorage(loginTokenKey).trim();
+    if( tokenString.length <= 0 )
+        return null;
+
+    return JSON.parse(tokenString);
+}
+
+/**
  * saves the api recieved jwt to session storage 
- * sends logout singal to api when token is null and clears token
+ * when token is null: sends logout singal to api and clears token
  * @param token 
  */
 export const setLoginState = (token : webToken|null) => {

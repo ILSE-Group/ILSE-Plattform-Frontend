@@ -5,7 +5,11 @@ import React from 'react';
 import { sendSignupData } from '../../../lib/apiHandler';
 
 
-function Signup() {
+interface signupProps {
+    setLogin: () => void;
+}
+
+function Signup( { setLogin } : signupProps ) {
     let nameRef = React.useRef<HTMLInputElement|null>(null);
     let nameInfoRef = React.useRef<HTMLParagraphElement|null>(null);
 
@@ -24,102 +28,103 @@ function Signup() {
 
     function validateInput() : boolean {
         // reset info text and inputValid
-                if( generalInfoRef.current )
-                    generalInfoRef.current.textContent = "";
-                inputValid = [false, false, false];
+        if( generalInfoRef.current )
+            generalInfoRef.current.textContent = "";
+        inputValid = [false, false, false];
         
         
-                // check username
-                if( nameRef.current ) {
-                    if( nameRef.current.value.trim().length > 0) {
-                        username = nameRef.current.value.trim();
-                        inputValid[0] = true;
-                        if( nameInfoRef.current )
-                            nameInfoRef.current.textContent = "";
-                    }
-                    else {
-                        username = "";
-                        inputValid[0] = false;
-                        if( nameInfoRef.current )
-                            nameInfoRef.current.textContent = "Bitte geben Sie einen Benutzernamen ein.";
-                    }
-                }
-                else {
-                    inputValid[0] = false;
-                    if( nameInfoRef.current )
-                            nameInfoRef.current.textContent = "Bitte geben Sie einen Benutzernamen ein.";
-                }
+        // check username input
+        if( nameRef.current ) {
+            if( nameRef.current.value.trim().length > 0) {
+                username = nameRef.current.value.trim();
+                inputValid[0] = true;
+                if( nameInfoRef.current )
+                    nameInfoRef.current.textContent = "";
+            }
+            else {
+                username = "";
+                inputValid[0] = false;
+                if( nameInfoRef.current )
+                    nameInfoRef.current.textContent = "Bitte geben Sie einen Benutzernamen ein.";
+            }
+        }
+        else {
+            inputValid[0] = false;
+            if( nameInfoRef.current )
+                nameInfoRef.current.textContent = "Bitte geben Sie einen Benutzernamen ein.";
+        }
                 
-                // check password
-                if( passRef.current ) {
-                    if( passRef.current.value.trim().length > 0) {
-                        password = passRef.current.value.trim();
-                        inputValid[1] = true;
-                        if( passInfoRef.current )
-                            passInfoRef.current.textContent = "";
-                    }
-                    else {
-                        password = "";
-                        inputValid[1] = false;
-                        if( passInfoRef.current )
-                            passInfoRef.current.textContent = "Bitte geben Sie ein Passwort ein.";
-                    }
-                }
-                else {
-                    inputValid[1] = false;
-                    if( passInfoRef.current )
-                            passInfoRef.current.textContent = "Bitte geben Sie ein Passwort ein.";
-                }
+        // check password input
+        if( passRef.current ) {
+            if( passRef.current.value.trim().length > 0) {
+                password = passRef.current.value.trim();
+                inputValid[1] = true;
+                if( passInfoRef.current )
+                    passInfoRef.current.textContent = "";
+            }
+            else {
+                password = "";
+                inputValid[1] = false;
+                if( passInfoRef.current )
+                    passInfoRef.current.textContent = "Bitte geben Sie ein Passwort ein.";
+            }
+        }
+        else {
+            inputValid[1] = false;
+            if( passInfoRef.current )
+                passInfoRef.current.textContent = "Bitte geben Sie ein Passwort ein.";
+        }
 
-                // check verify password input
-                if( validatePassRef.current ) {
-                    if( validatePassRef.current.value.trim().length > 0) {
-                        if( password != validatePassRef.current.value ) {
-                            if( passValidInfoRef.current )
-                                passValidInfoRef.current.textContent = "Ihre Passwörter stimmen nicht überein.";
-                            return false;
-                        }
-                        inputValid[2] = true;
-                        if( passValidInfoRef.current )
-                            passValidInfoRef.current.textContent = "";
-                    }
-                    else {
-                        password = "";
-                        inputValid[2] = false;
-                        if( passValidInfoRef.current )
-                            passValidInfoRef.current.textContent = "Bitte geben Sie ihr Passwort erneut ein.";
-                    }
-                }
-                else {
-                    inputValid[2] = false;
+        // check verify password input
+        if( validatePassRef.current ) {
+            if( validatePassRef.current.value.trim().length > 0) {
+                if( password != validatePassRef.current.value ) {
                     if( passValidInfoRef.current )
-                            passValidInfoRef.current.textContent = "Bitte geben Sie ihr ein Passwort erneut ein.";
+                        passValidInfoRef.current.textContent = "Ihre Passwörter stimmen nicht überein.";
+                    return false;
                 }
+                inputValid[2] = true;
+                if( passValidInfoRef.current )
+                    passValidInfoRef.current.textContent = "";
+            }
+            else {
+                password = "";
+                inputValid[2] = false;
+                if( passValidInfoRef.current )
+                    passValidInfoRef.current.textContent = "Bitte geben Sie ihr Passwort erneut ein.";
+            }
+        }
+        else {
+            inputValid[2] = false;
+            if( passValidInfoRef.current )
+                passValidInfoRef.current.textContent = "Bitte geben Sie ihr ein Passwort erneut ein.";
+        }
 
         
-                if( !inputValid.every(v => v) )
-                    return false;
+        if( !inputValid.every(v => v) )
+            return false;
         
         
-                // if not: send username and password to api
-                // and save result in lib/globalVars/loginToken
-                if( generalInfoRef.current )
-                    generalInfoRef.current.textContent = "Überprüfe Ihre Daten...";
+        // if not: send username and password to api
+        // and save result in lib/globalVars/loginToken
+        if( generalInfoRef.current )
+            generalInfoRef.current.textContent = "Überprüfe Ihre Daten...";
         
-                let signupMsg : string = sendSignupData(username, password);
+        let singupErrMsg : string = sendSignupData(username, password);
+        singupErrMsg = singupErrMsg.trim();
         
-                // login not successful: 
-                if( signupMsg.trim().length > 0 ) {
-                    if( generalInfoRef.current )
-                         generalInfoRef.current.textContent = signupMsg;
-                    return false;
-                }
-                // login successful: 
-                else {
-                    if( generalInfoRef.current )
-                         generalInfoRef.current.textContent = "";
-                    return true;
-                }
+        // login not successful: 
+        if( singupErrMsg.length > 0 ) {
+            if( generalInfoRef.current )
+                generalInfoRef.current.textContent = singupErrMsg;
+            return false;
+        }
+        // login successful: 
+        else {
+            if( generalInfoRef.current )
+                generalInfoRef.current.textContent = "";
+            return true;
+        }
     }
 
     function performSignup() {
@@ -128,6 +133,8 @@ function Signup() {
 
         if( generalInfoRef.current )
             generalInfoRef.current.textContent = "Ihre Registrierung war erfolgreich. Bitte loggen Sie sich ein.";
+
+        setLogin();
 
         if( nameRef.current )
             nameRef.current.value = "";
