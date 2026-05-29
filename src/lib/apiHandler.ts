@@ -187,8 +187,8 @@ export function recieveProfileData() : profileContent {
     const profileData : profileContent = {
         username: "standard-user",
         userType: "teacher",
-        level: 1,
-        levelDesc: "Anfänger",
+        level: 20,
+        levelDesc: "Profi",
         levelProgress: 30,
         studentsInfo: [
             {
@@ -197,46 +197,17 @@ export function recieveProfileData() : profileContent {
                     {
                         roomID: 0,
                         roomName: "Passwort-Sicherheit",
-                        topicsProgress: [
-                            {
-                                topicName: "topic One Name",
-                                topicProgress: 1,
-                            },
-                            {
-                                topicName: "topic Two Name",
-                                topicProgress: 34,
-                            },
-                            {
-                                topicName: "topic Three Name",
-                                topicProgress: 70,
-                            },
-                            {
-                                topicName: "topic Four Name",
-                                topicProgress: 50,
-                            },
-                        ]
+                        roomProgress: 89,
                     },
                     {
                         roomID: 1,
                         roomName: "Cybermobbing",
-                        topicsProgress: [
-                            {
-                                topicName: "topic One Name",
-                                topicProgress: 80,
-                            },
-                            {
-                                topicName: "topic Two Name",
-                                topicProgress: 19,
-                            },
-                            {
-                                topicName: "topic Three Name",
-                                topicProgress: 83,
-                            },
-                            {
-                                topicName: "topic Four Name",
-                                topicProgress: 50,
-                            },
-                        ]
+                        roomProgress: 16,
+                    },
+                    {
+                        roomID: 2,
+                        roomName: "Phishing",
+                        roomProgress: 16,
                     },
                 ]
             },
@@ -246,46 +217,17 @@ export function recieveProfileData() : profileContent {
                     {
                         roomID: 0,
                         roomName: "Passwort-Sicherheit",
-                        topicsProgress: [
-                            {
-                                topicName: "topic One Name",
-                                topicProgress: 0,
-                            },
-                            {
-                                topicName: "topic Two Name",
-                                topicProgress: 20,
-                            },
-                            {
-                                topicName: "topic Three Name",
-                                topicProgress: 10,
-                            },
-                            {
-                                topicName: "topic Four Name",
-                                topicProgress: 0,
-                            },
-                        ]
+                        roomProgress: 0,
                     },
                     {
                         roomID: 1,
                         roomName: "Cybermobbing",
-                        topicsProgress: [
-                            {
-                                topicName: "topic One Name",
-                                topicProgress: 80,
-                            },
-                            {
-                                topicName: "topic Two Name",
-                                topicProgress: 19,
-                            },
-                            {
-                                topicName: "topic Three Name",
-                                topicProgress: 83,
-                            },
-                            {
-                                topicName: "topic Four Name",
-                                topicProgress: 50,
-                            },
-                        ]
+                        roomProgress: 100,
+                    },
+                    {
+                        roomID: 2,
+                        roomName: "Phishing",
+                        roomProgress: 49,
                     },
                 ]
             },
@@ -294,46 +236,17 @@ export function recieveProfileData() : profileContent {
             {
                 roomID: 0,
                 roomName: "Passwort-Sicherheit",
-                topicsProgress: [
-                    {
-                        topicName: "topic One Name",
-                        topicProgress: 100,
-                    },
-                    {
-                        topicName: "topic Two Name",
-                        topicProgress: 99,
-                    },
-                    {
-                        topicName: "topic Three Name",
-                        topicProgress: 98,
-                    },
-                    {
-                        topicName: "topic Four Name",
-                        topicProgress: 100,
-                    },
-                ]
+                roomProgress: 100,
             },
             {
                 roomID: 1,
                 roomName: "Cybermobbing",
-                topicsProgress: [
-                    {
-                        topicName: "topic One Name",
-                        topicProgress: 100,
-                    },
-                    {
-                        topicName: "topic Two Name",
-                        topicProgress: 99,
-                    },
-                    {
-                        topicName: "topic Three Name",
-                        topicProgress: 98,
-                    },
-                    {
-                        topicName: "topic Four Name",
-                        topicProgress: 100,
-                    },
-                ]
+                roomProgress: 98,
+            },
+            {
+                roomID: 2,
+                roomName: "Phishing",
+                roomProgress: 89,
             },
         ]
     }

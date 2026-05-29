@@ -57,11 +57,7 @@ export interface profileStudentsInfo {
 export interface profileRoomsProgress {
     roomID: number;
     roomName: string;
-    topicsProgress: profileTopicsProgress[];
-}
-export interface profileTopicsProgress {
-    topicName: string;
-    topicProgress: number;
+    roomProgress: number;
 }
 
 // feedback text
