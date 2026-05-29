@@ -48,11 +48,16 @@ export interface profileContent {
     levelDesc: string;
     levelProgress: number;
     studentsInfo: profileStudentsInfo[] | null;
-    topicsProgress: profileTopicsProgress[];
+    roomsProgress: profileRoomsProgress[];
 }
 export interface profileStudentsInfo {
     studentName: string;
-    studentProgress: profileTopicsProgress[];
+    studentProgress: profileRoomsProgress[];
+}
+export interface profileRoomsProgress {
+    roomID: number;
+    roomName: string;
+    topicsProgress: profileTopicsProgress[];
 }
 export interface profileTopicsProgress {
     topicName: string;
