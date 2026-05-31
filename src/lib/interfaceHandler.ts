@@ -60,6 +60,14 @@ export interface profileRoomsProgress {
     roomProgress: number;
 }
 
+// teacher request to manage student account
+// with managementType: 'add', 'delete', 'passReset'
+export interface requestStudentManagement {
+    managementType: string;
+    studentName: string | null;
+    studentCount: number | null;
+}
+
 // feedback text
 //  used in: AboutFeedback
 export interface feedbackContent {

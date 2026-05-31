@@ -3,8 +3,11 @@ import type { webToken } from "./interfaceHandler";
 import { getFromSessionStorage, saveToSessionStorage } from "./sessionStorageHandler";
 
 
-export const ROOMS_LINK_URL : string = '/rooms';
+export const HOME_URL : string = '/';
+export const LOGIN_URL : string = '/login';
+export const ABOUT_URL : string = '/about';
 export const PROFILE_URL : string = '/profile';
+export const ROOMS_LINK_URL : string = '/rooms';
 
 export const API_URL : string = 'our.api.com/';
 

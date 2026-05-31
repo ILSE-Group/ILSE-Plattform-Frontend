@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
 import { getRoomNames } from '../../lib/dataHandler';
-import { ROOMS_LINK_URL, PROFILE_URL, isLoggedIn, setLoginState } from '../../lib/globalVars';
 import { getFromSessionStorage, saveToSessionStorage } from '../../lib/sessionStorageHandler';
+import { HOME_URL, LOGIN_URL, ABOUT_URL, ROOMS_LINK_URL, PROFILE_URL, isLoggedIn, setLoginState } from '../../lib/globalVars';
 
 
 function AppHeader() {
@@ -80,7 +80,7 @@ function AppHeader() {
 
                 {/* LOGO */}
                 <div className='header-button header-homebtn-container' 
-                onClick={() => navigate('/')}>
+                onClick={() => navigate(HOME_URL)}>
                     <img src={logo} alt="" className='header-logo'/>
                     <p className='header-homebtn-label'>ILSE</p>
                 </div>
@@ -90,13 +90,13 @@ function AppHeader() {
                 {
                     loggedIn ? (
                         <p className="header-loginbtn-label highlight-btn-medium"
-                            onClick={() => { setLoginState(null); navigate('/'); }}
+                            onClick={() => { setLoginState(null); navigate(HOME_URL); }}
                         >
                             Abmelden
                         </p>
                     ) : (
                         <p className="header-loginbtn-label highlight-btn-medium"
-                            onClick={() => navigate('/login')}
+                            onClick={() => navigate(LOGIN_URL)}
                         >
                             Login
                         </p>
@@ -132,13 +132,13 @@ function AppHeader() {
 
                             {/* LINKS */}
                             <div className='navigation-links-container'>
-                                <p onClick={() => navigate('/')}>
+                                <p onClick={() => navigate(HOME_URL)}>
                                     Home
                                 </p>
-                                <p onClick={() => navigate('/login')}>
+                                <p onClick={() => navigate(LOGIN_URL)}>
                                     Login
                                 </p>
-                                <p onClick={() => navigate('/about')}>
+                                <p onClick={() => navigate(ABOUT_URL)}>
                                     Impressum
                                 </p>
                             </div>
