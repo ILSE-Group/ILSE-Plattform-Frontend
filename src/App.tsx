@@ -32,7 +32,7 @@ function App() {
               return <Route 
                         key={name}
                         path={roomsLink.concat(name)}
-                        element={<RoomViewPage roomName={name} />} 
+                        element={<RoomViewPage key={name} roomName={name} />} 
                       />;
             })
           }

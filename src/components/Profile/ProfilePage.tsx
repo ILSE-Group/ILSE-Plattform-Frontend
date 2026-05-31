@@ -1,16 +1,19 @@
-//import './ProfilePage.scss';
+import './ProfilePage.scss';
 
 import AppHeader from '../Header/Header';
-import Profile from './Profile/Profile';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
+import StudentDashboard from './StudentDashboard/StudentDashboard';
 
 function ProfilePage() {
 
     return(
-        <>
+        <section className='profile-wrapper'>
             <AppHeader />
 
-            <Profile />
-        </>
+            <ProfileInfo />
+
+            <StudentDashboard />
+        </section>
     );
 
 }
