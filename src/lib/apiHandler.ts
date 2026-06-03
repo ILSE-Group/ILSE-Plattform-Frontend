@@ -1,4 +1,4 @@
-import type { roomList, roomContent, feedbackContent, webToken, registerSignalContent, loginSignalContent, profileContent, createdStudentsInfo } from "./interfaceHandler";
+import type { roomList, roomContent, feedbackContent, webToken, registerSignalContent, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement } from "./interfaceHandler";
 
 import { API_URL, getLoginToken } from "./globalVars";
 import { sanitizeString, processForAPISend } from "./stringHandler";
@@ -302,6 +302,13 @@ export function sendLogoutSignal( ) {
 
 // TODO
 export function addNewStudents( count : number ) : createdStudentsInfo {
+    /* 
+    const requestContent : requestStudentManagement = {
+        managementType: "add",
+        studentName: null,
+        studentCount: count,
+    }
+    */
     
     const addedStudents : createdStudentsInfo = {
         studentInfo : [
@@ -317,6 +324,20 @@ export function addNewStudents( count : number ) : createdStudentsInfo {
     };
 
     return addedStudents as createdStudentsInfo;
+}
+
+// TODO
+export function manageStudentAcc( managementType : string, studentName : string ) : string {
+    
+    const requestContent : requestStudentManagement = {
+        managementType: managementType,
+        studentName: studentName,
+        studentCount: null,
+    }
+
+    return 'password123';
+
+
 }
 
 // --------------------Feedback-Mgmt---------------------

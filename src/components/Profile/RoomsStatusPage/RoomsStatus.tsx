@@ -1,5 +1,7 @@
 import './RoomsStatus.scss';
 
+import React from 'react';
+
 import type { profileRoomsProgress } from '../../../lib/interfaceHandler';
 
 
@@ -11,6 +13,17 @@ interface RoomsStatusProps {
 
 function RoomsStatus( { roomInfo } : RoomsStatusProps ) {
 
+    let progBarFillRef = React.useRef<HTMLDivElement | null>(null);
+
+    React.useEffect(() => {
+        if( !Number.isInteger(roomInfo.roomProgress) || roomInfo.roomProgress > 100 || roomInfo.roomProgress < 0 )
+            return;
+
+        if( progBarFillRef.current )
+            progBarFillRef.current.style.width = roomInfo.roomProgress.toString().concat("%");
+        
+    }, [roomInfo.roomProgress]);
+
     return(
         <div className='rooms-status-wrapper'>
             <p className='rooms-status-element'>
@@ -18,7 +31,9 @@ function RoomsStatus( { roomInfo } : RoomsStatusProps ) {
             </p>
 
             <div className='status-progress-bar'> {/* TODO: progress bar */}
-                <div>
+                <div className='status-progressbar-fill'
+                    ref={progBarFillRef}
+                >
 
                 </div>
             </div>
