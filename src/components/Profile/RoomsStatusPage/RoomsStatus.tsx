@@ -12,16 +12,20 @@ interface RoomsStatusProps {
 function RoomsStatus( { roomInfo } : RoomsStatusProps ) {
 
     return(
-        <div>
-            <p>{roomInfo?.roomName}</p>
+        <div className='rooms-status-wrapper'>
+            <p className='rooms-status-element'>
+                {roomInfo?.roomName}
+            </p>
 
-            <div> {/* progress bar */}
+            <div className='status-progress-bar'> {/* TODO: progress bar */}
                 <div>
 
                 </div>
             </div>
 
-            <p>{roomInfo?.roomProgress} %</p>
+            <p className='rooms-status-element'>
+                {roomInfo?.roomProgress} %
+            </p>
 
         </div>
     )

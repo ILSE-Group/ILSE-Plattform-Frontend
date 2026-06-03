@@ -1,0 +1,24 @@
+
+.rooms-status-wrapper {
+    height: auto;
+    width: 100%;
+
+    margin: 1vh 0 1vh 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.rooms-status-element {
+    height: 5vh;
+    width: 20%;
+}
+
+.status-progress-bar {
+    height: 1.5rem;
+    width: 30%;
+
+    background-color: var(--bgColorMediumContrast);
+}
