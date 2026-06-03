@@ -15,7 +15,7 @@ function StudentList( { studentsInfo } : StudListProps ) {
         <div>
 
             {studentsInfo.map((info, idx) => 
-                <div className='student-info-wrapper'>
+                <div className='student-info-wrapper' key={idx}>
                     <StudentInfoElement key={idx} studentInfo={info} />
                 </div>
             )}

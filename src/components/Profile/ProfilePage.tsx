@@ -18,7 +18,11 @@ function ProfilePage() {
 
             <ProfileInfo content={content} />
 
-            <StudentDashboard studentsInfo={content.studentsInfo} />
+            {content.userType == "teacher" ? (
+                <StudentDashboard studentsInfo={content.studentsInfo} />
+                ) : ( null )
+            }
+            
         </section>
     );
 

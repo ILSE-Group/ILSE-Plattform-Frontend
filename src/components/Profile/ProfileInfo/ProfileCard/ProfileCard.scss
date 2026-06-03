@@ -1,6 +1,8 @@
+@use "../../../../lib/styles.scss";
+
 
 .profile-card {
-    width: 420px; 
+    width: 80%; 
 
     background-color: var(--bgColorMediumContrast); 
 
@@ -15,6 +17,12 @@
     gap: 16px; 
 
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+@media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+    .profile-card {
+        width: 420px; 
+    }
 }
 
 /* avatar */ 
