@@ -69,6 +69,14 @@ export interface requestStudentManagement {
     studentCount: number | null;
 }
 
+export interface createdStudentsInfo {
+    studentInfo: newStudentInfo[];
+}
+export interface newStudentInfo {
+    username: string;
+    tempPassword: string;
+}
+
 // feedback text
 //  used in: AboutFeedback
 export interface feedbackContent {

@@ -1,4 +1,4 @@
-import type { roomList, roomContent, feedbackContent, webToken, registerSignalContent, loginSignalContent, profileContent } from "./interfaceHandler";
+import type { roomList, roomContent, feedbackContent, webToken, registerSignalContent, loginSignalContent, profileContent, createdStudentsInfo } from "./interfaceHandler";
 
 import { API_URL, getLoginToken } from "./globalVars";
 import { sanitizeString, processForAPISend } from "./stringHandler";
@@ -302,6 +302,25 @@ export function sendSignupData( username : string, password : string ) : string 
 export function sendLogoutSignal( ) {
     
 
+}
+
+// TODO
+export function addNewStudents( count : number ) : createdStudentsInfo {
+    
+    const addedStudents : createdStudentsInfo = {
+        studentInfo : [
+            {
+                username: "angrySloth",
+                tempPassword: "asdfasdfasdf",
+            },
+            {
+                username: "frightendGorilla",
+                tempPassword: "fdsafdsafdsa",
+            },
+        ],
+    };
+
+    return addedStudents as createdStudentsInfo;
 }
 
 // --------------------Feedback-Mgmt---------------------
