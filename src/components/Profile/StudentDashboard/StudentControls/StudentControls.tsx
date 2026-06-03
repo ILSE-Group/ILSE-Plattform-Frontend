@@ -21,20 +21,27 @@ function StudentControls( { studentsInfo } : StudCtrlProps ) {
     }
 
     return(
-        <div>
-            <p onClick={toggleAddStudents}>
-                Add Students by count
-            </p>
-            {addStudentOpened &&
-                <AddStudentControl  />
-            }
+        <div className="student-controls">
+            <button 
+                className="add-student-btn"
+                onClick={toggleAddStudents}
 
-            {studentsInfo.map((info, idx) => 
-                <StudentControlElement key={idx} studentName={info.studentName} />
-            )}
+                > Add Students 
 
-        </div>
-    );
+                </button>
+
+                {addStudentOpened &&
+                    <AddStudentControl />
+                }
+
+                {studentsInfo.map((info, idx) => (
+                    <StudentControlElement
+                        key={idx}
+                        studentName={info.studentName}
+                        /> 
+                    ))}
+                </div>
+                );
 
 }
 

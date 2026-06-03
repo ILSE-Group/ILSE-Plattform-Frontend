@@ -30,11 +30,11 @@ export function recieveRoomsList() : roomList {
             imageSrc: "../assets/logo.svg",
             description: "Wie erkenne ich eine Phishing-Mail? Was ist zu tun, wenn ich meine Daten eingegeben habe?",
         },
-        room4: {
+        /*room4: {
             name: "room4",
             imageSrc: "../assets/logo.svg",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        }
+        } */
     };
     return data as roomList;
 

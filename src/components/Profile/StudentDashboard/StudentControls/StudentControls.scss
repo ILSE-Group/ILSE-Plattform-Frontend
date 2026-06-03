@@ -1,0 +1,41 @@
+// button um schüler hinzuzufügen 
+
+.add-stnt-btn {
+   width: 60%;
+   min-height: 6vh; 
+   
+   margin: 2vh auto; 
+
+    border: none; 
+    border-radius: 2rem;
+
+    background-color: var(--highlightColorMediumContrast);
+    color: var(--fgColorContrast); 
+
+    font-size: 0.8rem; 
+    font-weight: 600; 
+
+    cursor: pointer; 
+
+    padding: 0.6rem 1.2rem;
+
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+
+    transition: transform 0.2s ease, 
+                box-shadow 0.25s ease, 
+                opacity 0.2s ease; 
+    
+}
+
+.add-student-btn:hover {
+    transform: scale(1.03); 
+
+    box-shadow: 
+        0 1vh 2vh rgba(0, 0, 0, 0.2); 
+}
+
+.add-student-btn:active {
+    transform: scale(0.98); 
+}
