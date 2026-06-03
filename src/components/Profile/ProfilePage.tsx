@@ -1,7 +1,7 @@
 import './ProfilePage.scss';
 
 import type { profileContent } from '../../lib/interfaceHandler';
-import { recieveProfileData } from '../../lib/apiHandler';
+import { getProfileData } from '../../lib/dataHandler';
 
 import AppHeader from '../Header/Header';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
@@ -10,7 +10,7 @@ import StudentDashboard from './StudentDashboard/StudentDashboard';
 
 function ProfilePage() {
 
-    let content : profileContent = recieveProfileData();
+    const content : profileContent = getProfileData();
 
     return(
         <section className='profile-wrapper'>

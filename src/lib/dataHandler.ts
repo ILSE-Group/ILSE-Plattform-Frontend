@@ -1,8 +1,9 @@
-import { getFromSessionStorage, saveToSessionStorage } from "./sessionStorageHandler";
-import { recieveRoomsList, recieveRoomContent } from "./apiHandler";
-
-import type { roomList, roomListItem, roomContent } from "./interfaceHandler";
+import type { roomList, roomListItem, roomContent, profileContent } from "./interfaceHandler";
 import { sanitizeString } from "./stringHandler";
+
+import { getFromSessionStorage, saveToSessionStorage } from "./sessionStorageHandler";
+import { recieveRoomsList, recieveRoomContent, recieveProfileData } from "./apiHandler";
+
 
 //-----------------Room-List-Info-----------------
 /**
@@ -49,9 +50,54 @@ export function getRoomNames() : string[] {
 }
 
 
-
 //------------------Room-Content------------------
-
+// TODO
 export function getRoomContent(roomName: string) : roomContent {
-    return recieveRoomContent(roomName);
+    let sanitizedRoomName = sanitizeString(roomName);
+    if(sanitizedRoomName.length <= 0) {
+        return {
+            roomID: 0,
+            roomName: 'Invalid Room',
+            roomTopic: [
+                {
+                    topicID: 0,
+                    topicName: 'Invalid Topic',
+                    exercise: {
+                        exerciseType: 'Invalid Exercise',
+                        completed: false,
+                        question: {
+                            questionText: 'Invalid Question',
+                            answer: [
+                                {
+                                    answerID: 0,
+                                    answerText: 'Invalid Answer',
+                                    isCorrect: false,
+                                    fitsTo: 0,
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        } as roomContent;
+    }
+
+    let roomData : roomContent = recieveRoomContent(sanitizedRoomName);
+
+    while( roomData == null || typeof roomData === 'undefined' )
+        roomData = recieveRoomContent(sanitizedRoomName);
+
+    return roomData;
+}
+
+
+//-----------------Profile-Content----------------
+// TODO
+export function getProfileData() : profileContent {
+    let profileData : profileContent = recieveProfileData();
+
+    while( profileData == null || typeof profileData === 'undefined' )
+        profileData = recieveProfileData();
+
+    return profileData;
 }

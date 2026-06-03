@@ -54,10 +54,6 @@ export function recieveRoomsList() : roomList {
 export function recieveRoomContent(roomName : string) : roomContent {
     //TODO: implement with json
     /*
-    let targetRoom : string = sanitizeString(roomName);
-    if( targetRoom.length <= 0 )
-        return null;
-
     return fetch('room/content/url/'.append(targetRoom))
         .then(res => res.json())
         .then(res => {return res as roomContent }
