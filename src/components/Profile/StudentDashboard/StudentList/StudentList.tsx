@@ -1,33 +1,25 @@
 import './StudentList.scss';
 
-import RoomsStatus from '../../RoomsStatusPage/RoomsStatus';
+import StudentInfoElement from './StudentInfoElement/StudentInfoElement';
+import type { profileStudentsInfo } from '../../../../lib/interfaceHandler';
 
 
 // output the Rooms status for each student
-function StudentList() {
+interface StudListProps {
+    studentsInfo: profileStudentsInfo[];
+}
+
+function StudentList( { studentsInfo } : StudListProps ) {
 
     return(
         <div>
-            <div className='student-info-wrapper'> {/* onclick open/close roomsstatus-page */}
-                <p>Username1</p>
-                <RoomsStatus />
-            </div>
 
-            <div className='student-info-wrapper'>
-                <p>Username2</p>
-                <RoomsStatus />
-            </div>
+            {studentsInfo.map((info, idx) => 
+                <div className='student-info-wrapper'>
+                    <StudentInfoElement key={idx} studentInfo={info} />
+                </div>
+            )}
 
-            <div className='student-info-wrapper'>
-                <p>Username3</p>
-                <RoomsStatus />
-            </div>
-
-            {/*
-                elements just for styling purposes.
-                real elements added later with json
-            */}
-            
         </div>
     );
 }

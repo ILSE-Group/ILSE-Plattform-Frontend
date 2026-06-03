@@ -60,9 +60,6 @@ function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, setExe
                 break;
         }
 
-        console.log({ newOverallAnswerState, answersState });
-
-
         checkDoneSignal();
 
     }, [checkSignal, checkDoneSignal]);

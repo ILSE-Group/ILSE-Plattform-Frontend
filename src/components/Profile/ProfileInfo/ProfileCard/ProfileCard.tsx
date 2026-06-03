@@ -1,24 +1,44 @@
 import './ProfileCard.scss';
 
+import React from 'react';
 
-function ProfileCard() {
+import type { profileContent } from '../../../../lib/interfaceHandler';
+
+
+interface ProfileCardProps {
+    profileInfo: profileContent;
+}
+
+function ProfileCard( { profileInfo } : ProfileCardProps ) {
+
+    const progressBarRef = React.useRef<HTMLDivElement | null>(null);
+
+    // set progressbar width on value change
+    React.useEffect(() => {
+        if( progressBarRef.current )
+            progressBarRef.current.style.width = profileInfo.levelProgress.toString().concat("%");
+    }, 
+    [profileInfo.levelProgress])
 
     return(
         <div className='profile-card'>
 
             <div className='profile-avatar'>
+                <img src={profileInfo.userIconSrc} alt="User Icon" />
             </div>
 
             <h1 className='profile-name'>
-                Beispiel Name
+                {profileInfo.username}
             </h1>
 
             <p className='profile-level'>
-                Level 1 Anfänger
+                Level {profileInfo.level} - {profileInfo.levelDesc}
             </p>
 
             <div className='progress-bar'>
-                <div className='progress-fill'></div>
+                <div className='progress-fill' 
+                    ref={progressBarRef}
+                ></div>
             </div>
                 
         </div>

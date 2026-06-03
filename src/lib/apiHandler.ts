@@ -185,11 +185,12 @@ export function recieveRoomContent(roomName : string) : roomContent {
 // --------------------Profile-Data----------------------
 export function recieveProfileData() : profileContent {
     const profileData : profileContent = {
-        username: "standard-user",
+        username: "OP-teacher",
         userType: "teacher",
+        userIconSrc: "../../assets/logo.svg",
         level: 20,
         levelDesc: "Profi",
-        levelProgress: 30,
+        levelProgress: 80,
         studentsInfo: [
             {
                 studentName: 'epicLion',

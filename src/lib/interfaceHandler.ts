@@ -44,6 +44,7 @@ export interface exerciseAnswer {
 export interface profileContent {
     username: string;
     userType: string;
+    userIconSrc: string;
     level: number;
     levelDesc: string;
     levelProgress: number;

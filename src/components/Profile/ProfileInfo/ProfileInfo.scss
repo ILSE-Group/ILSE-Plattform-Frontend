@@ -7,9 +7,10 @@
 
     background-color: var(--bgColorHighContrast);
 
-    display: flex; 
-    justify-content: center; 
-    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly; 
 
     padding-top: 48px; 
 }
