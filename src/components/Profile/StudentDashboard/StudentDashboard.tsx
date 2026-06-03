@@ -15,10 +15,13 @@ function StudentDashboard( { studentsInfo } : StudDashProps ) {
 
     return(
         <section>
-            <StudentControls />
 
             { studentsInfo == null ? null :
-                <StudentList studentsInfo={studentsInfo}/>
+                <>
+                    <StudentControls studentsInfo={studentsInfo} />
+                    
+                    <StudentList studentsInfo={studentsInfo} />
+                </>  
             }
 
         </section>
