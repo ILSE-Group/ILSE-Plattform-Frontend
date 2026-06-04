@@ -33,13 +33,6 @@ function StudentControls( { studentsInfo } : StudCtrlProps ) {
                 {addStudentOpened &&
                     <AddStudentControl />
                 }
-
-                {studentsInfo.map((info, idx) => (
-                    <StudentControlElement
-                        key={idx}
-                        studentName={info.studentName}
-                        /> 
-                    ))}
                 </div>
                 );
 

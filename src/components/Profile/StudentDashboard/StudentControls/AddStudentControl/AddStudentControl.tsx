@@ -24,7 +24,7 @@ function AddStudentControl() {
 
     return(
         <div>
-            <p>input number</p>
+            <p>Geben Sie eine Zahl ein</p>
             <input type="text" name="" id="" />
 
             <p onClick={requestAddNewStudents}>

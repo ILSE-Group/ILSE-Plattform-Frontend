@@ -21,16 +21,51 @@ function StudentInfoElement( { studentInfo } : studInfoElemProps ) {
     return(
         <div>
                     
-            <p onClick={toggleRoomInfoShown}>
-                {studentInfo.studentName}
-            </p>
+            <div
+    className="student-card"
+    onClick={toggleRoomInfoShown}
+>
+    <div className="student-left">
+        <div className="student-avatar">
             
-            {roomInfoShown ? (
-                studentInfo.studentProgress.map((studentRoomStatus, idx) => (
-                    <RoomsStatus key={idx} roomInfo={studentRoomStatus} />
-                )) 
-                ) : ( null )
-            }
+        </div>
+
+        <span className="student-name">
+            {studentInfo.studentName}
+        </span>
+    </div>
+
+    <button
+        className="view-profile-btn"
+        type="button"
+    >
+        Profil anzeigen
+    </button>
+</div>
+            
+            {roomInfoShown && (
+    <>
+        {studentInfo.studentProgress.map((studentRoomStatus, idx) => (
+            <RoomsStatus
+                key={idx}
+                roomInfo={studentRoomStatus}
+            />
+        ))}
+
+
+        
+
+        <div className="student-actions">
+            <button className="reset-btn">
+                Passwort zurücksetzen   
+            </button>
+
+            <button className="delete-btn">
+                Schüler löschen
+            </button>
+        </div>
+    </>
+)}
 
         </div>
     );

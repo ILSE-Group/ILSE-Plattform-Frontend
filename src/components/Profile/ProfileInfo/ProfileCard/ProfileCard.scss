@@ -51,16 +51,20 @@
     opacity: 0.8;
 }
 
-/* progress bar*/ 
+/* progress bar unter dem lehrerprofil */ 
 
 .progress-bar {
-    width: 100px; 
-    height: 18px; 
+    width: 60%;
 
-    background-color: var(--bgColorLowContrast); 
-    border-radius: 999px; 
-    overflow: hidden; 
-    margin-top: 8px;
+    height: 1.2rem;
+
+    background-color: var(--bgColorLowContrast);
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    margin: 0.5vh auto 0 auto;
 }
 
 .progress-fill {
