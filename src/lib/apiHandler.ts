@@ -30,11 +30,11 @@ export function recieveRoomsList() : roomList {
             imageSrc: "../assets/logo.svg",
             description: "Wie erkenne ich eine Phishing-Mail? Was ist zu tun, wenn ich meine Daten eingegeben habe?",
         },
-        /*room4: {
-            name: "room4",
+        room4: {
+            name: "test",
             imageSrc: "../assets/logo.svg",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        } */
+        }
     };
     return data as roomList;
 
@@ -460,6 +460,65 @@ export function recieveRoomContent(roomName : string) : roomContent | null {
         ]
     };
 
+    // TODO: remove later
+    const testContent : roomContent = {
+        roomID: 1337,
+        roomName: "Linking-Test",
+        roomTopic: [
+            {
+                topicID: 0,
+                topicName: 'Test',
+                exercise: {
+                    exerciseType: "linking",
+                    completed: false,
+                    question: {
+                        questionText: "why?",
+                        answer: [
+                            {
+                                answerID: 0,
+                                answerText: "asdf",
+                                isCorrect: false,
+                                fitsTo: 3,
+                            },
+                            {
+                                answerID: 1,
+                                answerText: "asdf",
+                                isCorrect: false,
+                                fitsTo: 2,
+                            },
+                            {
+                                answerID: 2,
+                                answerText: "asdf",
+                                isCorrect: false,
+                                fitsTo: 1,
+                            },
+                            {
+                                answerID: 3,
+                                answerText: "asdf",
+                                isCorrect: false,
+                                fitsTo: 0,
+                            },
+                            {
+                                answerID: 4,
+                                answerText: "asdf",
+                                isCorrect: false,
+                                fitsTo: 5,
+                            },
+                            {
+                                answerID: 5,
+                                answerText: "asdf",
+                                isCorrect: false,
+                                fitsTo: 4,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "testing linking-exercise",
+            },
+        ]
+    };
+
+    // TODO: remove later
     switch (roomName) {
         case 'Passwort-Sicherheit':
             return passwordSecContent;
@@ -467,12 +526,12 @@ export function recieveRoomContent(roomName : string) : roomContent | null {
             return cybermobbingContent;
         case 'Phishing':
             return phishingContent;
+        case 'test':
+            return testContent;
         default:
             return null;
     }
 
-
-    return passwordSecContent as roomContent;
 }
 
 // --------------------Profile-Data----------------------
