@@ -33,9 +33,7 @@ function RoomsStatus( { roomInfo } : RoomsStatusProps ) {
             <div className='status-progress-bar'> {/* TODO: progress bar */}
                 <div className='status-progressbar-fill'
                     ref={progBarFillRef}
-                >
-
-                </div>
+                ></div>
             </div>
 
             <p className='rooms-status-element'>

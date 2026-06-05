@@ -4,6 +4,7 @@ import React from 'react';
 
 import type { profileStudentsInfo } from '../../../../../lib/interfaceHandler';
 import RoomsStatus from '../../../RoomsStatusPage/RoomsStatus';
+import StudentControlElement from './StudCtrlElement';
 
 
 interface studInfoElemProps {
@@ -21,11 +22,12 @@ function StudentInfoElement( { studentInfo } : studInfoElemProps ) {
     return(
         <div>
                     
-            <div
-    className="student-card"
-    onClick={toggleRoomInfoShown}
->
-    <div className="student-left">
+            <div 
+                className="student-card"
+                onClick={toggleRoomInfoShown}
+            >
+                
+            <div className="student-left">
         <div className="student-avatar">
             
         </div>
@@ -55,15 +57,7 @@ function StudentInfoElement( { studentInfo } : studInfoElemProps ) {
 
         
 
-        <div className="student-actions">
-            <button className="reset-btn">
-                Passwort zurücksetzen   
-            </button>
-
-            <button className="delete-btn">
-                Schüler löschen
-            </button>
-        </div>
+        <StudentControlElement studentName={studentInfo.studentName} />
     </>
 )}
 

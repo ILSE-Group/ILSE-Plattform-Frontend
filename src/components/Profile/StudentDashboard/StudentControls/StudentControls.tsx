@@ -3,7 +3,6 @@ import './StudentControls.scss';
 import React from 'react';
 
 import type { profileStudentsInfo } from '../../../../lib/interfaceHandler';
-import StudentControlElement from './StudCtrlElement';
 import AddStudentControl from './AddStudentControl/AddStudentControl';
 
 

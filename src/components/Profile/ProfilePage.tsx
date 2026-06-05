@@ -18,7 +18,7 @@ function ProfilePage() {
 
             <ProfileInfo content={content} />
 
-            {content.userType == "teacher" ? (
+            {(content.userType == "teacher" && content.studentsInfo != null) ? (
                 <StudentDashboard studentsInfo={content.studentsInfo} />
                 ) : ( null )
             }

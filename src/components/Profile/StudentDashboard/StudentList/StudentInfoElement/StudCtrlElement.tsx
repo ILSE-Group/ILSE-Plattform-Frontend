@@ -2,7 +2,7 @@ import './StudCtrlElement.scss';
 
 import React from 'react';
 
-import { manageStudentAcc } from '../../../../lib/apiHandler';
+import { manageStudentAcc } from '../../../../../lib/apiHandler';
 
 
 interface StudCtrlElemProps {
@@ -21,7 +21,6 @@ function StudentControlElement( { studentName } : StudCtrlElemProps ) {
 
     return (
         <div className='student-control-wrapper'>
-            <p>{studentName}</p>
 
             <p onClick={requestDelete}>
                 Delete
