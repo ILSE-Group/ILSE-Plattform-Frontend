@@ -320,10 +320,10 @@ export function recieveRoomContent(roomName : string) : roomContent | null {
                                 fitsTo: 2,
                             },
                             {
-                                answerID: 2,
+                                answerID: 3,
                                 answerText: "Weil man dadurch trotzdem Mitschuld trägt.",
                                 isCorrect: true,
-                                fitsTo: 2,
+                                fitsTo: 3,
                             },
                         ]
                     }
