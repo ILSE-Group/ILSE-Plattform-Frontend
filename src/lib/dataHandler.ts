@@ -51,41 +51,43 @@ export function getRoomNames() : string[] {
 
 
 //------------------Room-Content------------------
+const invalidRoomContent : roomContent = {
+    roomID: 0,
+    roomName: 'Invalid Room',
+    roomTopic: [
+        {
+            topicID: 0,
+            topicName: 'Invalid Topic',
+            exercise: {
+                exerciseType: 'Invalid Exercise',
+                completed: false,
+                question: {
+                    questionText: 'Invalid Question',
+                    answer: [
+                        {
+                            answerID: 0,
+                            answerText: 'Invalid Answer',
+                            isCorrect: false,
+                            fitsTo: 0,
+                        }
+                    ]
+                }
+            },
+            descriptionText: 'invalid',
+        }
+    ]
+};
 // TODO
 export function getRoomContent(roomName: string) : roomContent {
+
     let sanitizedRoomName = sanitizeString(roomName);
     if(sanitizedRoomName.length <= 0) {
-        return {
-            roomID: 0,
-            roomName: 'Invalid Room',
-            roomTopic: [
-                {
-                    topicID: 0,
-                    topicName: 'Invalid Topic',
-                    exercise: {
-                        exerciseType: 'Invalid Exercise',
-                        completed: false,
-                        question: {
-                            questionText: 'Invalid Question',
-                            answer: [
-                                {
-                                    answerID: 0,
-                                    answerText: 'Invalid Answer',
-                                    isCorrect: false,
-                                    fitsTo: 0,
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        } as roomContent;
+        return invalidRoomContent;
     }
 
-    let roomData : roomContent = recieveRoomContent(sanitizedRoomName);
-
-    while( roomData == null || typeof roomData === 'undefined' )
-        roomData = recieveRoomContent(sanitizedRoomName);
+    let roomData : roomContent | null = recieveRoomContent(sanitizedRoomName);
+    if( roomData == null )
+        return invalidRoomContent;
 
     return roomData;
 }

@@ -109,19 +109,23 @@ function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTop
                 {
                     //----------Description----------
                 }
-                { descriptionOpened ?
-                    <>
-                        <TopicDescription description={topic.descriptionText} />
-                        
-                        <div className="description-toggle-btn" 
-                           onClick={() => toggleDescription(false)}>
-                            <p>Hilfe schließen</p>
+                { topic.descriptionText.length > 0 ? 
+                    (
+                        descriptionOpened ?
+                        <>
+                            <TopicDescription description={topic.descriptionText} />
+                            
+                            <div className="description-toggle-btn" 
+                            onClick={() => toggleDescription(false)}>
+                                <p>Hilfe schließen</p>
+                            </div>
+                        </> : 
+                        <div className="description-toggle-btn"
+                        onClick={() => toggleDescription(true)}>
+                            <p>Hilfe öffnen</p>
                         </div>
-                    </> : 
-                    <div className="description-toggle-btn"
-                       onClick={() => toggleDescription(true)}>
-                        <p>Hilfe öffnen</p>
-                    </div>
+                    ) 
+                    : null 
                 }
 
                 {

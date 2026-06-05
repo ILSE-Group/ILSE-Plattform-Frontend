@@ -51,7 +51,7 @@ export function recieveRoomsList() : roomList {
  * Returns the room content as json object
  * @returns roomContent JSON, on error: null
 */ 
-export function recieveRoomContent(roomName : string) : roomContent {
+export function recieveRoomContent(roomName : string) : roomContent | null {
     //TODO: implement with json
     /*
     return fetch('room/content/url/'.append(targetRoom))
@@ -59,123 +59,420 @@ export function recieveRoomContent(roomName : string) : roomContent {
         .then(res => {return res as roomContent }
     );
     */
-
-    const data : roomContent = {
+   const passwordSecContent : roomContent = {
         roomID: 0,
-        roomName: roomName,
+        roomName: "Passwort-Sicherheit",
         roomTopic: [
             {
                 topicID: 0,
-                topicName: 'topic One Name',
+                topicName: 'Passwort Eigenschaften',
                 exercise: {
                     exerciseType: "multiple-choice",
                     completed: false,
                     question: {
-                        questionText: "why...",
+                        questionText: "Was macht ein Passwort besonders sicher?",
                         answer: [
                             {
                                 answerID: 0,
-                                answerText: "answer one",
-                                isCorrect: true,
+                                answerText: "Es enthält den Namen und das Geburtsdatum.",
+                                isCorrect: false,
                                 fitsTo: 0,
                             },
                             {
                                 answerID: 1,
-                                answerText: "answer two",
+                                answerText: "Es enthält mindestens 12 verschiedene Groß-/Kleinbuchstaben, Zahlen sowie Sonderzeichen.",
                                 isCorrect: true,
                                 fitsTo: 1,
+                            },
+                            {
+                                answerID: 2,
+                                answerText: "Es ist kurz und ist leicht zu merken.",
+                                isCorrect: false,
+                                fitsTo: 2,
+                            },
+                            {
+                                answerID: 3,
+                                answerText: "Wenn man das Passwort auf mehreren Webseiten oder Konten benutzt.",
+                                isCorrect: false,
+                                fitsTo: 3,
                             },
                         ]
                     }
                 },
-                descriptionText: "some explaining text",
+                descriptionText: "Ein Passwort bezeichnet man als gut, wenn es andere Personen oder Angreifer schwierig haben, das Passwort zu erraten.",
             },
             {
                 topicID: 1,
-                topicName: 'topic Two Name',
+                topicName: 'Internet Sicherheit',
                 exercise: {
-                    exerciseType: "linking",
+                    exerciseType: "multiple-choice",
                     completed: false,
                     question: {
-                        questionText: "Please link them together",
+                        questionText: "Warum ist es gefährlich, Programme von zweifelhaften Internetseiten herunterzuladen und zu installieren?",
                         answer: [
                             {
                                 answerID: 0,
-                                answerText: "answer one",
-                                isCorrect: true,
-                                fitsTo: 1,
-                            },
-                            {
-                                answerID: 1,
-                                answerText: "answer two",
-                                isCorrect: true,
+                                answerText: "Weil solche Programme den Computer physisch beschädigen können. (z.B die Festplatte zum schmelzen bringen)",
+                                isCorrect: false,
                                 fitsTo: 0,
                             },
                             {
+                                answerID: 1,
+                                answerText: "Weil diese Programme meist so groß sind, dass durch die Installation die Festplatte voll wird.",
+                                isCorrect: false,
+                                fitsTo: 1,
+                            },
+                            {
                                 answerID: 2,
-                                answerText: "answer three",
-                                isCorrect: true,
-                                fitsTo: 4,
-                            },
-                            {
-                                answerID: 3,
-                                answerText: "answer four",
-                                isCorrect: true,
-                                fitsTo: 5,
-                            },
-                            {
-                                answerID: 4,
-                                answerText: "answer five",
-                                isCorrect: true,
+                                answerText: "Weil das Internet nur Programme erlaubt, Die mindestens 50€ kosten.",
+                                isCorrect: false,
                                 fitsTo: 2,
                             },
                             {
-                                answerID: 5,
-                                answerText: "answer six",
+                                answerID: 3,
+                                answerText: "Weil solche Seiten oft Schadsoftware enthalten, die Passwörter ausspähen oder den Zugriff auf das Konto ermöglichen können.",
                                 isCorrect: true,
                                 fitsTo: 3,
                             },
                         ]
                     }
                 },
-                descriptionText: "some explaining text",
+                descriptionText: "Programme von schadhaften Internetseiten sind manchmal illegal und tun oft nicht das, was Sie versprechen.",
             },
             {
                 topicID: 2,
-                topicName: "topic Three Name",
+                topicName: "Passwort-Maßnahmen",
                 exercise: {
                     exerciseType: "multiple-choice",
                     completed: false,
                     question: {
-                        questionText: "why...",
+                        questionText: "Welche zusätzliche Maßname wird empfohlen, um das Passwort bzw. sein Konto zu beschützen? ",
                         answer: [
                             {
                                 answerID: 0,
-                                answerText: "answer one",
-                                isCorrect: false,
+                                answerText: "Das Passwort regelmäßig ändern.",
+                                isCorrect: true,
                                 fitsTo: 0,
                             },
                             {
                                 answerID: 1,
-                                answerText: "answer two",
+                                answerText: "Eine 2-Faktor-Authentifizierung benutzen.",
                                 isCorrect: true,
                                 fitsTo: 1,
                             },
                             {
                                 answerID: 2,
-                                answerText: "answer three",
+                                answerText: "Das Passwort einer anderen Person mitteilen, falls man es vergisst.",
                                 isCorrect: false,
+                                fitsTo: 2,
+                            },
+                            {
+                                answerID: 3,
+                                answerText: "Das Passwort auf einen Zettel oder einem Notizbuch aufschreiben, um seinen Zugriff nicht zu verlieren.",
+                                isCorrect: false,
+                                fitsTo: 3,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "Auch gute Passwörter sind nicht zu 100% vor Angriffen sicher.",
+            },
+        ]
+    };
+
+    const cybermobbingContent : roomContent = {
+        roomID: 1,
+        roomName: "Cybermobbing",
+        roomTopic: [
+            {
+                topicID: 0,
+                topicName: 'Online-Inhalte',
+                exercise: {
+                    exerciseType: "multiple-choice",
+                    completed: false,
+                    question: {
+                        questionText: "Warum ist es bei Cybermobbing oft gefährlich, wenn die Inhalte online bleiben?",
+                        answer: [
+                            {
+                                answerID: 0,
+                                answerText: "Weil eine einmal gepostete Beleidigung oder ein peinliches Foto immer wieder geteilt und nach Jahren aufgerufen werden kann.",
+                                isCorrect: true,
+                                fitsTo: 0,
+                            },
+                            {
+                                answerID: 1,
+                                answerText: "Weil das Internet automatisch alle Daten an den Arbeitsgeber schickt.",
+                                isCorrect: false,
+                                fitsTo: 1,
+                            },
+                            {
+                                answerID: 2,
+                                answerText: "Weil man für jeden geposteten Inhalt, der gemeldet wurde, eine hohe Gebühr bezahlen muss.",
+                                isCorrect: false,
+                                fitsTo: 2,
+                            },
+                            {
+                                answerID: 3,
+                                answerText: "Weil gepostete Inhalte, die beleidigend oder diffamierend sind als Beweismittel für eine Straftat genutzt werden können.",
+                                isCorrect: true,
+                                fitsTo: 3,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "",
+            },
+            {
+                topicID: 1,
+                topicName: 'Hilflosigkeit',
+                exercise: {
+                    exerciseType: "multiple-choice",
+                    completed: false,
+                    question: {
+                        questionText: "Warum fühlen sich Opfer meist hilflos bei Fällen von Cybermobbing? ",
+                        answer: [
+                            {
+                                answerID: 0,
+                                answerText: "Weil Sie keine Möglichkeit haben, den Computer auszuschalten oder ihr Konto zu deaktivieren.",
+                                isCorrect: false,
+                                fitsTo: 0,
+                            },
+                            {
+                                answerID: 1,
+                                answerText: "Weil Cybermobbing rund um die Uhr stattfindet und die Täter sich hinter Pseudonymen verstecken können.",
+                                isCorrect: true,
+                                fitsTo: 1,
+                            },
+                            {
+                                answerID: 2,
+                                answerText: "Weil Cybermobbing nur unter Mitschülerinnen und Mitschülern stattfinden kann.",
+                                isCorrect: false,
+                                fitsTo: 2,
+                            },
+                            {
+                                answerID: 3,
+                                answerText: "Weil Täter sehr viel über ihr Opfer herausfinden können und die Onlinebelästigung in das echte Leben übertragen können.",
+                                isCorrect: true,
+                                fitsTo: 3,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "",
+            },
+            {
+                topicID: 2,
+                topicName: "Gegen-Maßnahmen",
+                exercise: {
+                    exerciseType: "multiple-choice",
+                    completed: false,
+                    question: {
+                        questionText: "Was kann man gegen Cybermobbing tun?",
+                        answer: [
+                            {
+                                answerID: 0,
+                                answerText: "Eine Vertrauenspersonen informieren. (Eltern, Lehrerinnen und Lehrer, die Polizei)",
+                                isCorrect: true,
+                                fitsTo: 0,
+                            },
+                            {
+                                answerID: 1,
+                                answerText: "Mobbingangriffe dokumentieren und Beweise von Cybermobbing zu sammeln.",
+                                isCorrect: true,
+                                fitsTo: 1,
+                            },
+                            {
+                                answerID: 2,
+                                answerText: "Mobber auf der Platform melden und blockieren.",
+                                isCorrect: true,
                                 fitsTo: 2,
                             },
                         ]
                     }
                 },
-                descriptionText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                descriptionText: "",
+            },
+            {
+                topicID: 3,
+                topicName: "Dabei Mitmachen",
+                exercise: {
+                    exerciseType: "multiple-choice",
+                    completed: false,
+                    question: {
+                        questionText: "Warum ist es gefährlich bei Cybermobbing mitzumachen oder die Inhalte, die beleidigend sind, zu liken oder weiterzuteilen? Auch wenn man niemanden gefährden will?",
+                        answer: [
+                            {
+                                answerID: 0,
+                                answerText: "Weil man automatisch selbst gemobbt wird.",
+                                isCorrect: false,
+                                fitsTo: 0,
+                            },
+                            {
+                                answerID: 1,
+                                answerText: "Weil man durch das Liken und Teilen von Inhalten des Mobbers sein Verhalten verstärkt.",
+                                isCorrect: true,
+                                fitsTo: 1,
+                            },
+                            {
+                                answerID: 2,
+                                answerText: "Weil das Internet solche Inhalte normalerweise löscht.",
+                                isCorrect: false,
+                                fitsTo: 2,
+                            },
+                            {
+                                answerID: 2,
+                                answerText: "Weil man dadurch trotzdem Mitschuld trägt.",
+                                isCorrect: true,
+                                fitsTo: 2,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "",
             },
         ]
     };
 
-    return data as roomContent;
+    const phishingContent : roomContent = {
+        roomID: 2,
+        roomName: "Phishing",
+        roomTopic: [
+            {
+                topicID: 0,
+                topicName: 'Angriffs-Ziel',
+                exercise: {
+                    exerciseType: "multiple-choice",
+                    completed: false,
+                    question: {
+                        questionText: "Was ist das Hauptziel von Phishing-Angriffen?",
+                        answer: [
+                            {
+                                answerID: 0,
+                                answerText: "Den Compter des Opfers zu zerstören.",
+                                isCorrect: false,
+                                fitsTo: 0,
+                            },
+                            {
+                                answerID: 1,
+                                answerText: "Die Internetverbindung des Opfers dauerhaft zu trennen.",
+                                isCorrect: false,
+                                fitsTo: 1,
+                            },
+                            {
+                                answerID: 2,
+                                answerText: "Den Nutzer dazu zu bringen, sensible Daten wie Passwörter oder Bankkartennummern preiszugeben.",
+                                isCorrect: true,
+                                fitsTo: 2,
+                            },
+                            {
+                                answerID: 3,
+                                answerText: "Kostenlose Spiele auf dem Gerät des Opfers zu Installieren.",
+                                isCorrect: false,
+                                fitsTo: 3,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "Im Gegensatz zu anderen IT-Angriffen, bei denen die Technik im Vordergrund steht, werden bei Phishing Angriffen menschliche Schwächen ausgenutzt.",
+            },
+            {
+                topicID: 1,
+                topicName: 'Unbekannte Links',
+                exercise: {
+                    exerciseType: "multiple-choice",
+                    completed: false,
+                    question: {
+                        questionText: "Warum ist es riskant auf einen verdächtigen Link in einer unerwarteten Nachricht zu klicken, Die einen schnell zum Handeln auffordert.",
+                        answer: [
+                            {
+                                answerID: 0,
+                                answerText: "Weil der Links einen meist auf eine täuschend echt aussehende, aber gefälschte Webseite führt, um persönliche Daten abzugreifen.",
+                                isCorrect: true,
+                                fitsTo: 0,
+                            },
+                            {
+                                answerID: 1,
+                                answerText: "Weil der Link einen dazu zwingt, den gesamten Speicher des Computers zu löschen.",
+                                isCorrect: false,
+                                fitsTo: 1,
+                            },
+                            {
+                                answerID: 2,
+                                answerText: "Weil die Seite beim Klicken den Computer sofort neustartet.",
+                                isCorrect: false,
+                                fitsTo: 2,
+                            },
+                            {
+                                answerID: 3,
+                                answerText: "Weil man dadurch automatisch Abonnements abschließen kann die man schwer kündigen kann.",
+                                isCorrect: false,
+                                fitsTo: 3,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "Der Text eines Links und die Funktion dahinter sind unterschiedliche Dinge. So kann ein Link smoothies.com heißen aber dich auf klopapier.de leiten.",
+            },
+            {
+                topicID: 2,
+                topicName: "Verdächtige Nachricht",
+                exercise: {
+                    exerciseType: "multiple-choice",
+                    completed: false,
+                    question: {
+                        questionText: "Du bekommst eine verdächtige Nachricht, die behauptet, dass ein Problem mit deinem Account vorliegt. Was solltest du tun?",
+                        answer: [
+                            {
+                                answerID: 0,
+                                answerText: "Auf den Link klicken, um das Problem so schnell wie möglich zu lösen.",
+                                isCorrect: false,
+                                fitsTo: 0,
+                            },
+                            {
+                                answerID: 1,
+                                answerText: "Den Absender auf dem E-Mail-Provider melden.",
+                                isCorrect: true,
+                                fitsTo: 1,
+                            },
+                            {
+                                answerID: 2,
+                                answerText: "Dem Absender eine Mail schreiben, um nach seinem Arbeitsausweis zu fragen.",
+                                isCorrect: false,
+                                fitsTo: 2,
+                            },
+                            {
+                                answerID: 3,
+                                answerText: "Die Nachricht löschen und die offizielle Seite des Dienstes selbst aufrufen, um den Status zu prüfen.",
+                                isCorrect: true,
+                                fitsTo: 3,
+                            },
+                            {
+                                answerID: 4,
+                                answerText: "Die Nachricht an alle Kontakte weiterleiten um Sie zu warnen.",
+                                isCorrect: false,
+                                fitsTo: 4,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "So wie man social-media Profile kopieren kann, kann man auch Email Nachrichten kopieren und Sie verändern.",
+            },
+        ]
+    };
+
+    switch (roomName) {
+        case 'Passwort-Sicherheit':
+            return passwordSecContent;
+        case 'Cybermobbing':
+            return cybermobbingContent;
+        case 'Phishing':
+            return phishingContent;
+        default:
+            return null;
+    }
+
+
+    return passwordSecContent as roomContent;
 }
 
 // --------------------Profile-Data----------------------

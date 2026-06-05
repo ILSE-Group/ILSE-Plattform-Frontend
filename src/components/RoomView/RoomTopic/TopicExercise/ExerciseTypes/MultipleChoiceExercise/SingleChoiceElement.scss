@@ -1,9 +1,11 @@
-@use '../../../../../../lib/styles.scss';
 
 
 .choice-wrapper {
-    height: 40px;
+    height: auto;
+    min-height: 40px;
     width: 90%;
+
+    padding: 10px 0 10px 0;
 
     display: flex;
     flex-direction: row;
@@ -16,12 +18,22 @@
 }
 
 .choice-checkbox {
-    height: 23px;
-    width: 23px;
+    display: block;
 
-    margin: 0 1vw 0 1vw;
+    min-height: 1.3em;
+    min-width: 1.3em;
+
+    background: orange;
+}
+.choice-checkbox:checked:after {
+    color: red;
+}
+
+.text-wrapper {
+    width: auto;
 }
 
 .choice-text {
+    text-align: left;
     color: var(--fgColorHighContrast);
 }

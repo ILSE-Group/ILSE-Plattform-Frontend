@@ -59,9 +59,12 @@ function SingleChoice({answer, checkAnswerSignal, index, reportAnswerState, answ
                 checked={answerChecked}
                 onChange={handleCheckChange}
             />
-            <p className='coice-text'>
-                {answer.answerText}
-            </p>
+            <div className='text-wrapper'>
+                <p className='coice-text'>
+                    {answer.answerText}
+                </p>
+            </div>
+            
         </div>
     );
 
