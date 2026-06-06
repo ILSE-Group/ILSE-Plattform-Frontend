@@ -2,13 +2,13 @@ import { useNavigate } from 'react-router-dom';
 
 import './Card.scss';
 
+import type { roomListItem } from '../../../lib/interfaceHandler';
 import { ROOMS_LINK_URL } from '../../../lib/globalVars';
-import type { roomListItem } from '../../../lib/dataHandler';
+
 
 interface CardProps {
   topicInfo: roomListItem;
 }
-
 
 function Card({ topicInfo }: CardProps) {
 

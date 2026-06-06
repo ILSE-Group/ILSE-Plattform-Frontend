@@ -17,23 +17,23 @@ export function recieveRoomsList() : roomList {
     const data : roomList = {
         room1: {
             name: "Passwort-Sicherheit",
-            imageSrc: "../../../../assets/logo.svg",
-            description: "Wie lang und kompliziert soll mein Passwort sein? Wie schuetze ich mein Passwort?",
+            imageSrc: '/thumbnails/passSecThumb.svg',
+            description: "Wie lang und kompliziert soll mein Passwort sein? Wie schütze ich mein Passwort?",
         },
         room2: {
             name: "Cybermobbing",
-            imageSrc: "../assets/logo.svg",
-            description: "Wie verhalte ich mich im Internet? An wen kann ich mich wenden, wenn es zu spaet ist?",
+            imageSrc: '/thumbnails/cyberMobThumb.svg',
+            description: "Wie verhalte ich mich im Internet? An wen kann ich mich wenden, wenn es zu spät ist?",
         },
         room3: {
             name: "Phishing",
-            imageSrc: "../assets/logo.svg",
+            imageSrc: '/thumbnails/phishingThumb.svg',
             description: "Wie erkenne ich eine Phishing-Mail? Was ist zu tun, wenn ich meine Daten eingegeben habe?",
         },
         room4: {
             name: "test",
             imageSrc: "../assets/logo.svg",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            description: "Lorem ipsum",
         }
     };
     return data as roomList;
