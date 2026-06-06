@@ -17,17 +17,17 @@ export function recieveRoomsList() : roomList {
     const data : roomList = {
         room1: {
             name: "Passwort-Sicherheit",
-            imageSrc: '/thumbnails/passSecThumb.svg',
+            imageSrc: '/thumbnails/passSecThumb.jpg',
             description: "Wie lang und kompliziert soll mein Passwort sein? Wie schütze ich mein Passwort?",
         },
         room2: {
             name: "Cybermobbing",
-            imageSrc: '/thumbnails/cyberMobThumb.svg',
+            imageSrc: '/thumbnails/cyberMobThumb.jpg',
             description: "Wie verhalte ich mich im Internet? An wen kann ich mich wenden, wenn es zu spät ist?",
         },
         room3: {
             name: "Phishing",
-            imageSrc: '/thumbnails/phishingThumb.svg',
+            imageSrc: '/thumbnails/phishingThumb.jpg',
             description: "Wie erkenne ich eine Phishing-Mail? Was ist zu tun, wenn ich meine Daten eingegeben habe?",
         },
         room4: {

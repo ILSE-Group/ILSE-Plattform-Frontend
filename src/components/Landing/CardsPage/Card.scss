@@ -70,7 +70,7 @@ $cardBgHoverColor: var(--bgColorLowContrast);
 }
 
 .card-description-container {
-    height: 40%;
+    max-height: 40%;
 
     color: var(--fgColorMediumContrast);
 
