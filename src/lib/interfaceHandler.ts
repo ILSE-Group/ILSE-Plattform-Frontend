@@ -65,7 +65,7 @@ export interface profileRoomsProgress {
 // with managementType: 'add', 'delete', 'passReset'
 export interface requestStudentManagement {
     managementType: string;
-    studentName: string | null;
+    userName: string | null;
     studentCount: number | null;
 }
 
@@ -97,7 +97,3 @@ export interface loginSignalContent {
     password: string;
 }
 
-export interface registerSignalContent {
-    username: string;
-    password: string;
-}

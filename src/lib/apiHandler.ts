@@ -1,4 +1,4 @@
-import type { roomList, roomContent, feedbackContent, webToken, registerSignalContent, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement } from "./interfaceHandler";
+import type { roomList, roomContent, feedbackContent, webToken, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement } from "./interfaceHandler";
 
 import { API_URL, getLoginToken } from "./globalVars";
 import { sanitizeString, processForAPISend } from "./stringHandler";
@@ -640,7 +640,7 @@ export function sendSignupData( username : string, password : string ) : string 
     let name: string = processForAPISend(username);
     let pass: string = processForAPISend(password);
 
-    let signalContent : registerSignalContent = {
+    let signalContent : loginSignalContent = {
         username: name,
         password: pass,
     }
@@ -683,11 +683,11 @@ export function addNewStudents( count : number ) : createdStudentsInfo {
 }
 
 // TODO
-export function manageStudentAcc( managementType : string, studentName : string ) : string {
+export function manageUserAcc( managementType : string, userName : string ) : string {
     
     const requestContent : requestStudentManagement = {
         managementType: managementType,
-        studentName: studentName,
+        userName: userName,
         studentCount: null,
     }
 

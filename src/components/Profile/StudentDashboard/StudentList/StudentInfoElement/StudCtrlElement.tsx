@@ -2,7 +2,7 @@ import './StudCtrlElement.scss';
 
 import React from 'react';
 
-import { manageStudentAcc } from '../../../../../lib/apiHandler';
+import { manageUserAcc } from '../../../../../lib/apiHandler';
 
 
 interface StudCtrlElemProps {
@@ -13,10 +13,10 @@ function StudentControlElement( { studentName } : StudCtrlElemProps ) {
     const [newTempPass, setNewTempPass] = React.useState('');
 
     const requestDelete = () => {
-        manageStudentAcc("delete", studentName);
+        manageUserAcc("delete", studentName);
     }
     const requestPassReset = () => {
-        setNewTempPass(manageStudentAcc("passReset", studentName));
+        setNewTempPass(manageUserAcc("passReset", studentName));
     }
 
     return (
