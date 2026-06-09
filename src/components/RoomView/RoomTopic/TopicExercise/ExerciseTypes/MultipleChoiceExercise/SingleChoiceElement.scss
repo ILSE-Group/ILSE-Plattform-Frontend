@@ -31,9 +31,15 @@
 
 .text-wrapper {
     width: auto;
+    height: auto;
+
+    overflow-wrap: anywhere;
+    text-align: left;
 }
 
 .choice-text {
     text-align: left;
+    vertical-align: top;
+
     color: var(--fgColorHighContrast);
 }
