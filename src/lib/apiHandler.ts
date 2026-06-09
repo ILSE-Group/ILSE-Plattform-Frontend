@@ -177,6 +177,44 @@ export function recieveRoomContent(roomName : string) : roomContent | null {
                 },
                 descriptionText: "Auch gute Passwörter sind nicht zu 100% vor Angriffen sicher.",
             },
+            {
+                topicID: 3,
+                topicName: 'Sichere Passwörter',
+                exercise: {
+                    exerciseType: "multiple-choice",
+                    completed: false,
+                    question: {
+                        questionText: "Welches der folgenden Passwörter ist das Sicherste?",
+                        answer: [
+                            {
+                                answerID: 0,
+                                answerText: "Passwort123",
+                                isCorrect: false,
+                                fitsTo: 0,
+                            },
+                            {
+                                answerID: 1,
+                                answerText: "einseHrLanGespasSWortmitKleiNbuchStabeNUndGroßBuchsTabEnOhneReihenfolge",
+                                isCorrect: false,
+                                fitsTo: 1,
+                            },
+                            {
+                                answerID: 2,
+                                answerText: "klein&GROß-$onderz3ichenZ4Hl3n",
+                                isCorrect: true,
+                                fitsTo: 2,
+                            },
+                            {
+                                answerID: 3,
+                                answerText: "MeinName2026",
+                                isCorrect: false,
+                                fitsTo: 3,
+                            },
+                        ]
+                    }
+                },
+                descriptionText: "Ein sicheres Passwort ist schwierig zu erraten und das Durchprobieren aller möglichen Zeichen dauert sehr lange.",
+            },
         ]
     };
 

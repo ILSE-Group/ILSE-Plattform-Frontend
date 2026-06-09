@@ -17,8 +17,6 @@ interface RoomTopicProps {
 
 function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTopicProps) {
 
-    let statusRef = React.useRef<HTMLParagraphElement | null>(null);
-
     // folds
     const [topicOpened, toggleTopicFold] = React.useState(false);
     const [descriptionOpened, toggleDescription] = React.useState(false);
@@ -56,10 +54,7 @@ function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTop
     const signalCheckingDone = () => {
         setCheckingDoneSignal(checkingDone > 50 ? 1 : checkingDone + 1);
 
-        if( exerciseCorrect ) {
-            // TODO: set state when logged in and get status from this state
-            if( statusRef.current )
-                statusRef.current.innerText = "done";
+        if( exerciseCorrect ) {              
             updateRoomProgress(index, topic.topicID, true);
         }
         else
@@ -80,18 +75,21 @@ function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTop
 
 
     return(
-        <section className="room-topic-wrapper">
+        <section className={`room-topic-wrapper ${exerciseCorrect ? 'correct' : ''}`}>
 
             <div className={`room-topic-header ${topicOpened ? 'opened' : 'closed'} ${exerciseCorrect ? 'correct' : ''}`}>
-                <p className="topic-header-element" onClick={() => toggleTopicFold(!topicOpened)}>
-                    {topicOpened ? "⮝" : "⮟"}
-                </p>
+                <div className="topic-header-element" 
+                    onClick={() => toggleTopicFold(!topicOpened)}
+                >
+                    <div className={`topic-header-icon ${topicOpened ? 'opened' : 'closed'}`}>
+                    </div>
+                </div>
                 <p className="topic-header-element">
                     {topic.topicName}
                 </p>
-                <p className="topic-header-element" ref={statusRef} >
-                    status
-                </p>
+                <div className="topic-header-element">
+
+                </div>
             </div>
 
             <div className={`topic-content-wrapper ${topicOpened ? 'opened' : 'closed'}`}>

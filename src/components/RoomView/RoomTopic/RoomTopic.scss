@@ -17,6 +17,9 @@
     border: 1px, solid, var(--bgColorLowContrast);
     border-radius: 1em;
 }
+.room-topic-wrapper.correct {
+    background-color: styles.$colorAnswerCorrectMinContrast;
+}
 
 //-------------------header-area-------------------
 .room-topic-header {
@@ -42,7 +45,7 @@
 
 .topic-header-element {
     height: 100%;
-    width: auto;
+    width: 10%;
 
     display: flex;
     align-items: center;
@@ -51,10 +54,29 @@
 
     user-select: none;
 }
-.topic-header-element:first-child {
-    font-size: 1.2rem;
-    width: 10%;
+.topic-header-element:nth-child(2) {
+    font-size: 1em;
+    width: 60%;
 }
+
+.topic-header-icon {
+    max-height: 80%;
+    height: 15px;
+    max-width: 80%;
+    width: 20px;
+
+    display: block;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+
+    background: linear-gradient(to bottom, var(--fgColorHighContrast), var(--fgColorMediumContrast));
+    box-shadow: 50px 50px 10px blue;
+    
+    transition: 100ms ease all;
+}
+.topic-header-icon.opened {
+    transform: rotate(180deg);
+}
+
 
 
 //-------------------content-area-------------------
