@@ -17,15 +17,17 @@
     justify-content: flex-start;
 }
 
-.room-page-header {
+.room-header-wrapper {
     height: 100px;
     width: 90%;
 
     margin: 8vh 0 5vh 0;
+
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-around;
+
+    justify-content: center;
     align-items: center;
 
     border: none;
@@ -34,6 +36,26 @@
     background-color: var(--bgColorMediumContrast);
 }
 
+.room-header-thumb {
+    height: 80%;
+    width: auto;
+
+    left: 1em;
+
+    border-radius: 1.5em;
+}
+
+
+.room-page-header {
+    height: 100%;
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
 
 .room-header-text {
     font-size: 1.2em;

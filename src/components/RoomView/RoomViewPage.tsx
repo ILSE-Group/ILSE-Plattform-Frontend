@@ -14,10 +14,11 @@ import { isLoggedIn } from '../../lib/globalVars';
 
 interface RoomViewProps {
     roomName:  string;
+    thumbnailSrc: string | null;
 }
 
 
-function RoomViewPage( {roomName} : RoomViewProps ) {
+function RoomViewPage( {roomName, thumbnailSrc} : RoomViewProps ) {
 
     const content : roomContent = getRoomContent(roomName);
 
@@ -69,17 +70,26 @@ function RoomViewPage( {roomName} : RoomViewProps ) {
 
             <div className='room-page-wrapper'>
 
-                <div className='room-page-header'>
-                    <h2 className='room-header-text'>
-                        {content.roomName}
-                    </h2>
+                <div className='room-header-wrapper'>
+                    {thumbnailSrc != null &&
+                        <img src={thumbnailSrc} alt="" 
+                            className='room-header-thumb'
+                        />
+                    }
 
-                    <div className='room-header-progressbar'>
-                        <div className='room-header-progress'
-                            ref={progressRef}>
+                    <div className='room-page-header'>
+                        <h2 className='room-header-text'>
+                            {content.roomName}
+                        </h2>
+
+                        <div className='room-header-progressbar'>
+                            <div className='room-header-progress'
+                                ref={progressRef}>
+                            </div>
                         </div>
                     </div>
                 </div>
+
 
                 {content.roomTopic.map((topic, i) => (
                     <RoomTopic 

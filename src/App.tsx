@@ -9,7 +9,7 @@ import RoomViewPage from './components/RoomView/RoomViewPage';
 import InvalidPage from './components/InvalidPage/InvalidPage';
 
 import { HOME_URL, ABOUT_URL, LOGIN_URL, PROFILE_URL, ROOMS_LINK_URL } from './lib/globalVars';
-import { getRoomNames } from './lib/dataHandler';
+import { getRoomNames, getRoomThumbnail } from './lib/dataHandler';
 
 
 function App() {
@@ -29,11 +29,11 @@ function App() {
 
           <Route path={ROOMS_LINK_URL}  element={<RoomsPage />}    />
           {
-            roomNames.map((name) => {
+            roomNames.map((name, index) => {
               return <Route 
                         key={name}
                         path={roomsLink.concat(name)}
-                        element={<RoomViewPage key={name} roomName={name} />} 
+                        element={<RoomViewPage key={name} roomName={name} thumbnailSrc={getRoomThumbnail(index)} />} 
                       />;
             })
           }

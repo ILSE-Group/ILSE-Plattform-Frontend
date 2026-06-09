@@ -49,6 +49,22 @@ export function getRoomNames() : string[] {
     return roomNames;
 }
 
+export function getRoomThumbnail( index : number ) : string | null {
+    if( typeof index == 'undefined' || index < 0)
+        return null;
+
+    let roomThumbnails: string[] = Object.values(getRoomsList()).map(r => r.imageSrc);
+
+    console.log(index);
+    console.log(roomThumbnails);
+    console.log(roomThumbnails[index]);
+
+    if( roomThumbnails.length < index )
+        return null;
+
+    return roomThumbnails[index];
+}
+
 
 //------------------Room-Content------------------
 const invalidRoomContent : roomContent = {
