@@ -55,10 +55,6 @@ export function getRoomThumbnail( index : number ) : string | null {
 
     let roomThumbnails: string[] = Object.values(getRoomsList()).map(r => r.imageSrc);
 
-    console.log(index);
-    console.log(roomThumbnails);
-    console.log(roomThumbnails[index]);
-
     if( roomThumbnails.length < index )
         return null;
 

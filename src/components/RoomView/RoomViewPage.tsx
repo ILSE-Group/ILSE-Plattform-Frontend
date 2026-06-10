@@ -69,6 +69,7 @@ function RoomViewPage( {roomName, thumbnailSrc} : RoomViewProps ) {
 
     }, [roomProgress, topicState]);
 
+    
     return (
         <section className='room-view-wrapper'>
             <Header />

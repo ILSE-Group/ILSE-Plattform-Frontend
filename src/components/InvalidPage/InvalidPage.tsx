@@ -10,6 +10,7 @@ function InvalidPage() {
         document.title = 'ILSE - Invalid';
     }, []);
 
+    
     return (
         <>
             <AppHeader />

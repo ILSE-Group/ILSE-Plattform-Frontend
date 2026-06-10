@@ -5,7 +5,6 @@ import './LoginPage.scss'
 import Header from '../Header/Header';
 import Login from './Login/Login';
 import Signup from './Signup/Signup';
-import { jsx } from 'react/jsx-runtime';
 
 
 function LoginPage() {
@@ -21,8 +20,9 @@ function LoginPage() {
         if( isLoggingIn )
             document.title = 'ILSE - Login';
         else
-            document.title = 'ILSE - Signup';
+            document.title = 'ILSE - Signup'
     }, [isLoggingIn]);
+    
     
     return (
         <>

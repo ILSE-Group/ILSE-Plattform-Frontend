@@ -13,6 +13,7 @@ function RoomsPage() {
         document.title = 'ILSE - Rooms';
     }, []);
     
+    
     return (
         <>
             <Header />

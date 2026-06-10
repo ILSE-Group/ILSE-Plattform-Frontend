@@ -12,11 +12,12 @@ import StudentDashboard from './StudentDashboard/StudentDashboard';
 
 function ProfilePage() {
 
+    const content : profileContent = getProfileData();
+
     useEffect(() => {
         document.title = 'ILSE - Profile';
     }, []);
 
-    const content : profileContent = getProfileData();
 
     return(
         <section className='profile-wrapper'>

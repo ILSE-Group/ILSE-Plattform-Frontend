@@ -13,6 +13,7 @@ function WhoWeArePage() {
         document.title = 'ILSE - About';
     }, []);
 
+    
     return (
         <div>
             <Header />
