@@ -10,6 +10,7 @@ import type { roomContent } from '../../lib/interfaceHandler';
 import { getRoomContent } from '../../lib/dataHandler';
 import { sendTopicStatus } from '../../lib/apiHandler';
 import { isLoggedIn } from '../../lib/globalVars';
+import { sanitizeString } from '../../lib/stringHandler';
 
 
 interface RoomViewProps {
@@ -31,6 +32,10 @@ function RoomViewPage( {roomName, thumbnailSrc} : RoomViewProps ) {
 
     let progressRef = React.useRef<HTMLParagraphElement | null>(null);
     
+    React.useEffect(() => {
+        document.title = 'ILSE - '.concat(sanitizeString(roomName));
+    }, []);
+
     // update current room progress
     const updateRoomProgress = (index: number, topicID : number, isCompleted : boolean) => {
         setTopicState(prev => {

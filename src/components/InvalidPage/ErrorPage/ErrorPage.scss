@@ -9,10 +9,16 @@
 
     align-items: center;
     justify-content: center;
+    gap: 2em;
 
     user-select: none;
 }
 
 .error-page-wrapper:hover {
     cursor: pointer;
+}
+
+.error-header {
+    font-size: large;
+    font-weight: bold;
 }

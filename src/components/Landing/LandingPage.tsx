@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
@@ -6,6 +8,10 @@ import CardsPage from './CardsPage/CardsPage';
 
 
 function LandingPage() {
+
+    useEffect(() => {
+            document.title = 'ILSE - Home';
+    }, []);
     
     return (
         <>

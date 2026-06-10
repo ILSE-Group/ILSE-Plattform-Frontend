@@ -1,4 +1,6 @@
-import './WhoWeArePage.scss'
+import './WhoWeArePage.scss';
+
+import { useEffect } from 'react';
 
 import Header from '../Header/Header';
 import AboutText from './AboutText/AboutText';
@@ -6,6 +8,10 @@ import AboutFeedback from './AboutFeedback/AboutFeedback';
 
 
 function WhoWeArePage() {
+
+    useEffect(() => {
+        document.title = 'ILSE - About';
+    }, []);
 
     return (
         <div>

@@ -1,5 +1,7 @@
 import './ProfilePage.scss';
 
+import { useEffect } from 'react';
+
 import type { profileContent } from '../../lib/interfaceHandler';
 import { getProfileData } from '../../lib/dataHandler';
 
@@ -9,6 +11,10 @@ import StudentDashboard from './StudentDashboard/StudentDashboard';
 
 
 function ProfilePage() {
+
+    useEffect(() => {
+        document.title = 'ILSE - Profile';
+    }, []);
 
     const content : profileContent = getProfileData();
 

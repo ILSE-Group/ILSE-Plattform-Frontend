@@ -1,11 +1,17 @@
 import './RoomsPage.scss';
 
+import { useEffect } from 'react';
+
 import Header from '../Header/Header'
 import CardsPage from '../Landing/CardsPage/CardsPage';
 import Footer from '../Footer/Footer';
 
 
 function RoomsPage() {
+
+    useEffect(() => {
+        document.title = 'ILSE - Rooms';
+    }, []);
     
     return (
         <>
