@@ -1,6 +1,6 @@
 import type { roomList, roomContent, feedbackContent, webToken, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement } from "./interfaceHandler";
 
-import { API_URL, getLoginToken } from "./globalVars";
+import { /*API_URL,*/ getLoginToken } from "./globalVars";
 import { sanitizeString, processForAPISend } from "./stringHandler";
 
 
@@ -17,17 +17,17 @@ export function recieveRoomsList() : roomList {
     const data : roomList = {
         room1: {
             name: "Passwort-Sicherheit",
-            imageSrc: 'public/thumbnails/passSecThumb.jpg',
+            imageSrc: '/public/thumbnails/passSecThumb.jpg',
             description: "Wie lang und kompliziert soll mein Passwort sein? Wie schütze ich mein Passwort?",
         },
         room2: {
             name: "Cybermobbing",
-            imageSrc: 'public/thumbnails/cyberMobThumb.jpg',
+            imageSrc: '/public/thumbnails/cyberMobThumb.jpg',
             description: "Wie verhalte ich mich im Internet? An wen kann ich mich wenden, wenn es zu spät ist?",
         },
         room3: {
             name: "Phishing",
-            imageSrc: 'public/thumbnails/phishingThumb.jpg',
+            imageSrc: '/public/thumbnails/phishingThumb.jpg',
             description: "Wie erkenne ich eine Phishing-Mail? Was ist zu tun, wenn ich meine Daten eingegeben habe?",
         },
         room4: {
