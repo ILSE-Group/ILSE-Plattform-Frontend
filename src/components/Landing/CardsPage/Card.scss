@@ -25,6 +25,8 @@ $cardBgHoverColor: var(--bgColorLowContrast);
     border: none;
     border-radius: 1rem;
 
+    box-shadow: 3px 3px 10px var(--bgColorLowContrast);
+
     background-color: var(--bgColorMediumContrast);
 }
 
