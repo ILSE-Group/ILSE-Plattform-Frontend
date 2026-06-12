@@ -11,23 +11,19 @@ interface ProfInfoProps {
 }
 
 function ProfileInfo( { content } : ProfInfoProps ) {
-
     return(
         <section className='info-wrapper' >
-
-            {/* Proflle Card: displaying user info */}
             <ProfileCard profileInfo={content} />
 
+            {/* This component now handles the progress bars */}
             <AccountControl />
 
-            {/* own room-progress */}
-            {content.roomsProgress.map((roomInfo, idx) => 
+            {/* REMOVE THIS BLOCK BELOW */}
+            {/* {content.roomsProgress.map((roomInfo, idx) => 
                 <RoomsStatus key={idx} roomInfo={roomInfo} />
-            )}
-            
+            )} */}
         </section>
     );
-
 }
 
 export default ProfileInfo;

@@ -52,16 +52,19 @@
 
 .view-profile-btn {
     border: none;
-
     background: transparent;
-
     color: var(--highlightColorMediumContrast);
-
     cursor: pointer;
-
     font-size: 0.9rem;
-
     font-weight: 600;
+
+    width: 120px; 
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    
+    &.expanded {
+        width: 150px; 
+    }
 }
 
 .view-profile-btn:hover {
@@ -110,3 +113,4 @@
 .btn-secondary:active, .btn-danger:active {
     transform: scale(0.95); 
 }
+

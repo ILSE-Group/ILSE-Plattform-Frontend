@@ -38,12 +38,13 @@ function StudentInfoElement( { studentInfo } : studInfoElemProps ) {
     </div>
 
     <button
-        className="view-profile-btn"
-        type="button"
-    >
-        Profil anzeigen
-    </button>
-</div>
+                    
+                    className={`view-profile-btn ${roomInfoShown ? 'expanded' : ''}`}
+                    type="button"
+                >
+                    {roomInfoShown ? "Ausblenden" : "Profil anzeigen"}
+                </button>
+            </div>
             
             {roomInfoShown && (
     <>

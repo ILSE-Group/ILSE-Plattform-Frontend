@@ -1,0 +1,15 @@
+.student-info-wrapper {
+    // 1. Center the wrapper itself
+    width: 100%;
+    display: flex;
+    justify-content: center; // Centers the student card horizontally
+    margin-bottom: 1.5rem;   // Space between student cards
+
+    // 2. We target the child component here. 
+    // Assuming StudentInfoElement renders a container with this class:
+    .student-card-container {
+        width: 90%;          // Consistent width relative to screen
+        max-width: 50rem;    // Prevents it from getting too wide
+        box-sizing: border-box;
+    }
+}

@@ -30,11 +30,11 @@ export function recieveRoomsList() : roomList {
             imageSrc: '/public/thumbnails/phishingThumb.jpg',
             description: "Wie erkenne ich eine Phishing-Mail? Was ist zu tun, wenn ich meine Daten eingegeben habe?",
         },
-        room4: {
+        /*room4: {
             name: "test",
             imageSrc: "../src/assets/logo.svg",
             description: "Lorem ipsum",
-        }
+        }*/
     };
     return data as roomList;
 
@@ -493,13 +493,13 @@ export function recieveRoomContent(roomName : string) : roomContent | null {
                         ]
                     }
                 },
-                descriptionText: "So wie man social-media Profile kopieren kann, kann man auch Email Nachrichten kopieren und Sie verändern.",
+                descriptionText: "So wie man Social Media Profile kopieren kann, kann man auch Email Nachrichten kopieren und Sie verändern.",
             },
         ]
     };
 
     // TODO: remove later
-    const testContent : roomContent = {
+    /* const testContent : roomContent = {
         roomID: 1337,
         roomName: "Linking-Test",
         roomTopic: [
@@ -554,7 +554,7 @@ export function recieveRoomContent(roomName : string) : roomContent | null {
                 descriptionText: "testing linking-exercise",
             },
         ]
-    };
+    }; */
 
     // TODO: remove later
     switch (roomName) {
@@ -564,8 +564,7 @@ export function recieveRoomContent(roomName : string) : roomContent | null {
             return cybermobbingContent;
         case 'Phishing':
             return phishingContent;
-        case 'test':
-            return testContent;
+        /**/
         default:
             return null;
     }

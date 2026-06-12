@@ -12,18 +12,15 @@ interface StudDashProps {
 }
 
 function StudentDashboard( { studentsInfo } : StudDashProps ) {
-
     return(
-        <section>
-
+        
+        <section className="student-dashboard-wrapper">
             { studentsInfo == null ? null :
                 <>
                     <StudentControls studentsInfo={studentsInfo} />
-                    
                     <StudentList studentsInfo={studentsInfo} />
                 </>  
             }
-
         </section>
     );
 }

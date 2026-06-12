@@ -25,7 +25,7 @@ function StudentControls( { studentsInfo } : StudCtrlProps ) {
                 className="add-student-btn"
                 onClick={toggleAddStudents}
 
-                > Add Students 
+                > Schüler/-in hinzufügen  
 
                 </button>
 

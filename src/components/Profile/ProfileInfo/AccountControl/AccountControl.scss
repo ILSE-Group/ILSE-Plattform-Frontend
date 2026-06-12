@@ -5,8 +5,39 @@
 
     margin: 5vh 0 5vh 0;
     
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+
+    .stats-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; 
+    }
+
+.stat-row {
+    display: grid; 
+    grid-template-columns: minmax(10rem, 1fr) 2fr auto; 
+    align-items: center; 
+    gap: 1rem;
+}
+
+.stat-label {
+    text-align: left;
+    font-size: 1rem;
+}
+
+.progress-bg {
+    background: #333;
+    height: 0.75rem; 
+    border-radius: 0.5rem; 
+    overflow: hidden; 
+}
+
+.progress-fill {
+    background: #4caf50;
+    height: 100%;
+}
+
+.stat-percent {
+        text-align: right;
+        min-width: 3rem; 
+    }
 }
