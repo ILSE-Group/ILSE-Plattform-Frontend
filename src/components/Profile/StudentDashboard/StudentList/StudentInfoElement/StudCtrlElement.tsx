@@ -2,7 +2,9 @@ import './StudCtrlElement.scss';
 
 import React from 'react';
 
+import AlertBox from '../../../../General/AlertBox';
 import { manageUserAcc } from '../../../../../lib/apiHandler';
+import { resolvePath } from 'react-router-dom';
 
 
 interface StudCtrlElemProps {
@@ -11,29 +13,82 @@ interface StudCtrlElemProps {
 function StudentControlElement( { studentName } : StudCtrlElemProps ) {
 
     const [newTempPass, setNewTempPass] = React.useState('');
+    
+    const [deleteAlertOpen, setDeleteAlertOpened] = React.useState(false);
+    const [resetAlertOpen, setResetAlertOpened] = React.useState(false);
+    
+    const [deleteAlertResult, setDelAlertRes] = React.useState(false);
+    const [resetAlertResult, setResAlertRes] = React.useState(false);
+
+    React.useEffect(() => {
+        if( !deleteAlertResult  )
+            return;
+
+        manageUserAcc("delete", studentName);
+        setDelAlertRes(false);
+    }, [deleteAlertResult]);
+
+    React.useEffect(() => {
+        if( !resetAlertResult )
+            return;
+
+        setNewTempPass(manageUserAcc("passReset", studentName));
+        setResAlertRes(false);
+    }, [resetAlertResult]);
 
     const requestDelete = () => {
-        manageUserAcc("delete", studentName);
+        setDeleteAlertOpened(true);
     }
     const requestPassReset = () => {
-        setNewTempPass(manageUserAcc("passReset", studentName));
+        setResetAlertOpened(true);
     }
 
+     const handleDeleteAlertClose = ( result : boolean) => {
+        setDeleteAlertOpened(false);
+        setDelAlertRes(result);
+    }
+    const handleResetAlertClose = ( result : boolean) => {
+        setResetAlertOpened(false);
+        setResAlertRes(result);
+    }
+
+
     return (
-        <div className='student-control-wrapper'>
+        <div className='control-wrapper'>
+            <div className='student-control-wrapper'>
 
-            <p onClick={requestDelete}>
-                Delete
-            </p>
+                <p className='control-button'
+                   onClick={requestDelete}
+                >
+                    Account Löschen
+                </p>
 
-            <p onClick={requestPassReset}>
-                PasswordReset
-            </p>
+                <p className='control-button'
+                   onClick={requestPassReset}
+                >
+                    Passwort Zurücksetzen
+                </p>
+
+            </div>
 
             {newTempPass.length > 0 ? (
-                <p>Neues Passwort: {newTempPass}</p>
+                    <p>Neues Passwort: {newTempPass}</p>
             ) : ( null ) }
 
+            {deleteAlertOpen &&
+                <AlertBox
+                    titleText="Account Löschen"
+                    messageText="Wollen Sie diesen Account wirklich löschen?"
+                    onClose={handleDeleteAlertClose}
+                />
+            }
+            {resetAlertOpen &&
+                <AlertBox
+                    titleText="Passwort Zurücksetzen"
+                    messageText="Wollen Sie das Passwort dieses Accounts zurücksetzen?"
+                    onClose={handleResetAlertClose}
+                />
+            }
         </div>
     );
 

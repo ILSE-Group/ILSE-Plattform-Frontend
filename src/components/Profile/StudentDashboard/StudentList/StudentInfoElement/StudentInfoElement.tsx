@@ -22,45 +22,40 @@ function StudentInfoElement( { studentInfo } : studInfoElemProps ) {
     return(
         <div>
                     
-            <div 
-                className="student-card"
+            <div className="student-card"
                 onClick={toggleRoomInfoShown}
             >
                 
-            <div className="student-left">
-        <div className="student-avatar">
-            
-        </div>
+                <div className="student-left">
+                    <div className="student-avatar">
+                        
+                    </div>
 
-        <span className="student-name">
-            {studentInfo.studentName}
-        </span>
-    </div>
+                    <span className="student-name">
+                        {studentInfo.studentName}
+                    </span>
+                </div>
 
-    <button
-                    
-                    className={`view-profile-btn ${roomInfoShown ? 'expanded' : ''}`}
+                <button className={`view-profile-btn ${roomInfoShown ? 'expanded' : ''}`}
                     type="button"
                 >
                     {roomInfoShown ? "Ausblenden" : "Profil anzeigen"}
                 </button>
+
             </div>
             
             {roomInfoShown && (
-    <>
-        {studentInfo.studentProgress.map((studentRoomStatus, idx) => (
-            <RoomsStatus
-                key={idx}
-                roomInfo={studentRoomStatus}
-            />
-        ))}
+                <>
+                    {studentInfo.studentProgress.map((studentRoomStatus, idx) => (
+                        <RoomsStatus
+                            key={idx}
+                            roomInfo={studentRoomStatus}
+                        />
+                    ))}
 
-
-        
-
-        <StudentControlElement studentName={studentInfo.studentName} />
-    </>
-)}
+                    <StudentControlElement studentName={studentInfo.studentName} />
+                </>
+            )}
 
         </div>
     );

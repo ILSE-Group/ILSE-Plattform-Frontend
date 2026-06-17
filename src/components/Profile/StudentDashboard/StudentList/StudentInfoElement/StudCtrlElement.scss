@@ -1,12 +1,41 @@
+@use '../../../../../lib/styles.scss' as styles;
 
-.student-control-wrapper {
+.control-wrapper {
     height: auto;
     width: 90vw;
 
+    margin-top: 2em;
+
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.student-control-wrapper {
+    height: auto;
+    width: 100%;
+
+    margin-top: 0.5em;
+
+    display: flex;
+    flex-direction: column;
+    @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+        flex-direction: row;
+    }
     align-items: center;
     justify-content: center;
 
-    gap: 10vw;
+    gap: 1em;
+}
+
+.control-button {
+    height: auto;
+    width: auto;
+
+    padding: 5px 10px;
+    border-radius: 0.5em;
+    background-color: var(--highlightColorLowContrast);
+    color: white;
+
+    cursor: pointer;
 }
