@@ -20,7 +20,7 @@ function StudentInfoElement( { studentInfo } : studInfoElemProps ) {
     }
 
     return(
-        <div>
+        <div className='students-wrapper'>
                     
             <div className="student-card"
                 onClick={toggleRoomInfoShown}

@@ -12,7 +12,7 @@ interface StudListProps {
 function StudentList( { studentsInfo } : StudListProps ) {
 
     return(
-        <div>
+        <div className='student-list-wrapper'>
 
             {studentsInfo.map((info, idx) => 
                 <div className='student-info-wrapper' key={idx}>

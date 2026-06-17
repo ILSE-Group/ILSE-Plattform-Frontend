@@ -15,13 +15,13 @@ function ProfileInfo( { content } : ProfInfoProps ) {
         <section className='info-wrapper' >
             <ProfileCard profileInfo={content} />
 
-            {/* This component now handles the progress bars */}
-            <AccountControl />
+            {/* handles password reset, account deletion, profileImg change */}
+            <AccountControl userName={content.username} />
 
-            {/* REMOVE THIS BLOCK BELOW */}
-            {/* {content.roomsProgress.map((roomInfo, idx) => 
+            {/* handles the progress bars */}
+            {content.roomsProgress.map((roomInfo, idx) => 
                 <RoomsStatus key={idx} roomInfo={roomInfo} />
-            )} */}
+            )}
         </section>
     );
 }
