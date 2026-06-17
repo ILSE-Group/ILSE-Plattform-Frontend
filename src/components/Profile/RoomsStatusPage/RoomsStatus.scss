@@ -5,16 +5,21 @@
 
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center; 
     gap: 1rem;           
 }
 
 .rooms-status-element {
     height: auto;
+
     margin: 0;
+
+    overflow-wrap: anywhere;
 }
 .rooms-status-element:first-of-type {
     width: 20%;
+    min-width: 110px;
 
     text-align: left;
 }
@@ -48,6 +53,8 @@
 
 .rooms-status-element:last-of-type {
     width: 10%;
+    min-width: 50px;
+
     text-align: right;
 }
 
