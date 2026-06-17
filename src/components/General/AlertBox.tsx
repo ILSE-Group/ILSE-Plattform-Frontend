@@ -19,7 +19,9 @@ function AlertBox( {titleText, messageText, onClose} : AlertBoxProps) {
         <section className="alert-wrapper">
 
             <div className='alert-box-wrapper'>
-                <h1>{titleText}</h1>
+                <p className='alert-header'>
+                    {titleText}
+                </p>
                 <p>{messageText}</p>
 
                 <div className='options-wrapper'>

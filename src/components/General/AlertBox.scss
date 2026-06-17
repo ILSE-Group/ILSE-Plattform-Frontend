@@ -20,7 +20,7 @@
     height: auto;
     width: 30vw;
 
-    padding: 1em 5em;
+    padding: 2em 8em;
 
     display: flex;
     flex-direction: column;
@@ -31,6 +31,10 @@
 
     border-radius: 1.5em;
     background-color: var(--bgColorMediumContrast);
+}
+
+.alert-header {
+    font-weight: bold;
 }
 
 .options-wrapper {
