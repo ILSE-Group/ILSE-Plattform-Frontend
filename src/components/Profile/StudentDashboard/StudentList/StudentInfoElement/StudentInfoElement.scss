@@ -1,4 +1,3 @@
-
 .students-wrapper {
     height: auto;
     width: 100%;
@@ -14,7 +13,6 @@
     border-radius: 2em;
     background-color: var(--bgColorMediumContrast);
 }
-
 .student-card {
     width: auto;
     max-width: 100%;
@@ -29,14 +27,10 @@
 
     border-radius: 1rem;
 
-    background-color: var(--bgColorMediumContrast);
+    background-color: transparent;
 }
 
-.student-card:hover {
-    transform: translateY(-0.2vh);
 
-    box-shadow: 0 0.5vh 1vh rgba(0,0,0,0.1);
-}
 
 .student-left {
     display: flex;

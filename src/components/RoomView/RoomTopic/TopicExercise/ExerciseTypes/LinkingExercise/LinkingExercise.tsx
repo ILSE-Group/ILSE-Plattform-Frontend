@@ -1,10 +1,7 @@
 import './LinkingExercise.scss';
-
 import React from 'react';
-
-import type { exerciseQuestion, exerciseAnswer } from '../../../../../../lib/interfaceHandler';
-import LinkingElement  from './LinkingElement';
-
+import type { exerciseQuestion } from '../../../../../../lib/interfaceHandler';
+import LinkingElement from './LinkingElement';
 
 interface LinkingExProps {
     question: exerciseQuestion;
@@ -13,70 +10,68 @@ interface LinkingExProps {
     setExerciseState: (state: boolean) => void;
 }
 
-function LinkingExercise({ question, checkSignal, checkDoneSignal, setExerciseState } : LinkingExProps) {
+function LinkingExercise({ question, checkSignal, checkDoneSignal, setExerciseState }: LinkingExProps) {
 
-    const [wrongAns, setWrongAns] = React.useState<exerciseAnswer[]>(
+    // hier deklarieren wir die States für die Signale
+    const [resetSignal, setResetSignal] = React.useState(false);
+    const [inactiveSignal, setInactiveSignal] = React.useState(false);
+
+    const [wrongAns, setWrongAns] = React.useState<any[]>(
         () => question.answer.map((a) => ({ ...a }))
     );
-    const [correctAns, setCorrectAns] = React.useState<exerciseAnswer[]|null>(null)
-
 
     const [answerState, setAnswerState] = React.useState<boolean[]>(
-            () => question.answer.map(() => false)
+        () => question.answer.map(() => false)
     );
 
-    const setAnswerActive = (id : number, isActive : boolean) => {
+    const setAnswerActive = (id: number, isActive: boolean) => {
         setAnswerState(prev => {
             const next = [...prev];
             next[id] = isActive;
             return next;
         });
-    }
+    };
 
-    // on parent signal, check if answer is correct
+    // Matching-Logik (hier werden die States nun gefunden)
     React.useEffect(() => {
-        
-    }, [checkSignal, checkDoneSignal]);
+        const activeIndices = answerState
+            .map((isActive, idx) => (isActive ? idx : -1))
+            .filter(idx => idx !== -1);
 
-    // report state to parent
-    React.useEffect(() => {
+        if (activeIndices.length === 2) {
+            const [idx1, idx2] = activeIndices;
+            const ans1 = question.answer[idx1];
+            const ans2 = question.answer[idx2];
 
-    }, [setExerciseState]);
+            const isMatch = (ans1.answerID === ans2.fitsTo) || (ans2.answerID === ans1.fitsTo);
 
-    // check answer when 2 elements are selected
-    React.useEffect(() => {
-        
-        if( answerState.filter(s => s == true).length >= 2 ) {
-            resetAnswerSignal = true;
+            if (isMatch) {
+                setInactiveSignal(true);
+                setTimeout(() => setInactiveSignal(false), 100);
+            } else {
+                setResetSignal(true);
+                setTimeout(() => setResetSignal(false), 100);
+            }
+            
+            setAnswerState(question.answer.map(() => false));
         }
-
-        return () => {
-            resetAnswerSignal = false
-        };
-
-    }, [setAnswerActive]);
-
-    // handle answer state
-    let resetAnswerSignal = false;
-    let setAnswerInactiveSignal = false
-
+    }, [answerState, question.answer]);
 
     return (
         <div className='linking-wrapper'>
-            {//correctAns?.map((ans, ))
-            }
             {wrongAns.map((ans, id) => (
-                <LinkingElement key={id}
-                    id={ans.answerID}
+                <LinkingElement 
+                    key={id}
+                    id={id}
                     answer={ans}
                     setAnswerState={setAnswerActive}
-                    resetAnswer={resetAnswerSignal}
-                    setInactive={setAnswerInactiveSignal}
+                    // Hier verwenden wir jetzt die States
+                    resetAnswer={resetSignal}
+                    setInactive={inactiveSignal}
                 />
             ))}
         </div>
     );
-
 }
 
 export default LinkingExercise;
