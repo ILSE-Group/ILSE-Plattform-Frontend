@@ -1,0 +1,33 @@
+@use '../../../../../lib/styles.scss' as styles;
+
+
+.new-students-wrapper {
+    height: auto;
+    min-width: 250px;
+    width: 90%;
+
+    margin: 2em 0 2em 0;
+
+    @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+        width: 50%;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+
+}
+
+.new-student-element {
+    height: auto;
+    width: 90%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+
+}

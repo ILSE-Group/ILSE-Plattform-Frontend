@@ -10,12 +10,19 @@ interface NewStudListProps {
 function NewStudentsList({ students } : NewStudListProps ) {
 
     return (
-        <div>
+        <div className='new-students-wrapper'>
+            <div className='new-student-element'>
+                <p>Benutzername:</p>
+                <p>Passwort:</p>
+            </div>
+
             {students == null ? null : (
                 students.studentInfo.map((student, idx) => (
-                    <div key={idx}>
-                        <p>Benutzername: {student.username}</p>
-                        <p>Temporäres Passwort: {student.tempPassword}</p>
+                    <div key={idx}
+                        className='new-student-element'
+                    >
+                        <p>{student.username} </p>
+                        <p>{student.tempPassword}</p>
                     </div>
                 ))
             )}

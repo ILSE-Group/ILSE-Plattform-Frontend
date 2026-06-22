@@ -27,13 +27,13 @@ function StudentControls( { studentsInfo } : StudCtrlProps ) {
 
                 > Schüler/-in hinzufügen  
 
-                </button>
+            </button>
 
-                {addStudentOpened &&
-                    <AddStudentControl />
-                }
-                </div>
-                );
+            {addStudentOpened &&
+                <AddStudentControl />
+            }
+        </div>
+    );
 
 }
 

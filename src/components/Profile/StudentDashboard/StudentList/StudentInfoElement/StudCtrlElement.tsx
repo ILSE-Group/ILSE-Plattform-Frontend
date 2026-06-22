@@ -4,7 +4,7 @@ import React from 'react';
 
 import AlertBox from '../../../../General/AlertBox';
 import { manageUserAcc } from '../../../../../lib/apiHandler';
-import { resolvePath } from 'react-router-dom';
+import { UserManagementType } from '../../../../../lib/ManagementType'; 
 
 
 interface StudCtrlElemProps {
@@ -24,7 +24,7 @@ function StudentControlElement( { studentName } : StudCtrlElemProps ) {
         if( !deleteAlertResult  )
             return;
 
-        manageUserAcc("delete", studentName);
+        manageUserAcc(UserManagementType.DELETE, studentName);
         setDelAlertRes(false);
     }, [deleteAlertResult]);
 
@@ -32,7 +32,7 @@ function StudentControlElement( { studentName } : StudCtrlElemProps ) {
         if( !resetAlertResult )
             return;
 
-        setNewTempPass(manageUserAcc("passReset", studentName));
+        setNewTempPass(manageUserAcc(UserManagementType.PASSWORD_RESET, studentName));
         setResAlertRes(false);
     }, [resetAlertResult]);
 

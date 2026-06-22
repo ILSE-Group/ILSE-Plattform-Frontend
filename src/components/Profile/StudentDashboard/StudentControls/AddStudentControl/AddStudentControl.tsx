@@ -23,11 +23,12 @@ function AddStudentControl() {
     }
 
     return(
-        <div>
+        <div className='add-student-wrapper'>
             <p>Geben Sie eine Zahl ein</p>
             <input type="text" name="" id="" />
 
-            <p onClick={requestAddNewStudents}>
+            <p className='add-students-button'
+               onClick={requestAddNewStudents}>
                 Benutzer erstellen
             </p>
 

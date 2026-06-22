@@ -1,5 +1,6 @@
 import type { roomList, roomContent, feedbackContent, webToken, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement } from "./interfaceHandler";
 
+import { UserManagementType } from "./ManagementType";
 import { /*API_URL,*/ getLoginToken } from "./globalVars";
 import { sanitizeString, processForAPISend } from "./stringHandler";
 
@@ -720,10 +721,26 @@ export function addNewStudents( count : number ) : createdStudentsInfo {
 }
 
 // TODO
-export function manageUserAcc( managementType : string, userName : string ) : string {
+export function manageUserAcc( managementType : number, userName : string ) : string {
+
+    let management : string = '';
+    switch(managementType) {
+        case UserManagementType.ADD:
+            management = 'add';
+            break;
+        case UserManagementType.DELETE:
+            management = 'delete';
+            break;
+        case UserManagementType.PASSWORD_RESET:
+            management = 'passReset';
+            break;
+        default:
+            return '';
+
+    }
     
     const requestContent : requestStudentManagement = {
-        managementType: managementType,
+        managementType: management,
         userName: userName,
         studentCount: null,
     }

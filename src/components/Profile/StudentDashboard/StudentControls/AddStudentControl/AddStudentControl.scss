@@ -1,0 +1,20 @@
+
+.add-student-wrapper {
+    height: auto;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.add-students-button {
+    margin-top: 1em;
+
+    padding: 3px 10px 3px 10px;
+    background-color: var(--highlightColorLowContrast);
+    color: white;
+
+    border-radius: 1em;
+}
