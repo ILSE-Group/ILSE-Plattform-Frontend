@@ -3,6 +3,8 @@ import './AccountControl.scss';
 import React from 'react';
 
 import AlertBox from '../../../General/AlertBox';
+import PasswordAlertBox from '../../../General/PasswordAlertBox';
+
 import { manageUserAcc } from '../../../../lib/apiHandler';
 import { UserManagementType } from '../../../../lib/ManagementType';
 
@@ -13,14 +15,29 @@ interface AccountControlProps {
 
 function AccountControl( {userName} : AccountControlProps ) {
 
+    const [passChngCtrlOpened, setPassChngCtrlOpened] = React.useState(false);
     const [accDelCtrlOpened, setAccDelCtrControlOpened] = React.useState(false);
     
+    const togglePassChngState = () => {
+        setPassChngCtrlOpened(!passChngCtrlOpened);
+    }
+    const onPassChngAlertClose = ( password : string  ) => {
+        setPassChngCtrlOpened(false);
+        //if( password.length > 0 )
+        //    let msg : string = manageUserAcc(UserManagementType.PASSWORD_CHANGE, userName, password);
+    }
+
     const toggleAccDelState = () => {
         setAccDelCtrControlOpened(!accDelCtrlOpened);
     }
-    const onAccDelAlertClose = () => {
+    const onAccDelAlertClose = ( result : boolean) => {
         setAccDelCtrControlOpened(false);
-        let msg : string = manageUserAcc(UserManagementType.DELETE, userName);
+
+        let msg : string;
+        if(result)
+            msg = manageUserAcc(UserManagementType.DELETE, userName);
+
+        // TODO: handle error-msg
     }
 
     return (
@@ -33,7 +50,7 @@ function AccountControl( {userName} : AccountControlProps ) {
                 </p>
 
                 <p className="account-control-element"
-
+                    onClick={togglePassChngState}
                 >
                     Passwort ändern
                 </p>
@@ -48,6 +65,12 @@ function AccountControl( {userName} : AccountControlProps ) {
             {/* TODO: input new Password element */}
 
             {/* TODO: select ProfilePicture element */}
+
+            {passChngCtrlOpened &&
+                <PasswordAlertBox
+                    onClose={onPassChngAlertClose}
+                />
+            }
 
             {accDelCtrlOpened &&
                 <AlertBox 

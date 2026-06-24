@@ -1,6 +1,5 @@
 import './AlertBox.scss';
 
-import React from 'react';
 
 interface AlertBoxProps {
     titleText: string;
