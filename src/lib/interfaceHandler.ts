@@ -69,6 +69,13 @@ export interface requestStudentManagement {
     studentCount: number | null;
 }
 
+// request to manage own account
+// with managementType: 'iconChange', 'passCange', 'accountDel'
+export interface requestAccountManagement {
+    managementType: string;
+    managementArg: string | null;
+}
+
 export interface createdStudentsInfo {
     studentInfo: newStudentInfo[];
 }

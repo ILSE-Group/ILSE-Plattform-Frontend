@@ -1,11 +1,13 @@
 .student-dashboard-wrapper {
+    height: auto;
+    width: 90vw;
+
+    margin-top: 2rem;
+
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    width: 90vw;
-    margin-top: 2rem;
-    gap: 2rem;
-
+    align-items: center;
+    gap: 3rem;
     
     .add-student-btn {
         width: 15rem;      
@@ -13,14 +15,13 @@
         text-align: center;
         
     }
-
     
     .student-controls, .student-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 
     .student-card {
         width: 90%;        

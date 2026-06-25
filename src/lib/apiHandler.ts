@@ -1,8 +1,11 @@
-import type { roomList, roomContent, feedbackContent, webToken, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement } from "./interfaceHandler";
+import type { roomList, roomContent, feedbackContent, webToken, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement, requestAccountManagement } from "./interfaceHandler";
 
-import { UserManagementType } from "./ManagementType";
+import { UserManagementType, AccountManagementType } from "./ManagementType";
 import { /*API_URL,*/ getLoginToken } from "./globalVars";
 import { sanitizeString, processForAPISend } from "./stringHandler";
+
+type UserManagement = typeof UserManagementType[keyof typeof UserManagementType];
+type AccountManagement = typeof AccountManagementType[keyof typeof AccountManagementType];
 
 
 //===================================================
@@ -721,7 +724,7 @@ export function addNewStudents( count : number ) : createdStudentsInfo {
 }
 
 // TODO
-export function manageUserAcc( managementType : number, userName : string ) : string {
+export function manageUserAcc( managementType : UserManagement, userName : string ) : string {
 
     let management : string = '';
     switch(managementType) {
@@ -743,6 +746,37 @@ export function manageUserAcc( managementType : number, userName : string ) : st
         managementType: management,
         userName: userName,
         studentCount: null,
+    }
+
+    return 'password123';
+
+
+}
+
+export function manageOwnAcc( managementType : AccountManagement, option : string ) : string {
+
+    let management : string = '';
+    switch(managementType) {
+        case AccountManagementType.CHANGE_PROFILE_ICON:
+            management = 'iconChange';
+            break;
+        case AccountManagementType.CHANGE_PASSWORD:
+            management = 'passCange';
+            break;
+        case AccountManagementType.DELETE_ACCOUNT:
+            management = 'accountDel';
+            break;
+        default:
+            return '';
+
+    }
+
+    if( option.trim().length <= 0 )
+        option = '';
+    
+    const requestContent : requestAccountManagement = {
+        managementType: management,
+        managementArg: option,
     }
 
     return 'password123';

@@ -5,8 +5,8 @@ import React from 'react';
 import AlertBox from '../../../General/AlertBox';
 import PasswordAlertBox from '../../../General/PasswordAlertBox';
 
-import { manageUserAcc } from '../../../../lib/apiHandler';
-import { UserManagementType } from '../../../../lib/ManagementType';
+import { manageOwnAcc } from '../../../../lib/apiHandler';
+import { AccountManagementType } from '../../../../lib/ManagementType';
 
 
 interface AccountControlProps {
@@ -23,8 +23,10 @@ function AccountControl( {userName} : AccountControlProps ) {
     }
     const onPassChngAlertClose = ( password : string  ) => {
         setPassChngCtrlOpened(false);
-        //if( password.length > 0 )
-        //    let msg : string = manageUserAcc(UserManagementType.PASSWORD_CHANGE, userName, password);
+        
+        let msg : string;
+        if( password.length > 0 )
+            msg = manageOwnAcc(AccountManagementType.CHANGE_PASSWORD, password);
     }
 
     const toggleAccDelState = () => {
@@ -35,7 +37,7 @@ function AccountControl( {userName} : AccountControlProps ) {
 
         let msg : string;
         if(result)
-            msg = manageUserAcc(UserManagementType.DELETE, userName);
+            msg = manageOwnAcc(AccountManagementType.DELETE_ACCOUNT, '');
 
         // TODO: handle error-msg
     }
