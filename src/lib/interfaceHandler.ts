@@ -73,7 +73,7 @@ export interface requestStudentManagement {
 // with managementType: 'iconChange', 'passCange', 'accountDel'
 export interface requestAccountManagement {
     managementType: string;
-    managementArg: string | null;
+    managementArg: string;
 }
 
 export interface createdStudentsInfo {
