@@ -15,14 +15,26 @@ interface AccountControlProps {
 
 function AccountControl( {userName} : AccountControlProps ) {
 
+    const [iconChngCtrlOpened, setIconChngCtrlOpened] = React.useState(false);
     const [passChngCtrlOpened, setPassChngCtrlOpened] = React.useState(false);
     const [accDelCtrlOpened, setAccDelCtrControlOpened] = React.useState(false);
     
+    const toggleIconChngState = () => {
+        setIconChngCtrlOpened(!iconChngCtrlOpened);
+    }
+    const onIconChngAlertClose = ( newIcon : string ) => {
+        setIconChngCtrlOpened(false);
+
+        //TODO
+    }
+
     const togglePassChngState = () => {
         setPassChngCtrlOpened(!passChngCtrlOpened);
     }
     const onPassChngAlertClose = ( password : string  ) => {
         setPassChngCtrlOpened(false);
+
+        //TODO: add Password-Length Check
         
         let msg : string;
         if( password.length > 0 )
@@ -42,11 +54,12 @@ function AccountControl( {userName} : AccountControlProps ) {
         // TODO: handle error-msg
     }
 
+
     return (
         <div className='account-control-wrapper'>
             <div className='control-elements-wrapper'>
                 <p className="account-control-element"
-                
+                    onClick={toggleIconChngState}
                 >
                     Profilbild ändern
                 </p>
@@ -64,9 +77,15 @@ function AccountControl( {userName} : AccountControlProps ) {
                 </p>
             </div>
 
-            {/* TODO: input new Password element */}
+            
 
-            {/* TODO: select ProfilePicture element */}
+            {/* TODO: select ProfilePicture element
+            {iconChngCtrlOpened &&
+                <
+                    onClose={onIconChngAlertClose}
+                />
+            }
+            */}
 
             {passChngCtrlOpened &&
                 <PasswordAlertBox
