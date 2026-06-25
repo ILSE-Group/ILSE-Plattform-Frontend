@@ -10,10 +10,10 @@ import { AccountManagementType } from '../../../../lib/ManagementType';
 
 
 interface AccountControlProps {
-    userName: string;
+    userType: string;
 }
 
-function AccountControl( {userName} : AccountControlProps ) {
+function AccountControl( { userType } : AccountControlProps ) {
 
     const [iconChngCtrlOpened, setIconChngCtrlOpened] = React.useState(false);
     const [passChngCtrlOpened, setPassChngCtrlOpened] = React.useState(false);
@@ -70,11 +70,13 @@ function AccountControl( {userName} : AccountControlProps ) {
                     Passwort ändern
                 </p>
 
-                <p className="account-control-element"
-                    onClick={toggleAccDelState}
-                >
-                    Account löschen
-                </p>
+                { userType === "teacher" &&
+                    <p className="account-control-element"
+                        onClick={toggleAccDelState}
+                    >
+                        Account löschen
+                    </p>
+                }
             </div>
 
             

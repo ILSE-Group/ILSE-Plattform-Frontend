@@ -13,15 +13,17 @@ interface ProfInfoProps {
 function ProfileInfo( { content } : ProfInfoProps ) {
     return(
         <section className='info-wrapper' >
+            
             <ProfileCard profileInfo={content} />
 
             {/* handles password reset, account deletion, profileImg change */}
-            <AccountControl userName={content.username} />
+            <AccountControl userType={content.userType} />
 
             {/* handles the progress bars */}
             {content.roomsProgress.map((roomInfo, idx) => 
                 <RoomsStatus key={idx} roomInfo={roomInfo} />
             )}
+
         </section>
     );
 }
