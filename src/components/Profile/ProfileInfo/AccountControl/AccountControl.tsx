@@ -4,16 +4,19 @@ import React from 'react';
 
 import AlertBox from '../../../General/AlertBox';
 import PasswordAlertBox from '../../../General/PasswordAlertBox';
+import UserIconAlertBox from '../../../General/UserIconAlertBox';
 
+import type { profileIconElement } from '../../../../lib/interfaceHandler';
 import { manageOwnAcc } from '../../../../lib/apiHandler';
 import { AccountManagementType } from '../../../../lib/ManagementType';
 
 
 interface AccountControlProps {
     userType: string;
+    userIcon: profileIconElement;
 }
 
-function AccountControl( { userType } : AccountControlProps ) {
+function AccountControl( { userType, userIcon } : AccountControlProps ) {
 
     const [iconChngCtrlOpened, setIconChngCtrlOpened] = React.useState(false);
     const [passChngCtrlOpened, setPassChngCtrlOpened] = React.useState(false);
@@ -22,10 +25,19 @@ function AccountControl( { userType } : AccountControlProps ) {
     const toggleIconChngState = () => {
         setIconChngCtrlOpened(!iconChngCtrlOpened);
     }
-    const onIconChngAlertClose = ( newIcon : string ) => {
+    const onIconChngAlertClose = ( newId : number, newSrc : string, newColor : string ) => {
         setIconChngCtrlOpened(false);
 
-        //TODO
+        if( newSrc.length <= 0 || newColor.length != 6 )
+            return;
+
+        let newIcon : profileIconElement = {
+            iconID: newId,
+            iconBgColorHex: newColor,
+            iconSrc: newSrc,
+        }
+
+        manageOwnAcc(AccountManagementType.CHANGE_PROFILE_ICON, newIcon);
     }
 
     const togglePassChngState = () => {
@@ -81,13 +93,11 @@ function AccountControl( { userType } : AccountControlProps ) {
 
             
 
-            {/* TODO: select ProfilePicture element
             {iconChngCtrlOpened &&
-                <
-                    onClose={onIconChngAlertClose}
+                <UserIconAlertBox
+                    userIcon={userIcon} onClose={onIconChngAlertClose}
                 />
             }
-            */}
 
             {passChngCtrlOpened &&
                 <PasswordAlertBox

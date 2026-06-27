@@ -165,9 +165,9 @@ export function getIconsData() : profileIconContent {
                 iconSrc: '/icons/racoon.jpg',
             },
         ]
-    } as profileIconContent;
+    };
 
-    return icons;
+    return icons as profileIconContent;
 }
 
 export function getIconSrc(id : number) : string {

@@ -1,4 +1,4 @@
-import type { roomList, roomContent, feedbackContent, webToken, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement, requestAccountManagement } from "./interfaceHandler";
+import type { roomList, roomContent, feedbackContent, webToken, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement, requestAccountManagement, profileIconElement } from "./interfaceHandler";
 
 import { UserManagementType, AccountManagementType } from "./ManagementType";
 import { /*API_URL,*/ getLoginToken } from "./globalVars";
@@ -757,25 +757,31 @@ export function manageUserAcc( managementType : UserManagement, userName : strin
 
 }
 
-export function manageOwnAcc( managementType : AccountManagement, option : string ) : string {
+export function manageOwnAcc( managementType : AccountManagement, option : string | profileIconElement ) : string {
 
     let management : string = '';
     switch(managementType) {
         case AccountManagementType.CHANGE_PROFILE_ICON:
             management = 'iconChange';
+            if( typeof option === 'string' )
+                return "Fehlerhafte Anfrage. Bitte versuchen Sie es erneut!";
             break;
         case AccountManagementType.CHANGE_PASSWORD:
             management = 'passCange';
+            if( typeof option !== 'string' )
+                return "Fehlerhafte Anfrage. Bitte versuchen Sie es erneut!";
             break;
         case AccountManagementType.DELETE_ACCOUNT:
             management = 'accountDel';
+            if( typeof option !== 'string' )
+                return "Fehlerhafte Anfrage. Bitte versuchen Sie es erneut!";
             break;
         default:
             return '';
 
     }
 
-    if( option.trim().length <= 0 )
+    if( typeof option == 'string' && option.trim().length <= 0 )
         option = '';
     
     const requestContent : requestAccountManagement = {

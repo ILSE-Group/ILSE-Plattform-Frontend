@@ -1,7 +1,8 @@
 import './CardsPage.scss';
 
 import Card from './Card';
-import { getRoomListItems, type roomListItem } from '../../../lib/dataHandler';
+import type { roomListItem } from '../../../lib/interfaceHandler';
+import { getRoomListItems } from '../../../lib/dataHandler';
 
 
 function CardsPage() {

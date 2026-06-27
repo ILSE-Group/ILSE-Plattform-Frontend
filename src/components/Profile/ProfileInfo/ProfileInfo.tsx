@@ -17,7 +17,7 @@ function ProfileInfo( { content } : ProfInfoProps ) {
             <ProfileCard profileInfo={content} />
 
             {/* handles password reset, account deletion, profileImg change */}
-            <AccountControl userType={content.userType} />
+            <AccountControl userType={content.userType} userIcon={content.userIcon} />
 
             {/* handles the progress bars */}
             {content.roomsProgress.map((roomInfo, idx) => 

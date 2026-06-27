@@ -1,0 +1,141 @@
+@use '../../lib/styles.scss' as styles;
+
+
+.alert-wrapper {
+    height: 100%;
+    width: 100%;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.alert-box-wrapper {
+    height: auto;
+    max-height: 90vh;
+    width: 70vw;
+
+    @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+        width: 50vw;
+    }
+
+    padding: 1em 2em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    gap: 2em;
+
+    border-radius: 1.5em;
+    background-color: var(--bgColorMediumContrast);
+}
+
+.alert-header {
+    font-weight: bold;
+}
+
+.profile-preview-wrapper {
+    min-height: 100px;
+    height: 8vw;
+    width: 90%;
+
+    margin: 0 1rem 0 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-top: 5px var(--fgColorLowContrast);
+    border-bottom: 1px var(--fgColorLowContrast);
+
+    img {
+        height: 90%;
+        max-width: 80%;
+        width: auto;
+
+        border-radius: 50%;
+    }
+}
+
+.setting-wrapper {
+    height: auto;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 2rem;
+}
+.color-settings-wrapper {
+    height: auto;
+    width: 100%;
+
+    input {
+        height: 3rem;
+        width: 5rem;
+
+        border-radius: 50%;
+    }
+}
+
+.image-settings-wrapper {
+    max-height: 30vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    overflow: auto;
+
+    gap: 2rem;
+
+    .icon-preview {
+        height: 8vh;
+        width: auto;
+
+        border-radius: 50%;
+    } 
+}
+
+
+.options-wrapper {
+    height: auto;
+    width: 90%;
+
+    margin-top: 1vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.options-button {
+    padding: 3px 10px;
+    
+    cursor: pointer;
+
+    border-radius: 1em;
+    background-color: var(--highlightColorMediumContrast);
+    color: white;
+
+    user-select: none;
+}
