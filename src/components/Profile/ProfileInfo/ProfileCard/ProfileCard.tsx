@@ -11,7 +11,15 @@ interface ProfileCardProps {
 
 function ProfileCard( { profileInfo } : ProfileCardProps ) {
 
+    const iconImgRef = React.useRef<HTMLImageElement | null>(null);
     const progressBarRef = React.useRef<HTMLDivElement | null>(null);
+
+    // set icon-background color on value change
+    React.useEffect(() => {
+        if( iconImgRef.current )
+            iconImgRef.current.style.backgroundColor = "#".concat(profileInfo.userIcon.iconBgColorHex.toString());
+    }, 
+    [profileInfo.userIcon.iconBgColorHex])
 
     // set progressbar width on value change
     React.useEffect(() => {
@@ -24,7 +32,10 @@ function ProfileCard( { profileInfo } : ProfileCardProps ) {
         <div className='profile-card'>
 
             <div className='profile-avatar'>
-                <img src={profileInfo.userIconSrc} alt="User Icon" />
+                <img src={profileInfo.userIcon.iconSrc} 
+                    alt="User Icon"
+                    ref={iconImgRef}
+                />
             </div>
 
             <h1 className='profile-name'>

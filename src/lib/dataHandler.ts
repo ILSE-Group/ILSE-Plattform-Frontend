@@ -1,4 +1,4 @@
-import type { roomList, roomListItem, roomContent, profileContent } from "./interfaceHandler";
+import type { roomList, roomListItem, roomContent, profileContent, profileIconContent } from "./interfaceHandler";
 import { sanitizeString } from "./stringHandler";
 
 import { getFromSessionStorage, saveToSessionStorage } from "./sessionStorageHandler";
@@ -114,4 +114,74 @@ export function getProfileData() : profileContent {
         profileData = recieveProfileData();
 
     return profileData;
+}
+
+export function getIconsData() : profileIconContent {
+    let icons = {
+        icon: [
+            {
+                iconID: 0,
+                iconBgColorHex: '000000',
+                iconSrc: '/icons/otter.jpg',
+            },
+            {
+                iconID: 1,
+                iconBgColorHex: '000000',
+                iconSrc: '/icons/axolotl.jpg',
+            },
+            {
+                iconID: 2,
+                iconBgColorHex: '000000',
+                iconSrc: '/icons/capybara.jpg',
+            },
+            {
+                iconID: 3,
+                iconBgColorHex: '000000',
+                iconSrc: '/icons/cat.jpg',
+            },
+            {
+                iconID: 4,
+                iconBgColorHex: '000000',
+                iconSrc: '/icons/dog.jpg',
+            },
+            {
+                iconID: 5,
+                iconBgColorHex: '000000',
+                iconSrc: '/icons/fox.jpg',
+            },
+            {
+                iconID: 6,
+                iconBgColorHex: '000000',
+                iconSrc: '/icons/panda.jpg',
+            },
+            {
+                iconID:7,
+                iconBgColorHex: '000000',
+                iconSrc: '/icons/rabbit.jpg',
+            },
+            {
+                iconID: 8,
+                iconBgColorHex: '000000',
+                iconSrc: '/icons/racoon.jpg',
+            },
+        ]
+    } as profileIconContent;
+
+    return icons;
+}
+
+export function getIconSrc(id : number) : string {
+    let content : profileIconContent = getIconsData();
+
+    console.log(content.icon.entries.length);
+
+    if( id < 0 || id > content.icon.entries.length ) {
+        return '';
+    }
+
+    let src : string | undefined = content.icon.at(id)?.iconSrc;
+    if( typeof src == 'undefined' )
+        return '';
+
+    return src;
 }

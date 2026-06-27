@@ -580,7 +580,11 @@ export function recieveProfileData() : profileContent {
     const profileData : profileContent = {
         username: "OP-teacher",
         userType: "teacher",
-        userIconSrc: "../../assets/logo.svg",
+        userIcon: {
+            iconID: 0,
+            iconBgColorHex: '000000',
+            iconSrc: '/icons/otter.jpg',
+        },
         level: 20,
         levelDesc: "Profi",
         levelProgress: 80,

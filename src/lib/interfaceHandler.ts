@@ -44,7 +44,7 @@ export interface exerciseAnswer {
 export interface profileContent {
     username: string;
     userType: string;
-    userIconSrc: string;
+    userIcon: profileIconElement;
     level: number;
     levelDesc: string;
     levelProgress: number;
@@ -59,6 +59,16 @@ export interface profileRoomsProgress {
     roomID: number;
     roomName: string;
     roomProgress: number;
+}
+
+
+export interface profileIconContent {
+    icon: profileIconElement[];
+}
+export interface profileIconElement {
+    iconID: number;
+    iconBgColorHex: string;
+    iconSrc: string;
 }
 
 // teacher request to manage student account
@@ -91,13 +101,11 @@ export interface feedbackContent {
     feedbackText: string;
 }
 
-
 // JSON web token
 export interface webToken {
     username: string;
     date: number;
 }
-
 
 export interface loginSignalContent {
     username: string;
