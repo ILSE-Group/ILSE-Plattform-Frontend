@@ -22,18 +22,18 @@ function UserIconAlertBox( {userIcon, onClose} : AlertBoxProps) {
         userIcon.iconSrc.length > 0 ? userIcon.iconSrc : getIconSrc(0)
     );
     const [currentColor, setCurrentColor] = useState<string>(
-        userIcon.iconBgColorHex.length == 6 ? userIcon.iconBgColorHex : 'ffffff'
+        userIcon.iconBgColorHex.length == 6 ? userIcon.iconBgColorHex : '#ffffff'
     )
 
     const previewIconRef = useRef<HTMLImageElement | null>(null);
     useEffect(() => {
         if( previewIconRef.current )
-            previewIconRef.current.style.backgroundColor = "#".concat(currentColor.toString());
+            previewIconRef.current.style.backgroundColor = currentColor.toString();
     }, [currentColor])
 
     
-    const handleAlertClose = ( newID: number, newSrc : string, newColor : string ) => {
-        onClose(newID, newSrc, newColor);
+    const handleAlertClose = ( ) => {
+        onClose(currentID, currentSrc, currentColor);
     }
 
 
@@ -76,11 +76,11 @@ function UserIconAlertBox( {userIcon, onClose} : AlertBoxProps) {
 
                 <div className='options-wrapper'>
                     <p className='options-button'
-                       onClick={() => handleAlertClose(currentID, currentSrc, currentColor)}>
+                       onClick={() => handleAlertClose()}>
                         Übernehmen
                     </p>
                     <p className='options-button'
-                       onClick={() => handleAlertClose(0, '', '')}>
+                       onClick={() => handleAlertClose()}>
                         Abbrechen
                     </p>
                 </div>

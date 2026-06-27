@@ -17,7 +17,7 @@ function ProfileCard( { profileInfo } : ProfileCardProps ) {
     // set icon-background color on value change
     React.useEffect(() => {
         if( iconImgRef.current )
-            iconImgRef.current.style.backgroundColor = "#".concat(profileInfo.userIcon.iconBgColorHex.toString());
+            iconImgRef.current.style.backgroundColor = profileInfo.userIcon.iconBgColorHex.toString();
     }, 
     [profileInfo.userIcon.iconBgColorHex])
 
