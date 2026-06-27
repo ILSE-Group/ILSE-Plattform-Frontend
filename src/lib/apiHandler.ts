@@ -582,8 +582,8 @@ export function recieveProfileData() : profileContent {
         userType: "teacher",
         userIcon: {
             iconID: 0,
-            iconBgColorHex: '#000000',
-            iconSrc: '/icons/otter.jpg',
+            iconBgColorHex: '#ffffff',
+            iconSrc: '/icons/otter.png',
         },
         level: 20,
         levelDesc: "Profi",

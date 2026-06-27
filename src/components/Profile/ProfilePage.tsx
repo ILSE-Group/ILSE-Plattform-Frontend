@@ -1,8 +1,8 @@
 import './ProfilePage.scss';
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-import type { profileContent } from '../../lib/interfaceHandler';
+import type { profileContent, profileIconElement } from '../../lib/interfaceHandler';
 import { getProfileData } from '../../lib/dataHandler';
 
 import AppHeader from '../Header/Header';
@@ -12,21 +12,34 @@ import StudentDashboard from './StudentDashboard/StudentDashboard';
 
 function ProfilePage() {
 
-    const content : profileContent = getProfileData();
+    const [pageContent, setPageContent] = useState<profileContent>(getProfileData());
 
     useEffect(() => {
         document.title = 'ILSE - Profile';
     }, []);
+
+    const updateIcon = ( newIcon : profileIconElement ) => {
+        let newContent : profileContent = getProfileData();
+        newContent.userIcon = newIcon;
+
+        setPageContent(newContent);
+    }
 
 
     return(
         <section className='profile-wrapper'>
             <AppHeader />
 
-            <ProfileInfo content={content} />
+            <ProfileInfo 
+                content={pageContent}
+                updateIcon={updateIcon}
+            />
 
-            {(content.userType == "teacher" && content.studentsInfo != null) ? (
-                <StudentDashboard studentsInfo={content.studentsInfo} />
+            {
+                (pageContent.userType == "teacher" && pageContent.studentsInfo != null) ? (
+                    <StudentDashboard 
+                        studentsInfo={pageContent.studentsInfo} 
+                    />
                 ) : ( null )
             }
             

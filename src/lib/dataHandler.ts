@@ -121,48 +121,48 @@ export function getIconsData() : profileIconContent {
         icon: [
             {
                 iconID: 0,
-                iconBgColorHex: '000000',
-                iconSrc: '/icons/otter.jpg',
+                iconBgColorHex: '#000000',
+                iconSrc: '/icons/otter.png',
             },
             {
                 iconID: 1,
-                iconBgColorHex: '000000',
-                iconSrc: '/icons/axolotl.jpg',
+                iconBgColorHex: '#000000',
+                iconSrc: '/icons/axolotl.png',
             },
             {
                 iconID: 2,
-                iconBgColorHex: '000000',
-                iconSrc: '/icons/capybara.jpg',
+                iconBgColorHex: '#000000',
+                iconSrc: '/icons/bunny.png',
             },
             {
                 iconID: 3,
-                iconBgColorHex: '000000',
-                iconSrc: '/icons/cat.jpg',
+                iconBgColorHex: '#000000',
+                iconSrc: '/icons/capybara.png',
             },
             {
                 iconID: 4,
-                iconBgColorHex: '000000',
-                iconSrc: '/icons/dog.jpg',
+                iconBgColorHex: '#000000',
+                iconSrc: '/icons/cat.png',
             },
             {
                 iconID: 5,
-                iconBgColorHex: '000000',
-                iconSrc: '/icons/fox.jpg',
+                iconBgColorHex: '#000000',
+                iconSrc: '/icons/dog.png',
             },
             {
                 iconID: 6,
-                iconBgColorHex: '000000',
-                iconSrc: '/icons/panda.jpg',
+                iconBgColorHex: '#000000',
+                iconSrc: '/icons/fox.png',
             },
             {
-                iconID:7,
-                iconBgColorHex: '000000',
-                iconSrc: '/icons/rabbit.jpg',
+                iconID: 7,
+                iconBgColorHex: '#000000',
+                iconSrc: '/icons/panda.png',
             },
             {
                 iconID: 8,
-                iconBgColorHex: '000000',
-                iconSrc: '/icons/racoon.jpg',
+                iconBgColorHex: '#000000',
+                iconSrc: '/icons/racoon.png',
             },
         ]
     };

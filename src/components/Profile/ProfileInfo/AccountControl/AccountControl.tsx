@@ -14,9 +14,10 @@ import { AccountManagementType } from '../../../../lib/ManagementType';
 interface AccountControlProps {
     userType: string;
     userIcon: profileIconElement;
+    updateIcon: ( newIcon : profileIconElement ) => void;
 }
 
-function AccountControl( { userType, userIcon } : AccountControlProps ) {
+function AccountControl( { userType, userIcon, updateIcon } : AccountControlProps ) {
 
     const [iconChngCtrlOpened, setIconChngCtrlOpened] = React.useState(false);
     const [passChngCtrlOpened, setPassChngCtrlOpened] = React.useState(false);
@@ -28,7 +29,7 @@ function AccountControl( { userType, userIcon } : AccountControlProps ) {
     const onIconChngAlertClose = ( newId : number, newSrc : string, newColor : string ) => {
         setIconChngCtrlOpened(false);
 
-        if( newSrc.length <= 0 || newColor.length != 6 )
+        if( newSrc.length <= 0 || newColor.length != 7 )
             return;
 
         let newIcon : profileIconElement = {
@@ -38,6 +39,7 @@ function AccountControl( { userType, userIcon } : AccountControlProps ) {
         }
 
         manageOwnAcc(AccountManagementType.CHANGE_PROFILE_ICON, newIcon);
+        updateIcon(newIcon);
     }
 
     const togglePassChngState = () => {

@@ -22,7 +22,7 @@ function UserIconAlertBox( {userIcon, onClose} : AlertBoxProps) {
         userIcon.iconSrc.length > 0 ? userIcon.iconSrc : getIconSrc(0)
     );
     const [currentColor, setCurrentColor] = useState<string>(
-        userIcon.iconBgColorHex.length == 6 ? userIcon.iconBgColorHex : '#ffffff'
+        userIcon.iconBgColorHex.length == 7 ? userIcon.iconBgColorHex : '#ffffff'
     )
 
     const previewIconRef = useRef<HTMLImageElement | null>(null);
