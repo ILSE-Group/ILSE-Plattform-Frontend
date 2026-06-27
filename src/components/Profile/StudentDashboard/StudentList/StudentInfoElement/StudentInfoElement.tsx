@@ -1,6 +1,6 @@
 import './StudentInfoElement.scss';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import type { profileStudentsInfo } from '../../../../../lib/interfaceHandler';
 import RoomsStatus from '../../../RoomsStatusPage/RoomsStatus';
@@ -19,6 +19,13 @@ function StudentInfoElement( { studentInfo } : studInfoElemProps ) {
         setRoomInfoSchown(!roomInfoShown);
     }
 
+    const studentIconRef = React.useRef<HTMLDivElement | null>(null);
+
+    React.useEffect(() => {
+        if( studentIconRef.current )
+            studentIconRef.current.style.backgroundColor = studentInfo.studentIcon.iconBgColorHex;
+    }, [studentInfo.studentIcon.iconBgColorHex])
+
     return(
         <div className='students-wrapper'>
                     
@@ -27,8 +34,13 @@ function StudentInfoElement( { studentInfo } : studInfoElemProps ) {
             >
                 
                 <div className="student-left">
-                    <div className="student-avatar">
-                        
+                    <div className="student-avatar-wrapper"
+                        ref={studentIconRef}
+                    >
+                        <img className="student-avatar"
+                            src={studentInfo.studentIcon.iconSrc} 
+                            alt="" 
+                        />
                     </div>
 
                     <span className="student-name">

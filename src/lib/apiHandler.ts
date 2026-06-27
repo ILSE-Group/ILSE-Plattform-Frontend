@@ -591,6 +591,11 @@ export function recieveProfileData() : profileContent {
         studentsInfo: [
             {
                 studentName: 'epicLion',
+                studentIcon: {
+                    iconID: 3,
+                    iconBgColorHex: '#234834',
+                    iconSrc: '/icons/capybara.png',
+                },
                 studentProgress: [
                     {
                         roomID: 0,
@@ -611,6 +616,11 @@ export function recieveProfileData() : profileContent {
             },
             {
                 studentName: 'shyCobra',
+                studentIcon: {
+                    iconID: 8,
+                    iconBgColorHex: '#f82f9f',
+                    iconSrc: '/icons/racoon.png',
+                },
                 studentProgress: [
                     {
                         roomID: 0,

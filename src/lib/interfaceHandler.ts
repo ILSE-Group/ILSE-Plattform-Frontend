@@ -53,6 +53,7 @@ export interface profileContent {
 }
 export interface profileStudentsInfo {
     studentName: string;
+    studentIcon: profileIconElement;
     studentProgress: profileRoomsProgress[];
 }
 export interface profileRoomsProgress {
