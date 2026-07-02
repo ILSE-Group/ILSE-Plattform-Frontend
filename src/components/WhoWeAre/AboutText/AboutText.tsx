@@ -12,10 +12,10 @@ function AboutText() {
             </div>
             <div className='content-wrapper'>
                 <p>Damit das Lernen nicht trocken wird, begleitet euch unser Otter, Ilse durch die verschiedenen Themen.</p>
-                <p>Schritt für Schritt zeigt er typische Risiken im Netz und hilft dabei, sie besser zu verstehen.</p>
+                <p>Schritt für Schritt zeigt er typische Risiken im Netz und hilft dabei, Diese besser zu verstehen.</p>
             </div>
             <div className='content-wrapper'>
-                <p>Die Plattform richtet sich vorallem an Schülerinnen und Schüler der 7. Klasse, ist aber auch für andere Jahrgangsstufen und Lehrer sowie andere Interessierte gedacht.</p>
+                <p>Die Plattform richtet sich vor allem an Schülerinnen und Schüler der 7. Klasse, ist aber auch für andere Jahrgangsstufen und Lehrer sowie andere Interessierte gedacht.</p>
                 <p>Deshalb erklären wir die Inhalte möglichst einfach und klar.</p>
             </div>
             <div className='content-wrapper'>
