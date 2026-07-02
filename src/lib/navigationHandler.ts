@@ -1,15 +1,16 @@
-import { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
-
-let navigate = useNavigate();
-
-function navigatePage() {
-    const { pathname } = useLocation();
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    return navigate;
+interface navigationProps {
+  pageUrl: string;
 }
 
-export default navigatePage;
+export default function navigateToPage() {
+    const navigate = useNavigate();
+
+    return useCallback(({ pageUrl }: navigationProps) => {
+        navigate(pageUrl);
+        window.scrollTo(0, 0);
+    }, [navigate]);
+    
+}

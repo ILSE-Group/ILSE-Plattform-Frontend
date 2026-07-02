@@ -1,10 +1,10 @@
 import './Header.scss';
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
 import { getRoomNames } from '../../lib/dataHandler';
+import navigateToPage from '../../lib/navigationHandler';
 import { getFromSessionStorage, saveToSessionStorage } from '../../lib/sessionStorageHandler';
 import { HOME_URL, LOGIN_URL, ABOUT_URL, ROOMS_LINK_URL, PROFILE_URL, isLoggedIn, setLoginState } from '../../lib/globalVars';
 
@@ -16,7 +16,7 @@ function AppHeader() {
     // -----------
     let roomNames: string[] = getRoomNames();
     let roomLink: string = ROOMS_LINK_URL.concat("/");
-    const navigate = useNavigate();
+    const navigate = navigateToPage();
 
     // -----------
     //  NAV-PAGE
@@ -80,7 +80,7 @@ function AppHeader() {
 
                 {/* LOGO */}
                 <div className='header-button header-homebtn-container' 
-                onClick={() => navigate(HOME_URL)}>
+                onClick={() => navigate({pageUrl: HOME_URL})}>
                     <img src={logo} alt="" className='header-logo'/>
                     <p className='header-homebtn-label'>ILSE</p>
                 </div>
@@ -90,13 +90,13 @@ function AppHeader() {
                 {
                     loggedIn ? (
                         <p className="header-loginbtn-label highlight-btn-medium"
-                            onClick={() => { setLoginState(null); navigate(HOME_URL); }}
+                            onClick={() => { setLoginState(null); navigate({pageUrl: HOME_URL}); }}
                         >
                             Abmelden
                         </p>
                     ) : (
                         <p className="header-loginbtn-label highlight-btn-medium"
-                            onClick={() => navigate(LOGIN_URL)}
+                            onClick={() => navigate({pageUrl: LOGIN_URL})}
                         >
                             Login
                         </p>
@@ -124,7 +124,7 @@ function AppHeader() {
 
 
                             {loggedIn && (
-                                <p onClick={() => navigate(PROFILE_URL)}>
+                                <p onClick={() => navigate({pageUrl: PROFILE_URL})}>
                                     Profil
                                 </p>
                             )}
@@ -132,13 +132,13 @@ function AppHeader() {
 
                             {/* LINKS */}
                             <div className='navigation-links-container'>
-                                <p onClick={() => navigate(HOME_URL)}>
+                                <p onClick={() => navigate({pageUrl: HOME_URL})}>
                                     Home
                                 </p>
-                                <p onClick={() => navigate(LOGIN_URL)}>
+                                <p onClick={() => navigate({pageUrl: LOGIN_URL})}>
                                     Login
                                 </p>
-                                <p onClick={() => navigate(ABOUT_URL)}>
+                                <p onClick={() => navigate({pageUrl: ABOUT_URL})}>
                                     Impressum
                                 </p>
                             </div>
@@ -149,7 +149,7 @@ function AppHeader() {
                         <div className='nav-content-container navigation-pagelinks-container'>
                             {roomNames.map((roomName, id) => (
                                 <p key={id} 
-                                   onClick={() => {navigate(roomLink.concat(roomName)); setNavVisibility(false); }}>
+                                   onClick={() => {navigate({pageUrl: roomLink.concat(roomName)}); setNavVisibility(false); }}>
                                     {roomName}
                                 </p>
                             ))}

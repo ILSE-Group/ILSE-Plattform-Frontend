@@ -16,9 +16,11 @@
 }
 
 .feedback-intro-text {
-    user-select: none;
+    padding: 1em;
 
-    text-align: left;
+    user-select: none;
+    text-align: center;
+    color: var(--fgColorLowContrast);
 }
 
 .feedback-textbox {

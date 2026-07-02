@@ -77,10 +77,10 @@ function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTop
     return(
         <section className={`room-topic-wrapper ${exerciseCorrect ? 'correct' : ''}`}>
 
-            <div className={`room-topic-header ${topicOpened ? 'opened' : 'closed'} ${exerciseCorrect ? 'correct' : ''}`}>
-                <div className="topic-header-element" 
-                    onClick={() => toggleTopicFold(!topicOpened)}
-                >
+            <div className={`room-topic-header ${topicOpened ? 'opened' : 'closed'} ${exerciseCorrect ? 'correct' : ''}`}
+                onClick={() => toggleTopicFold(!topicOpened)}
+            >
+                <div className="topic-header-element">
                     <div className={`topic-header-icon ${topicOpened ? 'opened' : 'closed'}`}>
                     </div>
                 </div>

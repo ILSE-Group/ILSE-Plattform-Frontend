@@ -1,11 +1,11 @@
 import './Login.scss';
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import type { webToken } from '../../../lib/interfaceHandler';
 import { sendLoginData } from '../../../lib/apiHandler';
 import { PROFILE_URL, isLoggedIn, setLoginState } from '../../../lib/globalVars';
+import navigateToPage from '../../../lib/navigationHandler';
 
 
 interface loginProps {
@@ -25,7 +25,7 @@ function Login( {registrSuccess} : loginProps ) {
     let password: string;
     let inputValid : boolean[] = [false, false];
 
-    const navigate = useNavigate();
+    const navigate = navigateToPage();
 
 
     /**
@@ -108,7 +108,7 @@ function Login( {registrSuccess} : loginProps ) {
         }
     }
 
-    const redirectToProfile = () => navigate(PROFILE_URL, { replace: true });
+    const redirectToProfile = () => navigate({ pageUrl: PROFILE_URL });
 
     function performLogin() : void {
         // check Input values
