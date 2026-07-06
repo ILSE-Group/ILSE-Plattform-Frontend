@@ -1,7 +1,9 @@
-import type { roomList, roomContent, feedbackContent, webToken, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement, requestAccountManagement, profileIconElement } from "./interfaceHandler";
+import { useEffect, useState } from "react";
+
+import type { roomList, roomContent, feedbackContent, webToken, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement, requestAccountManagement, profileIconElement, apiData } from "./interfaceHandler";
 
 import { UserManagementType, AccountManagementType } from "./ManagementType";
-import { /*API_URL,*/ getLoginToken } from "./globalVars";
+import { API_URL, getLoginToken } from "./globalVars";
 import { sanitizeString, processForAPISend } from "./stringHandler";
 
 type UserManagement = typeof UserManagementType[keyof typeof UserManagementType];
@@ -12,12 +14,54 @@ type AccountManagement = typeof AccountManagementType[keyof typeof AccountManage
 //====                  RECIEVE                 =====
 //===================================================
 // TODO
+function getDataFromAPI( subUrl : string ) : apiData | null {
+    const [result, setResult] = useState<apiData | null>(null);
+
+    useEffect(() => {
+        async function loadResult() {
+            try {
+                setResult(await receiveDataAsync(subUrl));
+            } catch (e) {
+                setResult(null);
+            }
+        }
+
+        loadResult();
+
+        return;
+    }, [subUrl]);
+
+    return result;
+}
+async function receiveDataAsync( subUrl : string ) : Promise<apiData | null>  {
+    const targetUrl = new URL(subUrl, API_URL).toString();
+
+    const res = await fetch(targetUrl, {
+        method: "GET",
+        headers: { Accept: "application/json" },
+    });
+
+    if (!res.ok) {
+        return null;
+    }
+
+    return (await res.json()) as apiData;
+}
+
 /**
  * Returns all rooms with name, image-source and desription
  * @returns roomList json, on error: null
  */
 export function recieveRoomsList() : roomList {
-    //TODO: implement with json
+    /*
+    let content : apiData | null = getDataFromAPI('rooms-list');
+
+    while ( content == null ) {
+        content = getDataFromAPI('rooms-list');
+    }
+    return content as roomList;
+    */
+
     const data : roomList = {
         room1: {
             name: "Passwort-Sicherheit",
@@ -42,12 +86,6 @@ export function recieveRoomsList() : roomList {
     };
     return data as roomList;
 
-    /*
-    return fetch('room/List/Url')
-        .then(res => res.json())
-        .then(res => {return res as roomList[] }
-    );
-    */
 }
 
 // TODO

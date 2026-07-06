@@ -9,7 +9,7 @@ export const ABOUT_URL : string = '/about';
 export const PROFILE_URL : string = '/profile';
 export const ROOMS_LINK_URL : string = '/rooms';
 
-export const API_URL : string = 'our.api.com/';
+export const API_URL : string = 'ilse.backend.lab:3000/';
 
 const loginTokenKey : string = 'loginToken';
 

@@ -1,7 +1,11 @@
 
+export interface apiData {
+
+}
+
 // room-list types 
 //  used in: CardsPage, Header, Footer
-export interface roomList {
+export interface roomList extends apiData {
   [key: string]: roomListItem;
 }
 export interface roomListItem {
@@ -12,7 +16,7 @@ export interface roomListItem {
 
 // room-content types
 //  used in: RoomView page
-export interface roomContent {
+export interface roomContent extends apiData {
     roomID: number;
     roomName: string;
     roomTopic : roomTopic[];
@@ -41,7 +45,7 @@ export interface exerciseAnswer {
 
 // profile data
 // used in Profile page
-export interface profileContent {
+export interface profileContent extends apiData {
     username: string;
     userType: string;
     userIcon: profileIconElement;
@@ -63,7 +67,7 @@ export interface profileRoomsProgress {
 }
 
 
-export interface profileIconContent {
+export interface profileIconContent extends apiData {
     icon: profileIconElement[];
 }
 export interface profileIconElement {
@@ -74,7 +78,7 @@ export interface profileIconElement {
 
 // teacher request to manage student account
 // with managementType: 'add', 'delete', 'passReset'
-export interface requestStudentManagement {
+export interface requestStudentManagement extends apiData {
     managementType: string;
     userName: string | null;
     studentCount: number | null;
@@ -82,12 +86,12 @@ export interface requestStudentManagement {
 
 // request to manage own account
 // with managementType: 'iconChange', 'passCange', 'accountDel'
-export interface requestAccountManagement {
+export interface requestAccountManagement extends apiData {
     managementType: string;
     managementArg: string | profileIconElement;
 }
 
-export interface createdStudentsInfo {
+export interface createdStudentsInfo extends apiData {
     studentInfo: newStudentInfo[];
 }
 export interface newStudentInfo {
@@ -97,18 +101,18 @@ export interface newStudentInfo {
 
 // feedback text
 //  used in: AboutFeedback
-export interface feedbackContent {
+export interface feedbackContent extends apiData {
     username: string;
     feedbackText: string;
 }
 
 // JSON web token
-export interface webToken {
+export interface webToken extends apiData {
     username: string;
     date: number;
 }
 
-export interface loginSignalContent {
+export interface loginSignalContent extends apiData {
     username: string;
     password: string;
 }
