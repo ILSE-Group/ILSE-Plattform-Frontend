@@ -36,16 +36,18 @@ function getDataFromAPI( subUrl : string ) : apiData | null {
 async function receiveDataAsync( subUrl : string ) : Promise<apiData | null>  {
     const targetUrl = new URL(subUrl, API_URL).toString();
 
-    const res = await fetch(targetUrl, {
+    const response = await fetch(targetUrl, {
         method: "GET",
-        headers: { Accept: "application/json" },
+        headers: { 
+            Accept: "application/json" 
+        },
     });
 
-    if (!res.ok) {
+    if (!response.ok) {
         return null;
     }
 
-    return (await res.json()) as apiData;
+    return (await response.json()) as apiData;
 }
 
 /**
@@ -54,10 +56,11 @@ async function receiveDataAsync( subUrl : string ) : Promise<apiData | null>  {
  */
 export function recieveRoomsList() : roomList {
     /*
-    let content : apiData | null = getDataFromAPI('rooms-list');
+    const url : string = 'topics';
+    let content : apiData | null = getDataFromAPI(url);
 
     while ( content == null ) {
-        content = getDataFromAPI('rooms-list');
+        content = getDataFromAPI(url);
     }
     return content as roomList;
     */
@@ -94,14 +97,17 @@ export function recieveRoomsList() : roomList {
  * @returns roomContent JSON, on error: null
 */ 
 export function recieveRoomContent(roomName : string) : roomContent | null {
-    //TODO: implement with json
     /*
-    return fetch('room/content/url/'.append(targetRoom))
-        .then(res => res.json())
-        .then(res => {return res as roomContent }
-    );
+    roomName = sanitizeString(roomName);
+    if( roomName.length <= 0 )
+        return null;
+    
+    const url : string = `topics/${roomName}/rooms`;
+    let content : apiData | null = getDataFromAPI(url);
+
+    return content as roomContent;
     */
-   const passwordSecContent : roomContent = {
+    const passwordSecContent : roomContent = {
         roomID: 0,
         roomName: "Passwort-Sicherheit",
         roomTopic: [
@@ -615,6 +621,17 @@ export function recieveRoomContent(roomName : string) : roomContent | null {
 
 // --------------------Profile-Data----------------------
 export function recieveProfileData() : profileContent {
+    // TODO: set URL
+    /*
+    const url : string = '';
+    let content : apiData | null = getDataFromAPI(url);
+
+    while( content == null ) {
+        content = getDataFromAPI(url);
+    }
+
+    return content as profileContent;
+    */
     const profileData : profileContent = {
         username: "OP-teacher",
         userType: "teacher",
@@ -703,12 +720,49 @@ export function recieveProfileData() : profileContent {
 //===================================================
 //====                    SEND                   ====
 //===================================================
+function sendDataToAPI( subUrl: string, payload: apiData ) : apiData | null {
+    const [result, setResult] = useState<apiData | null>(null);
+
+    useEffect(() => {
+        async function loadResult() {
+            try {
+                setResult(await sendDataAsync(subUrl, payload));
+            } catch (e) {
+                setResult(null);
+            }
+        }
+
+        loadResult();
+
+        return;
+    }, [subUrl, payload]);
+
+    return result;
+}
+async function sendDataAsync( subUrl: string, payload: apiData ) : Promise<apiData | null>  {
+    const targetUrl = new URL(subUrl, API_URL).toString();
+
+    const response = await fetch(targetUrl, {
+        method: "POST",
+        headers: { 
+            Accept: "application/json" 
+        },
+        body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+        return null;
+    }
+
+    return (await response.json()) as apiData;
+}
 
 // ---------------------Account-Mgmt---------------------
 // TODO
 /** processes the login values and sends them to the api
  * @returns webToken, on error: null */
 export function sendLoginData( username : string, password : string ) : webToken|null  {
+    /*
     let name: string = processForAPISend(username);
     let pass: string = processForAPISend(password);
 
@@ -716,6 +770,12 @@ export function sendLoginData( username : string, password : string ) : webToken
         username: name,
         password: pass,
     }
+    
+    const url : string = 'auth';
+    let content : apiData | null = sendDataToAPI(url, signalContent);
+
+    return content as webToken;
+    */
 
     // TODO: remove(testdata)
     let token : webToken = {
