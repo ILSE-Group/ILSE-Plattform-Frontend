@@ -633,7 +633,7 @@ export function recieveProfileData() : profileContent {
     return content as profileContent;
     */
     const profileData : profileContent = {
-        username: "OP-teacher",
+        username: "Mein Name",
         userType: "teacher",
         userIcon: {
             iconID: 0,
