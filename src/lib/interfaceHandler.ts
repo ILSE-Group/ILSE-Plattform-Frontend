@@ -43,6 +43,12 @@ export interface exerciseAnswer {
     fitsTo: number;
 }
 
+export interface roomTopicStatus extends apiData {
+    roomID: number;
+    topicID: number;
+    completed: boolean;
+}
+
 // profile data
 // used in Profile page
 export interface profileContent extends apiData {

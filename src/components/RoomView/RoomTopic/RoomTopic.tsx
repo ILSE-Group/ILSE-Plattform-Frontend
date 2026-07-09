@@ -1,6 +1,6 @@
 import './RoomTopic.scss'
 
-import React, { type RefObject } from "react";
+import React from "react";
 
 import TopicExercise from "./TopicExercise/TopicExercise";
 import TopicDescription from "./TopicDescription/TopicDescription";

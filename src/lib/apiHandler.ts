@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import type { roomList, roomContent, feedbackContent, webToken, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement, requestAccountManagement, profileIconElement, apiData } from "./interfaceHandler";
+import type { apiData, roomList, roomContent, feedbackContent, webToken, loginSignalContent, profileContent, createdStudentsInfo, requestStudentManagement, requestAccountManagement, profileIconElement, roomTopicStatus } from "./interfaceHandler";
 
 import { UserManagementType, AccountManagementType } from "./ManagementType";
 import { API_URL, getLoginToken } from "./globalVars";
@@ -803,20 +803,31 @@ export function sendSignupData( username : string, password : string ) : string 
     return "";
 }
 
-// TODO
+// TODO: add api-url
 export function sendLogoutSignal( ) {
-    
+    /*
+    const url : string = '';
+    const signalContent = '';
+
+    let content : apiData | null = sendDataToAPI(url, signalContent);
+    */
 
 }
 
-// TODO
+// TODO: add api-url
 export function addNewStudents( count : number ) : createdStudentsInfo {
     /* 
+    const url : string = '';
+
     const requestContent : requestStudentManagement = {
         managementType: "add",
         studentName: null,
         studentCount: count,
     }
+    
+    let content : apiData | null = sendDataToAPI(url, requestContent);
+
+    return content as createdStudentsInfo;
     */
     
     const addedStudents : createdStudentsInfo = {
@@ -835,9 +846,11 @@ export function addNewStudents( count : number ) : createdStudentsInfo {
     return addedStudents as createdStudentsInfo;
 }
 
-// TODO
+// TODO: add api-url
 export function manageUserAcc( managementType : UserManagement, userName : string ) : string {
-
+    /* 
+    const url : string = '';
+    
     let management : string = '';
     switch(managementType) {
         case UserManagementType.ADD:
@@ -853,49 +866,65 @@ export function manageUserAcc( managementType : UserManagement, userName : strin
             return '';
 
     }
-    
+
     const requestContent : requestStudentManagement = {
         managementType: management,
-        userName: userName,
-        studentCount: null,
+        studentName: userName,
+        studentCount: 0,
     }
+    
+    let content : apiData | null = sendDataToAPI(url, requestContent);
+
+    // TODO: parse content to message-string
+
+    return content as string;
+    */
 
     return 'password123';
 
 
 }
 
+// TODO: add api-url
 export function manageOwnAcc( managementType : AccountManagement, option : string | profileIconElement ) : string {
+
+    const errMsg = "Fehlerhafte Anfrage. Bitte versuchen Sie es erneut!";
 
     let management : string = '';
     switch(managementType) {
         case AccountManagementType.CHANGE_PROFILE_ICON:
             management = 'iconChange';
-            if( typeof option === 'string' )
-                return "Fehlerhafte Anfrage. Bitte versuchen Sie es erneut!";
+            if( typeof option === 'string' ) {
+                return errMsg;
+            }
             break;
         case AccountManagementType.CHANGE_PASSWORD:
             management = 'passCange';
-            if( typeof option !== 'string' )
-                return "Fehlerhafte Anfrage. Bitte versuchen Sie es erneut!";
+            if( typeof option !== 'string' || option.trim().length <= 0 ) {
+                return errMsg;
+            }
             break;
         case AccountManagementType.DELETE_ACCOUNT:
-            management = 'accountDel';
-            if( typeof option !== 'string' )
-                return "Fehlerhafte Anfrage. Bitte versuchen Sie es erneut!";
+            if( typeof option !== 'string' ) {
+                return errMsg;
+            }
             break;
         default:
-            return '';
-
+            return errMsg;
     }
 
-    if( typeof option == 'string' && option.trim().length <= 0 )
-        option = '';
+    /*
+    const url : string = '';
     
     const requestContent : requestAccountManagement = {
         managementType: management,
         managementArg: option,
     }
+
+    let content : apiData | null = sendDataToAPI(url, requestContent);
+
+    return content as string;
+    */
 
     return 'password123';
 
@@ -903,6 +932,7 @@ export function manageOwnAcc( managementType : AccountManagement, option : strin
 }
 
 // --------------------Feedback-Mgmt---------------------
+//TODO: add api-url
 export function sendFeedback( feedbackText : string ) : void {
     // check validity
     if( feedbackText === null || typeof feedbackText != 'string' || feedbackText.length <= 0  )
@@ -922,26 +952,32 @@ export function sendFeedback( feedbackText : string ) : void {
             user = token.username;
     }
    
-    // create roomContent json object
-    let content : feedbackContent =  { 
+    // create roomContent json object and send to api
+    const url : string = '';
+
+    let requestContent : feedbackContent =  { 
         username: user,
         feedbackText: sanitizedFeedback,
     } as feedbackContent;
 
-    let jsonString : string = JSON.stringify(content);
-
-    // send json to API
-    // TODO
-
+    sendDataToAPI(url, requestContent);
 }
 
 // --------------------Content-Mgmt----------------------
-// TODO
-/** sends the topic status to the api when topic is completed
- */
-export function sendTopicStatus( roomID: number, topicID: number, complete: boolean ) {
+// TODO: add api-url
+/** sends the topic status to the api when topic is completed */
+export function sendTopicStatus( roomID: number, topicID: number, complete: boolean ) : void {
     if( !complete )
         return;
 
+    const url : string = '';
+    
+    const requestContent : roomTopicStatus = {
+        roomID: roomID,
+        topicID: topicID,
+        completed: complete,
+    }
+
+    sendDataToAPI(url, requestContent);
 
 }
