@@ -10,9 +10,6 @@ type UserManagement = typeof UserManagementType[keyof typeof UserManagementType]
 type AccountManagement = typeof AccountManagementType[keyof typeof AccountManagementType];
 
 
-//===================================================
-//====                  RECIEVE                 =====
-//===================================================
 // TODO
 function getDataFromAPI( subUrl : string ) : apiData | null {
     const [result, setResult] = useState<apiData | null>(null);
@@ -49,6 +46,48 @@ async function receiveDataAsync( subUrl : string ) : Promise<apiData | null>  {
 
     return (await response.json()) as apiData;
 }
+
+
+function sendDataToAPI( subUrl: string, payload: apiData ) : apiData | null {
+    const [result, setResult] = useState<apiData | null>(null);
+
+    useEffect(() => {
+        async function loadResult() {
+            try {
+                setResult(await sendDataAsync(subUrl, payload));
+            } catch (e) {
+                setResult(null);
+            }
+        }
+
+        loadResult();
+
+        return;
+    }, [subUrl, payload]);
+
+    return result;
+}
+async function sendDataAsync( subUrl: string, payload: apiData ) : Promise<apiData | null>  {
+    const targetUrl = new URL(subUrl, API_URL).toString();
+
+    const response = await fetch(targetUrl, {
+        method: "POST",
+        headers: { 
+            Accept: "application/json" 
+        },
+        body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+        return null;
+    }
+
+    return (await response.json()) as apiData;
+}
+
+//===================================================
+//====                  RECIEVE                 =====
+//===================================================
 
 /**
  * Returns all rooms with name, image-source and desription
@@ -720,42 +759,6 @@ export function recieveProfileData() : profileContent {
 //===================================================
 //====                    SEND                   ====
 //===================================================
-function sendDataToAPI( subUrl: string, payload: apiData ) : apiData | null {
-    const [result, setResult] = useState<apiData | null>(null);
-
-    useEffect(() => {
-        async function loadResult() {
-            try {
-                setResult(await sendDataAsync(subUrl, payload));
-            } catch (e) {
-                setResult(null);
-            }
-        }
-
-        loadResult();
-
-        return;
-    }, [subUrl, payload]);
-
-    return result;
-}
-async function sendDataAsync( subUrl: string, payload: apiData ) : Promise<apiData | null>  {
-    const targetUrl = new URL(subUrl, API_URL).toString();
-
-    const response = await fetch(targetUrl, {
-        method: "POST",
-        headers: { 
-            Accept: "application/json" 
-        },
-        body: JSON.stringify(payload),
-    });
-
-    if (!response.ok) {
-        return null;
-    }
-
-    return (await response.json()) as apiData;
-}
 
 // ---------------------Account-Mgmt---------------------
 // TODO

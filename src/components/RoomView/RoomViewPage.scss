@@ -3,6 +3,11 @@
 .room-view-wrapper {
     min-height: 100vh;
     height: fit-content;
+
+    background: var(--wpOpacityGradient), 
+                url('/wallpaper/wp-abstract.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .room-page-wrapper {
@@ -19,9 +24,20 @@
 
 .room-header-wrapper {
     height: 100px;
-    width: 90%;
+    width: 100%;
 
-    margin: 8vh 0 5vh 0;
+    margin: 2vh 0 2vh 0;
+    padding: 5vh 0 5vh 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.room-header-content-wrapper {
+    height: 100%;
+    width: 90%;
 
     display: flex;
     flex-direction: row;

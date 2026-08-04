@@ -77,20 +77,22 @@ function RoomViewPage( {roomName, thumbnailSrc} : RoomViewProps ) {
             <div className='room-page-wrapper'>
 
                 <div className='room-header-wrapper'>
-                    {thumbnailSrc != null ? (
-                        <img src={thumbnailSrc} alt="" 
-                            className='room-header-thumb'
-                        />
-                    ) : null }
+                    <div className='room-header-content-wrapper'>
+                        {thumbnailSrc != null ? (
+                            <img src={thumbnailSrc} alt="" 
+                                className='room-header-thumb'
+                            />
+                        ) : null }
 
-                    <div className='room-page-header'>
-                        <h2 className='room-header-text'>
-                            {content.roomName}
-                        </h2>
+                        <div className='room-page-header'>
+                            <h2 className='room-header-text'>
+                                {content.roomName}
+                            </h2>
 
-                        <div className='room-header-progressbar'>
-                            <div className='room-header-progress'
-                                ref={progressRef}>
+                            <div className='room-header-progressbar'>
+                                <div className='room-header-progress'
+                                    ref={progressRef}>
+                                </div>
                             </div>
                         </div>
                     </div>
