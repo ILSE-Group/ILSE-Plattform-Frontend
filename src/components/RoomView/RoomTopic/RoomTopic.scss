@@ -1,9 +1,18 @@
 @use "../../../lib/styles.scss";
 
 
-.room-topic-wrapper {
+.topic-wrapper {
+    height: fit-content;
+    width: 90vw;
+
     margin: 2vh 0 2vh 0;
-    
+
+    background-color: var(--bgColorMediumContrast);
+    border: 1px, solid, var(--bgColorMediumContrast);
+    border-radius: 1em;
+}
+
+.room-topic-wrapper {    
     width: 90vw;
     height: fit-content;
 
@@ -13,14 +22,14 @@
     align-items: center;
     justify-content: flex-start;
 
-    background-color: var(--bgColorLowContrast);
-    box-shadow: 3px 3px 5px var(--bgColorMediumContrast);
-    border: 1px, solid, var(--bgColorLowContrast);
-    border-radius: 1em;
+    box-shadow: 3px 3px 5px var(--bgColorLowContrast);
+    border: inherit;
+    border-radius: inherit;
 }
 .room-topic-wrapper.correct {
     background-color: styles.$colorAnswerCorrectMinContrast;
 }
+
 
 //-------------------header-area-------------------
 .room-topic-header {
@@ -33,8 +42,8 @@
     align-items: center;
     justify-content: space-around;
 
-    background-color: var(--bgColorMediumContrast);
-    border: 1px, solid, var(--bgColorMediumContrast);
+    background-color: var(--bgColorLowContrast);
+    border: 1px, solid, var(--bgColorLowContrast);
     border-radius: 1em 1em 0 0;
 }
 .room-topic-header.closed {

@@ -38,7 +38,8 @@ body {
   --highlightColorMediumContrast: #{styles.$lightTheme_highlightColorMediumContrast};
   --highlightColorLowContrast: #{styles.$lightTheme_highlightColorLowContrast};
 
-  --wpOpacityGradient: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.7));
+  --wpLowOpacityGradient: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5));
+  --wpHighOpacityGradient: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9));
 
   color-scheme: light dark;
 
@@ -76,7 +77,8 @@ body.dark {
   --highlightColorMediumContrast: #{styles.$darkTheme_highlightColorMediumContrast};
   --highlightColorLowContrast: #{styles.$darkTheme_highlightColorLowContrast};
 
-  --wpOpacityGradient: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+  --wpLowOpacityGradient: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+  --wpHighOpacityGradient: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
 }
 
 body {

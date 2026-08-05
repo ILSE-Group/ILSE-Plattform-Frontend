@@ -75,67 +75,70 @@ function RoomTopic({ index, topic, updateRoomProgress, updateComplete }: RoomTop
 
 
     return(
-        <section className={`room-topic-wrapper ${exerciseCorrect ? 'correct' : ''}`}>
+        <section className="topic-wrapper" >
+            <div className={`room-topic-wrapper ${exerciseCorrect ? 'correct' : ''}`} >
 
-            <div className={`room-topic-header ${topicOpened ? 'opened' : 'closed'} ${exerciseCorrect ? 'correct' : ''}`}
-                onClick={() => toggleTopicFold(!topicOpened)}
-            >
-                <div className="topic-header-element">
-                    <div className={`topic-header-icon ${topicOpened ? 'opened' : 'closed'}`}>
+                <div className={`room-topic-header ${topicOpened ? 'opened' : 'closed'} ${exerciseCorrect ? 'correct' : ''}`}
+                    onClick={() => toggleTopicFold(!topicOpened)}
+                >
+                    <div className="topic-header-element">
+                        <div className={`topic-header-icon ${topicOpened ? 'opened' : 'closed'}`}>
+                        </div>
+                    </div>
+                    <p className="topic-header-element">
+                        {topic.topicName}
+                    </p>
+                    <div className="topic-header-element">
+
                     </div>
                 </div>
-                <p className="topic-header-element">
-                    {topic.topicName}
-                </p>
-                <div className="topic-header-element">
 
-                </div>
-            </div>
+                <div className={`topic-content-wrapper ${topicOpened ? 'opened' : 'closed'}`}>
+                    
+                    {
+                        //----------Exercise----------
+                    }
+                    <TopicExercise 
+                        exercise={topic.exercise} 
+                        checkSignal={checkAnswer}
+                        checkDoneSignal={signalCheckingDone}
+                        setExerciseState={setExerciseState}
+                    />
 
-            <div className={`topic-content-wrapper ${topicOpened ? 'opened' : 'closed'}`}>
-                
-                {
-                    //----------Exercise----------
-                }
-                 <TopicExercise 
-                    exercise={topic.exercise} 
-                    checkSignal={checkAnswer}
-                    checkDoneSignal={signalCheckingDone}
-                    setExerciseState={setExerciseState}
-                />
-
-                {
-                    //----------Description----------
-                }
-                { topic.descriptionText.length > 0 ? 
-                    (
-                        descriptionOpened ?
-                        <>
-                            <TopicDescription description={topic.descriptionText} />
-                            
-                            <div className="description-toggle-btn" 
-                            onClick={() => toggleDescription(false)}>
-                                <p>Hilfe schließen</p>
+                    {
+                        //----------Description----------
+                    }
+                    { topic.descriptionText.length > 0 ? 
+                        (
+                            descriptionOpened ?
+                            <>
+                                <TopicDescription description={topic.descriptionText} />
+                                
+                                <div className="description-toggle-btn" 
+                                onClick={() => toggleDescription(false)}>
+                                    <p>Hilfe schließen</p>
+                                </div>
+                            </> : 
+                            <div className="description-toggle-btn"
+                            onClick={() => toggleDescription(true)}>
+                                <p>Hilfe öffnen</p>
                             </div>
-                        </> : 
-                        <div className="description-toggle-btn"
-                        onClick={() => toggleDescription(true)}>
-                            <p>Hilfe öffnen</p>
-                        </div>
-                    ) 
-                    : null 
-                }
+                        ) 
+                        : null 
+                    }
 
-                {
-                    //----------Submit----------
-                }
-                <div className="topic-submit-wrapper">
-                    <p className="submit-btn"
-                       ref={submitBtnRef}
-                       onClick={signalCheckAnswers}>
-                        {submitBtnText}
-                    </p>
+                    {
+                        //----------Submit----------
+                    }
+                    <div className="topic-submit-wrapper">
+                        <p className="submit-btn"
+                        ref={submitBtnRef}
+                        onClick={signalCheckAnswers}>
+                            {submitBtnText}
+                        </p>
+                    </div>
                 </div>
+
             </div>
 
 
