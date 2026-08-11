@@ -22,7 +22,17 @@
         justify-content: flex-start;
     }
 
-    background-color: var(--bgColorLowContrast);
+    
+    background-color: #dedefd; // Pastell-Pink
+    
+}
+
+
+body.dark, body.dark-mode, .dark-mode {
+    .footer {
+        background-color: #2d2d49; // Ein dunkles, gedecktes Altrosa/Pink für den Dark Mode
+        
+    }
 }
 
 .footer-wrapper {

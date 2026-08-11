@@ -1,61 +1,70 @@
 @use '../../../lib/styles.scss' as styles;
 
-
 .info-page {
     width: 90%;
     min-height: 60vh;
     height: fit-content;
-
     margin: 4vh auto 2vh auto;
     padding: 4vh 0 4vh 0;
-
     position: relative;
     display: flex;
-
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-around;
 }
 
-//welcome message and logo
+// Header-Wrapper mit Otter links und rechts
 .info-header-wrapper {
     width: 90%;
-    height: 70%;
-
-    padding: 2vh 0 2vh 0;
-
+    min-height: 20vh;
+    padding: 2vh 1rem;
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1em;
+}
 
-    justify-content: space-evenly;
+// Otter Container
+.header-otter-wrapper {
+    width: 20%;
+    display: flex;
+    justify-content: center;
     align-items: center;
 
-    border-radius: 1em;
-
-    background: var(--wpLowOpacityGradient),
-                url('/wallpaper/wp-abstract.png');
-    background-size: cover;
-    background-repeat: no-repeat;
+    .otter-img {
+        max-width: 100%;
+        height: auto;
+        max-height: 120px;
+    }
 }
 
 .header-content-wrapper {
-    width: 100%;
-
+    width: 60%;
     display: flex;
     flex-wrap: nowrap;
-
     align-items: center;
     justify-content: center;
 }
 
 .header-text-wrapper {
-    height: 70%;
+    text-align: center;
 
     h1 {
-        font-size: 1.4em;
+        font-size: 2.5vw;
         font-weight: bold;
+        // Standard-Farbe (Light Mode)
+        color: #000000; 
+    }
+}
+
+// --- DARK MODE ANPASSUNG ---
+body.dark, body.dark-mode, .dark-mode {
+    .header-text-wrapper {
+        h1 {
+            color: #ffffff; // Text wird im Dark Mode weiß
+        }
     }
 }
 
@@ -70,38 +79,21 @@
     }
 }
 
-@media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
-    .info-header-wrapper {
-        flex-direction: row;
-    }
-    
-    .header-content-wrapper {
-        height: 100%;
-    }
-
-    .header-text-wrapper {
-        width: 70%;
-
-        h1 {
-            font-size: 3vw ;
-        }
-    }
-    .header-logo-wrapper {
-        width: 30%;
+// Mobile Ansicht (wenn der Bildschirm zu schmal wird)
+@media (max-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+    .header-text-wrapper h1 {
+        font-size: 5vw; // Größerer Text auf kleinen Screens
     }
 }
 
-//introductive message
+// Introductive message
 .info-message-wrapper {
     width: 90%;
     height: 30%;
-
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-
     justify-content: center;
     align-items: center;
-
     gap: 1rem;
 }
