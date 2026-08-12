@@ -47,7 +47,7 @@ function UserIconAlertBox( {userIcon, onClose} : AlertBoxProps) {
 
                 <div className='profile-preview-wrapper'>
                     <img src={currentSrc} 
-                        alt="Bitte Laden Sie die Seite neu!"
+                        alt="Bitte laden Sie die Seite neu!"
                         ref={previewIconRef}
                     />
                 </div>
