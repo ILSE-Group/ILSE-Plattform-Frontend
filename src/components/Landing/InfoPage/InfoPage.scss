@@ -1,11 +1,14 @@
 @use '../../../lib/styles.scss' as styles;
 
+
 .info-page {
     width: 90%;
     min-height: 60vh;
     height: fit-content;
+
     margin: 4vh auto 2vh auto;
     padding: 4vh 0 4vh 0;
+
     position: relative;
     display: flex;
     flex-direction: column;
@@ -18,12 +21,19 @@
 .info-header-wrapper {
     width: 90%;
     min-height: 20vh;
+
     padding: 2vh 1rem;
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
     border-radius: 1em;
+    background: var(--wpLowOpacityGradient),
+                url('/wallpaper/wp-abstract.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 // Otter Container
