@@ -1,6 +1,6 @@
 @use "../../lib/styles.scss";
 
-.room-view-wrapper {
+/*.room-view-wrapper {
     min-height: 100vh;
     height: fit-content;
 
@@ -8,7 +8,7 @@
                 url('/wallpaper/wp-abstract.png');
     background-size: auto;
     background-repeat: repeat-y;
-}
+}*/
 
 .room-page-wrapper {
     min-height: calc(100vh - styles.$HEADER_HEIGHT - styles.$FOOTER_HEIGHT);

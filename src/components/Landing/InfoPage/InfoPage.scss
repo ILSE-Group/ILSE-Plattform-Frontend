@@ -1,52 +1,57 @@
 @use '../../../lib/styles.scss' as styles;
 
-
+// Die gesamte Sektion bricht aus eventuellen zentrierten Container-Begrenzungen aus
 .info-page {
-    width: 90%;
-    min-height: 60vh;
-    height: fit-content;
-
-    margin: 4vh auto 2vh auto;
-    padding: 4vh 0 4vh 0;
-
-    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-around;
 }
 
-// Header-Wrapper mit Otter links und rechts
+// Der Hero-Container spannt sich über die volle Bildschirmbreite
 .info-header-wrapper {
-    width: 90%;
-    min-height: 20vh;
-
-    padding: 2vh 1rem;
-
+    position: relative;
+    width: 100vw;      
+    min-height: 40vh;   
+    padding: 4vh 8vw;   
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    border-radius: 1em;
-    background: var(--wpLowOpacityGradient),
-                url('/wallpaper/wp-abstract.png');
-    background-size: cover;
-    background-repeat: no-repeat;
+    box-sizing: border-box;
 }
 
-// Otter Container
+// DER VOLLSTÄNDIGE HINTERGRUND-BALKEN
+.pastel-background-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #63b67c; 
+    z-index: 1;
+}
+
+// Inhalte liegen über dem Hintergrund
+.header-text-wrapper,
 .header-otter-wrapper {
-    width: 20%;
+    position: relative;
+    z-index: 2;
+}
+
+// Otter Container & Bild (Sauber zusammengefasst)
+.header-otter-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 0 0 auto;
 
     .otter-img {
-        max-width: 100%;
-        height: auto;
-        max-height: 120px;
+        height: 350px; 
+        width: auto;  
+        object-fit: contain;
     }
 }
 
@@ -58,22 +63,34 @@
     justify-content: center;
 }
 
+// Textbereich links anordnen
 .header-text-wrapper {
-    text-align: center;
+    flex: 1;
+    text-align: left; 
 
     h1 {
-        font-size: 2.5vw;
+        font-size: 3.5vw;
         font-weight: bold;
-        // Standard-Farbe (Light Mode)
-        color: #000000; 
+        color: #ffffff; 
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1.2vw;
+        color: #f0f0f0;
     }
 }
 
-// --- DARK MODE ANPASSUNG ---
+// --- DARK MODE ANPASSUNG FÜR DEN HERO-BEREICH ---
 body.dark, body.dark-mode, .dark-mode {
+    .pastel-background-bar {
+        // Ein dunkles, gedecktes Grün für den Dark Mode (statt dem hellen Grün)
+        background-color: #346844; 
+    }
+
     .header-text-wrapper {
-        h1 {
-            color: #ffffff; // Text wird im Dark Mode weiß
+        h1, p {
+            color: #ffffff; // Hält den Text im Dark Mode strahlend weiß
         }
     }
 }
@@ -92,18 +109,20 @@ body.dark, body.dark-mode, .dark-mode {
 // Mobile Ansicht (wenn der Bildschirm zu schmal wird)
 @media (max-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
     .header-text-wrapper h1 {
-        font-size: 5vw; // Größerer Text auf kleinen Screens
+        font-size: 5vw; 
     }
 }
 
 // Introductive message
 .info-message-wrapper {
     width: 90%;
-    height: 30%;
+    margin-top: 6vh;    
+    margin-bottom: 6vh; 
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1rem;          
+    text-align: center;
 }
