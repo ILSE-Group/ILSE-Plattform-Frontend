@@ -165,7 +165,7 @@ function Login( {registrSuccess} : loginProps ) {
                 <button className="login-btn"
                     onClick={performLogin}
                 >
-                    Login
+                    Einloggen
                 </button>
 
                 <div className="input-group">

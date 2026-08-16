@@ -18,7 +18,7 @@ function InfoPage() {
                 <div className='header-content-wrapper header-text-wrapper'>
                     <div className='hero-text-content'>
                         <h1>Willkommen bei ILSE</h1>
-                        <p>Wir sind ILSE. Eine Interaktive Lernplatform für Gefahren im Internet</p>
+                        <p>Eine Interaktive Lernplatform für Gefahren im Internet</p>
                     </div>
                 </div>
 

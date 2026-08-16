@@ -96,6 +96,21 @@
 //-----login-button-----
 .header-loginbtn-container {
     width: 20%;
+    
+    // Interaktiver Hover-Effekt für den Anmelden/Abmelden-Button
+    .highlight-btn-medium {
+        
+
+        &:hover {
+            // Verdunkelt die Farbe bzw. lässt ihn beim Drüberfahren reagieren
+            filter: brightness(0.9); 
+            
+        }
+
+        &:active {
+            transform: translateY(1px); // Effekt beim echten Anklicken (Klick-Feedback)
+        }
+    }
 }
 
 //.header-loginbtn-label {

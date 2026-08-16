@@ -98,7 +98,7 @@ function AppHeader() {
                         <p className="header-loginbtn-label highlight-btn-medium"
                             onClick={() => navigate({pageUrl: LOGIN_URL})}
                         >
-                            Login
+                            Anmelden
                         </p>
                     )
                 }
