@@ -33,18 +33,23 @@ function getDataFromAPI( subUrl : string ) : apiData | null {
 async function receiveDataAsync( subUrl : string ) : Promise<apiData | null>  {
     const targetUrl = new URL(subUrl, API_URL).toString();
 
-    const response = await fetch(targetUrl, {
-        method: "GET",
-        headers: { 
-            Accept: "application/json" 
-        },
-    });
+    try {
+        const response = await fetch(targetUrl, {
+            method: "GET",
+            headers: { 
+                Accept: "application/json" 
+            },
+        });
 
-    if (!response.ok) {
+        if (!response.ok) {
+            return null;
+        }
+
+        return (await response.json()) as apiData;
+    } catch( err: unknown ) {
         return null;
     }
-
-    return (await response.json()) as apiData;
+    
 }
 
 
@@ -70,19 +75,24 @@ function sendDataToAPI( subUrl: string, payload: apiData ) : apiData | null {
 async function sendDataAsync( subUrl: string, payload: apiData ) : Promise<apiData | null>  {
     const targetUrl = new URL(subUrl, API_URL).toString();
 
-    const response = await fetch(targetUrl, {
-        method: "POST",
-        headers: { 
-            Accept: "application/json" 
-        },
-        body: JSON.stringify(payload),
-    });
+    try {
+        const response = await fetch(targetUrl, {
+            method: "POST",
+            headers: { 
+                Accept: "application/json" 
+            },
+            body: JSON.stringify(payload),
+        });
 
-    if (!response.ok) {
+        if (!response.ok) {
+            return null;
+        }
+
+        return (await response.json()) as apiData;
+    } catch( err: unknown ) {
         return null;
     }
 
-    return (await response.json()) as apiData;
 }
 
 //===================================================

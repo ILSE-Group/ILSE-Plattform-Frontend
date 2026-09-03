@@ -23,10 +23,7 @@
     min-height: 1.3em;
     min-width: 1.3em;
 
-    background: orange;
-}
-.choice-checkbox:checked:after {
-    color: red;
+    accent-color: var(--highlightColorMediumContrast);
 }
 
 .text-wrapper {
