@@ -1,116 +1,115 @@
 @use '../../../lib/styles.scss' as styles;
 
-// Die gesamte Sektion bricht aus eventuellen zentrierten Container-Begrenzungen aus
+
 .info-page {
-    width: 100%;
+    height: 60vh;
+    width: 100vw;
+
     margin: 0;
     padding: 0;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-// Der Hero-Container spannt sich über die volle Bildschirmbreite
 .info-header-wrapper {
-    position: relative;
-    width: 100vw;      
-    min-height: 40vh;   
-    padding: 4vh 8vw;   
+    width: 100%;      
+    height: 40vh;   
+
+    padding: 4vh 8vw;  
+
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     box-sizing: border-box;
-}
+    @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+        flex-direction: row;
+    }
 
-// DER VOLLSTÄNDIGE HINTERGRUND-BALKEN
-.pastel-background-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    z-index: 0;
     background-color: #7cb48d; 
-    z-index: 1;
+    body.dark, body.dark-mode, .dark-mode {
+        background-color: #346844; 
+    }
 }
 
-// Inhalte liegen über dem Hintergrund
-.header-text-wrapper,
-.header-otter-wrapper {
-    position: relative;
-    z-index: 2;
+.header-text-wrapper {
+    height: 30%;
+    width: 100%;
+    @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+        height: 100%;
+        width: 70%;
+    }
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        font-size: 1.5rem;
+        font-weight: 900;     
+        color: #ffffff; 
+        margin-bottom: 0;
+        text-align: left;
+
+        @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+            font-size: 3.5vw;
+            margin-bottom: 2rem;
+        }
+    }
+
+    p {
+        font-size: 1rem;
+        font-weight: normal;  
+        color: #f0f0f0;
+        text-align: left;
+
+        @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+            font-size: 1.2vw;
+        }
+    }
 }
 
 // Otter Container & Bild (Sauber zusammengefasst)
-.header-otter-wrapper {
+.header-image-wrapper {
+    height: 70%;
+    width: 100%;
+    .otter-img {
+        height: 90%; 
+        width: auto;  
+        object-fit: contain;
+    }
+
+    @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
+        height: 100%;
+        width: 30%;
+        .otter-img {
+            height: auto;
+            width: 100%;  
+            object-fit: contain;
+        }
+    }
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 0 0 auto;
 
     .otter-img {
-        height: 350px; 
+        height: 90%; 
         width: auto;  
         object-fit: contain;
     }
 }
 
-.header-content-wrapper {
-    width: 60%;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-}
-
-// Textbereich links anordnen
-.header-text-wrapper {
-    flex: 1;
-    text-align: left; 
-
-    h1 {
-        font-size: 4vw;
-        font-weight: 900;     
-        color: #ffffff; 
-        margin-bottom: 2rem;
-    }
-
-    p {
-        font-size: 1.2vw;
-        font-weight: normal;  
-        color: #f0f0f0;
-    }
-}
-
 // --- DARK MODE ANPASSUNG FÜR DEN HERO-BEREICH ---
 body.dark, body.dark-mode, .dark-mode {
-    .pastel-background-bar {
-        
+    .info-header-wrapper {
         background-color: #346844; 
-    }
-
-    .header-text-wrapper {
-        h1, p {
-            color: #ffffff; 
-        }
-    }
-}
-
-.header-logo-wrapper {
-    height: 30%;
-    width: 40%;
-
-    img {
-        max-width: 90%;
-        height: auto;
-        max-height: 90%;
-    }
-}
-
-// Mobile Ansicht (wenn der Bildschirm zu schmal wird)
-@media (max-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
-    .header-text-wrapper h1 {
-        font-size: 5vw; 
     }
 }
 

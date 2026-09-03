@@ -38,6 +38,7 @@ function MultipleChoiceExercise({ question, checkSignal, checkDoneSignal, setExe
         // set answer state
         newOverallAnswerState = 
             answersState.every(s => s === AnswerState.UNANSWERED) ? AnswerState.UNANSWERED :
+            answersState.every(s => s === AnswerState.WRONG) ? AnswerState.UNANSWERED :
             answersState.every(s => s === AnswerState.CORRECT) ? AnswerState.CORRECT :
             AnswerState.WRONG;
 

@@ -1,4 +1,4 @@
-@use "../../../lib/styles.scss";
+@use "../../../lib/styles.scss" as styles;
 
 
 .topic-wrapper {
@@ -26,6 +26,9 @@
     border: inherit;
     border-radius: inherit;
     
+}
+.room-topic-wrapper.correct { 
+    background-color: var(--colorAnswerCorrect);
 }
 
 

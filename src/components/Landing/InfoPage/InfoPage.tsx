@@ -8,22 +8,15 @@ function InfoPage() {
     return (
         <section className='info-page'>
 
-            
-
             <div className='info-header-wrapper'>
-                {/* Der große Vollbild-Hintergrund */}
-                <div className='pastel-background-bar'></div>
-
                 {/* Text und Untertitel links / mittig im Hero-Bereich */}
-                <div className='header-content-wrapper header-text-wrapper'>
-                    <div className='hero-text-content'>
+                <div className='header-text-wrapper'>
                         <h1>Willkommen bei ILSE</h1>
                         <p>Eine Interaktive Lernplatform für Gefahren im Internet</p>
-                    </div>
                 </div>
 
                 {/* Rechter Otter */}
-                <div className='header-otter-wrapper'>
+                <div className='header-image-wrapper'>
                     <img src={otter3} alt="Otter rechts" className='otter-img' />
                 </div>
             </div>
