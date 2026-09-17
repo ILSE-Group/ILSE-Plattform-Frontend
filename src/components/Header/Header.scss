@@ -303,17 +303,37 @@
   right: 6px;
 }
 
-//==========page-links==========
-.navigation-links-container {
-    min-height: 10;
-    height: min-content;
-
+//==========quickactions, page-links & room-links==========
+.navigation-quickactions-container,
+.navigation-links-container,
+.navigation-pagelinks-container {
+    // Sorgt dafür, dass alle Container die Elemente richtig ausrichten
     display: flex;
-
     flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
+    width: 100%;
 
-    gap: 1.1rem;
+    p {
+        display: block;
+        width: 85%;
+        margin: 0 auto; // Zentriert die Elemente horizontal
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        color: var(--fgColorHighContrast);
+        text-align: center;
+        background-color: transparent;
+        cursor: pointer;
+        
+        transition: background-color 0.2s ease, transform 0.1s ease;
+
+        &:hover {
+            background-color: var(--bgColorMediumContrast); // Balken
+        }
+
+        &:active {
+            transform: scale(0.98); // Klick-Feedback
+        }
+    }
 }
 
 //==========room-links==========

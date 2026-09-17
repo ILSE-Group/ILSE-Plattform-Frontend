@@ -22,7 +22,7 @@
     align-items: center;
     justify-content: flex-start;
 
-    box-shadow: 3px 3px 5px var(--bgColorLowContrast);
+    
     border: inherit;
     border-radius: inherit;
     
@@ -90,34 +90,34 @@
 
 
 
-//-------------------content-area-------------------
+//-------------------content-area------------------- 
+// der teil wo die fragen stattfinden 
 .topic-content-wrapper {
     width: 90%;
-    height: min-content;
-
-    margin: 3vh 0 3vh 0;
+    max-height: 0;          
+    opacity: 0;             
+    overflow: hidden;       // Versteckt überstehenden Inhalt
+    visibility: hidden;     // Verhindert Klicks im geschlossenen Zustand
+    
+    margin: 0;              
+    
+    // animation
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease-in-out, 
+                visibility 0.4s ease-in-out,
+                margin 0.4s ease;
 
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-between;
 }
+
+// Wenn geöffnet:
 .topic-content-wrapper.opened {
-    display: block;
-}
-.topic-content-wrapper.closed {
-    display: none;
-}
-
-.description-toggle-btn {
-    margin: 2vh 0 2vh 0;
-    user-select: none;
-
-    p {
-        user-select: none;
-        color: var(--highlightColorHighContrast);
-    }
+    max-height: 800px;     // erhöhe diesen Wert, falls aufgaben inhalte sehr lang sind
+    opacity: 1;
+    visibility: visible;
+    margin: 3vh 0 3vh 0;   //bringt abstand zurück 
 }
 
 

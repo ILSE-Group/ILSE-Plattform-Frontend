@@ -131,3 +131,33 @@
     transform: scale(0.95); 
 }
 
+
+// animierter container fürs aufklappen der schüler profile
+.student-dropdown-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+    width: 100%;
+    // dauer der animation
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease-in-out, 
+                visibility 0.4s ease-in-out;
+
+    // wenn aufgeklappt
+    &.expanded {
+        max-height: 600px; // Erhöhe diesen Wert, falls deine Inhalte sehr lang sind
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+// buttons wurden komisch rechts abgebrochen 
+.student-dropdown-inner {
+    width: 100%;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

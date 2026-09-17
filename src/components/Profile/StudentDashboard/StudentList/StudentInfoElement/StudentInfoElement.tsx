@@ -28,7 +28,7 @@ function StudentInfoElement( { studentInfo } : studInfoElemProps ) {
 
     return(
         <div className='students-wrapper'>
-                    
+                
             <div className="student-card"
                 onClick={toggleRoomInfoShown}
             >
@@ -56,8 +56,8 @@ function StudentInfoElement( { studentInfo } : studInfoElemProps ) {
 
             </div>
             
-            {roomInfoShown && (
-                <>
+            <div className={`student-dropdown-content ${roomInfoShown ? 'expanded' : ''}`}>
+                <div className="student-dropdown-inner">
                     {studentInfo.studentProgress.map((studentRoomStatus, idx) => (
                         <RoomsStatus
                             key={idx}
@@ -66,8 +66,8 @@ function StudentInfoElement( { studentInfo } : studInfoElemProps ) {
                     ))}
 
                     <StudentControlElement studentName={studentInfo.studentName} />
-                </>
-            )}
+                </div>
+            </div>
 
         </div>
     );

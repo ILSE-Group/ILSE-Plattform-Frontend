@@ -24,6 +24,30 @@
 }
 
 
+// --- GLOBALER ZEIGEFINGER FÜR KLICKBARE ELEMENTE ---
+button, 
+input[type="submit"], 
+input[type="button"], 
+.card, 
+.highlight-btn-medium,
+.submit-btn,
+.description-toggle-btn,
+.room-topic-header,
+[onClick] {
+    cursor: pointer;
+}
+
+@media screen and (max-height: 340px) {
+  * {
+      display: none;
+    }
+}
+@media only screen and (max-width: 230px) {
+    * {
+      display: none;
+    }
+}
+
 // light mode
 body {
   --bgColorHighContrast: #{styles.$lightTheme_bgColorHighContrast};
@@ -91,3 +115,5 @@ body {
     background-color 0.35s ease,
     color 0.35s ease;
 }
+
+

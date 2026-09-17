@@ -25,13 +25,15 @@ $cardBgHoverColor: var(--bgColorLowContrast);
     border: none;
     border-radius: 1rem;
 
-    box-shadow: 3px 3px 10px var(--bgColorLowContrast);
-
     background-color: var(--bgColorMediumContrast);
+
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                background-color 0.3s ease;
 }
 
 .card:hover {
     background-color: var(--bgColorLowContrast);
+    transform: translateY(-6px); // animation für karten
     .card-image-container {
         border-color: var(--bgColorLowContrast);
     }
@@ -85,3 +87,4 @@ $cardBgHoverColor: var(--bgColorLowContrast);
 .card-description-text {
     font-size: 15px;
 }
+
