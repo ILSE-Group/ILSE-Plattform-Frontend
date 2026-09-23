@@ -36,7 +36,8 @@
 }
 
 .header-text-wrapper {
-    height: 30%;
+    height: fit-content;
+    max-height: 50%;
     width: 100%;
     @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
         height: 100%;
@@ -63,23 +64,23 @@
     }
 
     p {
-        font-size: 1rem;
+        font-size: 0.94rem;
         font-weight: normal;  
         color: #f0f0f0;
         text-align: left;
 
         @media (min-width: styles.$MIN_SIZE_HORIZONTAL_MODE) {
-            font-size: 1.2vw;
+            font-size: 1.4vw;
         }
     }
 }
 
 // Otter Container & Bild (Sauber zusammengefasst)
 .header-image-wrapper {
-    height: 70%;
+    height: 50%;
     width: 100%;
     .otter-img {
-        height: 90%; 
+        height: 100%; 
         width: auto;  
         object-fit: contain;
     }

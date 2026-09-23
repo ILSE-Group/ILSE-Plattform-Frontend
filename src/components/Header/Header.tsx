@@ -89,13 +89,13 @@ function AppHeader() {
                 <div className='header-button header-loginbtn-container'>
                 {
                     loggedIn ? (
-                        <p className="header-loginbtn-label highlight-btn-medium"
+                        <p className="header-loginbtn-label highlight-btn-low"
                             onClick={() => { setLoginState(null); navigate({pageUrl: HOME_URL}); }}
                         >
                             Abmelden
                         </p>
                     ) : (
-                        <p className="header-loginbtn-label highlight-btn-medium"
+                        <p className="header-loginbtn-label highlight-btn-low"
                             onClick={() => navigate({pageUrl: LOGIN_URL})}
                         >
                             Anmelden
