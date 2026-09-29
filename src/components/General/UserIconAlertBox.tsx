@@ -3,7 +3,7 @@ import './UserIconAlertBox.scss';
 import { useState, useRef, useEffect } from 'react';
 
 import type { profileIconContent, profileIconElement } from '../../lib/interfaceHandler';
-import { getIconsData, getIconSrc } from '../../lib/dataHandler';
+import { getProfileIconsData, getProfileIconSrc } from '../../lib/dataHandler';
 
 
 interface AlertBoxProps {
@@ -13,13 +13,13 @@ interface AlertBoxProps {
 
 function UserIconAlertBox( {userIcon, onClose} : AlertBoxProps) {
 
-    const availableIcons : profileIconContent = getIconsData();
+    const availableIcons : profileIconContent = getProfileIconsData();
 
     const [currentID, setCurrentID] = useState<number>(
         userIcon.iconID < 0 || userIcon.iconID > availableIcons.icon.length ? 0 : userIcon.iconID
     );
     const [currentSrc, setCurrentSrc] = useState<string>(
-        userIcon.iconSrc.length > 0 ? userIcon.iconSrc : getIconSrc(0)
+        userIcon.iconSrc.length > 0 ? userIcon.iconSrc : getProfileIconSrc(0)
     );
     const [currentColor, setCurrentColor] = useState<string>(
         userIcon.iconBgColorHex.length == 7 ? userIcon.iconBgColorHex : '#ffffff'

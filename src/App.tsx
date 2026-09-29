@@ -25,8 +25,9 @@ function App() {
           <Route path={HOME_URL}        element={<LandingPage />}  />
           <Route path={ABOUT_URL}       element={<WhoWeArePage />} />
           <Route path={LOGIN_URL}       element={<LoginPage />}    />
-          <Route path={PROFILE_URL}     element={<ProfilePage />}  />
 
+          <Route path={PROFILE_URL}     element={<ProfilePage />}  />
+          
           <Route path={ROOMS_LINK_URL}  element={<RoomsPage />}    />
           {
             roomNames.map((name, index) => {

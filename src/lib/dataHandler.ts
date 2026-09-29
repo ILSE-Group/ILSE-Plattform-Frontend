@@ -21,7 +21,7 @@ function getRoomsList() : roomList {
             roomInfoList = JSON.parse(roomInfoString);
             return roomInfoList;
         } catch (error) {
-            //TODO: error handling
+            return {};
         }
     }
     // get roomList from API and save to local storage
@@ -116,7 +116,7 @@ export function getProfileData() : profileContent {
     return profileData;
 }
 
-export function getIconsData() : profileIconContent {
+export function getProfileIconsData() : profileIconContent {
     let icons = {
         icon: [
             {
@@ -170,8 +170,8 @@ export function getIconsData() : profileIconContent {
     return icons as profileIconContent;
 }
 
-export function getIconSrc(id : number) : string {
-    let content : profileIconContent = getIconsData();
+export function getProfileIconSrc(id : number) : string {
+    let content : profileIconContent = getProfileIconsData();
 
     console.log(content.icon.entries.length);
 

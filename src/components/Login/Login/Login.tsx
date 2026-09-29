@@ -86,7 +86,7 @@ function Login( {registrSuccess} : loginProps ) {
             return false;
 
 
-        // if not: send username and password to api
+        // send username and password to api
         // and save result in lib/globalVars/loginToken
         if( generalInfoRef.current )
             generalInfoRef.current.textContent = "Überprüfe Ihre Daten...";

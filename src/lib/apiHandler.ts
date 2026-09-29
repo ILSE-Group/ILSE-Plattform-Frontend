@@ -5,32 +5,49 @@ import type { apiData, roomList, roomContent, feedbackContent, webToken, loginSi
 import { UserManagementType, AccountManagementType } from "./ManagementType";
 import { API_URL, getLoginToken } from "./globalVars";
 import { sanitizeString, processForAPISend } from "./stringHandler";
+import { resume } from "react-dom/server";
 
 type UserManagement = typeof UserManagementType[keyof typeof UserManagementType];
 type AccountManagement = typeof AccountManagementType[keyof typeof AccountManagementType];
 
 
-// TODO
+//===================================================
+//====                 API-CALL                 =====
+//===================================================
+
+// API-GET
 function getDataFromAPI( subUrl : string ) : apiData | null {
     const [result, setResult] = useState<apiData | null>(null);
 
     useEffect(() => {
+        const timeoutController = new AbortController();
+        const timeoutID = window.setTimeout(() => {
+            timeoutController.abort();
+        }, 4_000);
+
         async function loadResult() {
-            try {
-                setResult(await receiveDataAsync(subUrl));
+           try {
+                const GET_RESULT : apiData | null = await receiveDataAsync(subUrl, timeoutController.signal);
+                setResult(GET_RESULT);
+
             } catch (e) {
                 setResult(null);
-            }
+            } 
         }
+        
+        if( result == null )
+            loadResult();
 
-        loadResult();
+        return () => {
+            window.clearTimeout(timeoutID);
+            timeoutController.abort();
+        };
 
-        return;
     }, [subUrl]);
 
     return result;
 }
-async function receiveDataAsync( subUrl : string ) : Promise<apiData | null>  {
+async function receiveDataAsync( subUrl : string, signal : AbortSignal ) : Promise<apiData | null>  {
     const targetUrl = new URL(subUrl, API_URL).toString();
 
     try {
@@ -39,6 +56,7 @@ async function receiveDataAsync( subUrl : string ) : Promise<apiData | null>  {
             headers: { 
                 Accept: "application/json" 
             },
+            signal,
         });
 
         if (!response.ok) {
@@ -46,33 +64,46 @@ async function receiveDataAsync( subUrl : string ) : Promise<apiData | null>  {
         }
 
         return (await response.json()) as apiData;
+
     } catch( err: unknown ) {
         return null;
     }
     
 }
 
-
+// API-POST
 function sendDataToAPI( subUrl: string, payload: apiData ) : apiData | null {
-    const [result, setResult] = useState<apiData | null>(null);
+     const [result, setResult] = useState<apiData | null>(null);
 
-    useEffect(() => {
+     useEffect(() => {
+        const timeoutController = new AbortController();
+        const timeoutID = window.setTimeout(() => {
+            timeoutController.abort();
+        }, 4_000);
+
         async function loadResult() {
-            try {
-                setResult(await sendDataAsync(subUrl, payload));
+           try {
+                const POST_RESULT : apiData | null = await sendDataAsync(subUrl, payload, timeoutController.signal);
+                setResult(POST_RESULT);
+
             } catch (e) {
                 setResult(null);
-            }
+            } 
         }
+        
+        if( result == null )
+            loadResult();
 
-        loadResult();
-
-        return;
-    }, [subUrl, payload]);
+        return () => {
+            window.clearTimeout(timeoutID);
+            timeoutController.abort();
+        };
+        
+    }, [subUrl]);
 
     return result;
 }
-async function sendDataAsync( subUrl: string, payload: apiData ) : Promise<apiData | null>  {
+async function sendDataAsync( subUrl: string, payload: apiData, signal : AbortSignal ) : Promise<apiData | null>  {
     const targetUrl = new URL(subUrl, API_URL).toString();
 
     try {
@@ -82,6 +113,7 @@ async function sendDataAsync( subUrl: string, payload: apiData ) : Promise<apiDa
                 Accept: "application/json" 
             },
             body: JSON.stringify(payload),
+            signal,
         });
 
         if (!response.ok) {
@@ -107,11 +139,10 @@ export function recieveRoomsList() : roomList {
     /*
     const url : string = 'topics';
     let content : apiData | null = getDataFromAPI(url);
-
-    while ( content == null ) {
-        content = getDataFromAPI(url);
+    
+    if( content != null ) {
+        return content as roomList;
     }
-    return content as roomList;
     */
 
     const data : roomList = {
@@ -130,11 +161,6 @@ export function recieveRoomsList() : roomList {
             imageSrc: '/thumbnails/phishingThumb.jpg',
             description: "Wie erkenne ich eine Phishing-Mail? Was ist zu tun, wenn ich meine Daten eingegeben habe?",
         },
-        /*room4: {
-            name: "test",
-            imageSrc: "../src/assets/logo.svg",
-            description: "Lorem ipsum",
-        }*/
     };
     return data as roomList;
 
@@ -156,6 +182,8 @@ export function recieveRoomContent(roomName : string) : roomContent | null {
 
     return content as roomContent;
     */
+
+    // TODO: remove later
     const passwordSecContent : roomContent = {
         roomID: 0,
         roomName: "Passwort-Sicherheit",
@@ -595,65 +623,6 @@ export function recieveRoomContent(roomName : string) : roomContent | null {
         ]
     };
 
-    // TODO: remove later
-    /* const testContent : roomContent = {
-        roomID: 1337,
-        roomName: "Linking-Test",
-        roomTopic: [
-            {
-                topicID: 0,
-                topicName: 'Test',
-                exercise: {
-                    exerciseType: "linking",
-                    completed: false,
-                    question: {
-                        questionText: "why?",
-                        answer: [
-                            {
-                                answerID: 0,
-                                answerText: "asdf",
-                                isCorrect: false,
-                                fitsTo: 3,
-                            },
-                            {
-                                answerID: 1,
-                                answerText: "asdf",
-                                isCorrect: false,
-                                fitsTo: 2,
-                            },
-                            {
-                                answerID: 2,
-                                answerText: "asdf",
-                                isCorrect: false,
-                                fitsTo: 1,
-                            },
-                            {
-                                answerID: 3,
-                                answerText: "asdf",
-                                isCorrect: false,
-                                fitsTo: 0,
-                            },
-                            {
-                                answerID: 4,
-                                answerText: "asdf",
-                                isCorrect: false,
-                                fitsTo: 5,
-                            },
-                            {
-                                answerID: 5,
-                                answerText: "asdf",
-                                isCorrect: false,
-                                fitsTo: 4,
-                            },
-                        ]
-                    }
-                },
-                descriptionText: "testing linking-exercise",
-            },
-        ]
-    }; */
-
-    // TODO: remove later
     switch (roomName) {
         case 'Passwort-Sicherheit':
             return passwordSecContent;
@@ -661,7 +630,6 @@ export function recieveRoomContent(roomName : string) : roomContent | null {
             return cybermobbingContent;
         case 'Phishing':
             return phishingContent;
-        /**/
         default:
             return null;
     }
@@ -775,45 +743,46 @@ export function recieveProfileData() : profileContent {
 /** processes the login values and sends them to the api
  * @returns webToken, on error: null */
 export function sendLoginData( username : string, password : string ) : webToken|null  {
-    /*
-    let name: string = processForAPISend(username);
-    let pass: string = processForAPISend(password);
 
+    /*
     let signalContent : loginSignalContent = {
-        username: name,
-        password: pass,
+        username: processForAPISend(username),
+        password: processForAPISend(password),
     }
     
-    const url : string = 'auth';
+    const url : string = 'auth/login';
     let content : apiData | null = sendDataToAPI(url, signalContent);
 
     return content as webToken;
     */
 
-    // TODO: remove(testdata)
     let token : webToken = {
-        username: "testuser",
+        username: 'Benutzer-1',
         date: Date.now(),
     }
 
     return token;
+
 }
 
-// TODO
 /** sends a signup call to the api 
  * @returns empty string, if a account was created, on error: error-message */
 export function sendSignupData( username : string, password : string ) : string {
-    let name: string = processForAPISend(username);
-    let pass: string = processForAPISend(password);
 
     let signalContent : loginSignalContent = {
-        username: name,
-        password: pass,
+        username: processForAPISend(username),
+        password: processForAPISend(password),
     }
 
-    JSON.stringify(signalContent);
+    const url : string = 'auth';
+    let content : apiData | null = sendDataToAPI(url, signalContent);
+
+
+    if( content == null )
+        return "Beim Erstellen des Accounts ist ein Fehler aufgetreten!";
 
     return "";
+
 }
 
 // TODO: add api-url
